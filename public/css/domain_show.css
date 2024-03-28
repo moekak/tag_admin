@@ -64,7 +64,7 @@ body{
     display: flex;
     justify-content: center;
     margin-top: 6%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .tag_index_box{
     width: 85%;

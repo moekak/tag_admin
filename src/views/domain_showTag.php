@@ -123,7 +123,7 @@ if(isset($_SESSION["copySiteAll"])){
                 </div>
 
                 <?php if($domainData["domain_type"] !== "original"){?>
-                <div style="margin-top: 130%;">
+                <div style="margin-top: 103%;">
                      <div class="LPName_container">
                         <p class="lp_title">親ドメインLP</p>
                         <p class="lp_name"><?= $parent_domain?></p>
@@ -275,12 +275,7 @@ if(isset($_SESSION["copySiteAll"])){
                                 <?php foreach($domainData["domain_type"] === "original" ? $copyAll_domain : $copySites as $copySite) {?>
                                     <tr>
                                         <td class="domain_name align-middle">
-                                            <?php if($copySite["random_domain_id"] === "0"){?>
-                                                <a href="<?=PATH?>show/?id=<?=$copySite["id"]?>" class="textdecoration_none"><?= $copySite["domain_name"]?></a>
-                                            <?php } else {?>
-                                                <a href="<?=PATH?>showTag/?id=<?=$copySite["id"]?>" class="textdecoration_none"><?= $copySite["domain_name"]?></a>
-                                            <?php }?>
-                                            
+                                            <a href="<?=PATH?>showTag/?id=<?=$copySite["id"]?>" class="textdecoration_none"><?= $copySite["domain_name"]?></a>
                                         </td>
                                         <td class="original_check align-middle <?= $copySite["is_active"] === "1" ? "green" : "red"?>">
                                             <?= $copySite["is_active"] === "1" ? "使用" : "未使用"?>
@@ -310,12 +305,7 @@ if(isset($_SESSION["copySiteAll"])){
                                 <?php foreach($directorySites as $directorySite) {?>
                                     <tr>
                                         <td class="domain_name align-middle">
-                                            <?php if($directorySite["random_domain_id"] === "0"){?>
-                                                <a href="<?=PATH?>show/?id=<?=$directorySite["id"]?>" class="textdecoration_none"><?= $directorySite["domain_name"]?></a>
-                                            <?php } else {?>
-                                                <a href="<?=PATH?>showTag/?id=<?=$directorySite["id"]?>" class="textdecoration_none"><?= $directorySite["domain_name"]?></a>
-                                            <?php }?>
-                                            
+                                            <a href="<?=PATH?>showTag/?id=<?=$directorySite["id"]?>" class="textdecoration_none"><?= $directorySite["domain_name"]?></a>
                                         </td>
                                         <td class="original_check align-middle <?= $directorySite["is_active"] === "1" ? "green" : "red"?>">
                                             <?= $directorySite["is_active"] === "1" ? "使用" : "未使用"?>
