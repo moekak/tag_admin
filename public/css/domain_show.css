@@ -1,0 +1,221 @@
+/* 
+*{
+    overflow-x: auto !important;
+} */
+body{
+    max-height: 100vh !important;
+}
+.domain_show{
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-direction: unset !important;
+}
+.adCode_input {
+    background-color: #485265;
+    border: none;
+    border-radius: 4px;
+    height: 44px;
+    width: 263px;
+    padding: 20px 31px 20px 62px;
+    color: rgba(255, 255, 255, 0.377);
+}
+.adCode_input:focus{
+    outline: none;
+}
+.adCode_input::placeholder{
+    color: rgba(255, 255, 255, 0.377);
+}
+.search_icon {
+    color: rgba(255, 255, 255, 0.377);
+    top: 34%;
+    left: 8%;
+    width: 17px;
+}
+.menu_bar{
+    background-color: #3c4b64;
+    height: 100vh;
+    width: 20%;
+    top: 0;
+    padding-top: 5%;
+}
+.menu-icon{
+    width: 24px;
+    height: 24px;
+}
+.menu{
+    display: flex;
+    gap: 20px;
+    padding: 9% 3% 9% 13%;
+    align-items: center;
+    cursor: pointer;
+    transition: .4s;
+}
+.menu:hover{
+    background-color: #6b788e;
+}
+.menu_active{
+    background-color: #6b788e;
+}
+.tag_index_container{
+    width: 100%;
+    max-height: 78vh;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    margin-top: 6%;
+    overflow-y: scroll;
+}
+.tag_index_box{
+    width: 85%;
+    background-color: white;
+    border-radius: 7px;
+    border: 1.5px solid #d9d9d9d9;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: scroll;
+    height: max-content;
+}
+.main_wrapper{
+    display: flex;
+}
+.eye{
+    width: 23px;
+}
+.trigger_btn{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    border: 1px solid #d9d9d9;
+    padding: 3px 5px;
+    width: 118px;
+    border-radius: 40px;
+
+}
+/* tag削除確認モーダル */
+.tag_delete_modal_container{
+    width: 325px;
+  /* height: 50px; */
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  z-index: 999;
+  border-radius: 8px;
+  padding: 40px;
+}
+
+/* タグ追加 */
+.domain_name_input{
+    padding: 10px;
+    border-radius: 5px;
+}
+.domain_name_input::placeholder{
+    font-size:14px ;
+}
+.domain_name_input:focus{
+    outline: none;
+}
+.arrow{
+    top: 33%;
+    right: 70%;
+    color: gray;
+}
+.trigger_position {
+    top: 17%;
+    right: 76%;
+}
+.trigger_category{
+    width: max-content;
+    margin-top: 10px;
+    padding: 2%;
+    border-radius: 8px;
+    /* opacity: 0; */
+}
+.trigger_msg{
+    width: 174px !important;
+}
+.tag_form{
+    height: 92px;
+    overflow-y: hidden;
+    transition: .3s;
+    
+}
+.tag_form::-webkit-scrollbar{
+    display: none;
+}
+.tag_index_box::-webkit-scrollbar{
+    display: none;
+}
+.activeTrigger{
+    height: 240px !important;
+    transition: .3s;
+    overflow-y: auto !important;
+}
+.flex_trigger{
+    display: flex;
+    align-items: end;
+    gap: 11%; 
+}
+.disabledInput{
+    /* width: 160px; */
+    background: rgba(128, 128, 128, 0.15);
+    cursor: not-allowed;
+}
+/* .form-check {
+    padding-left: 2.5em !important;
+} */
+.tag_textarea{
+    width: 100%;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.562);
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+.transparent{
+    color: transparent;
+}
+.input_container{
+    display: flex;
+}
+.input_txt{
+    width: 60px;
+    display: flex;
+    align-items: end;
+    text-align: center;
+    justify-content: center;
+}
+.ad_area {
+    width: 100%;
+    max-height: 84vh;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+.ad_container{
+    margin-top: 7.2%;
+}
+.showTitle{
+    display: flex;
+    gap: 20px;
+    align-items: end;
+}
+.LPName_container{
+    padding: 2% 3% 2% 13%;
+}
+.LPName_container p{
+    color: white;
+}
+.lp_title{
+    color: rgba(255, 255, 255, 0.582) !important;
+    font-size: 14px;
+    margin: 0 !important;
+    text-decoration: underline;
+}

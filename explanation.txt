@@ -1,0 +1,50 @@
+class ExampleClass {
+    private static $instanceCount = 0;
+
+    public function __construct() {
+        self::$instanceCount++;
+    }
+
+    public static function getInstanceCount() {
+        return self::$instanceCount;
+    }
+}
+
+$obj1 = new ExampleClass();
+$obj2 = new ExampleClass();
+
+echo ExampleClass::getInstanceCount(); // 出力: 2
+
+
+もし、変数に上記のようにstaticをつけた場合は、クラスのすべてのインスタンスに共通のデータを格納する。
+つまり、インスタンスが新しく作られるたびに、$instanceCountは1ずつ増えていく
+
+
+
+class ExampleClass {
+    private $instanceCount = 0;
+
+    public function __construct() {
+        $this->instanceCount++;
+    }
+
+    public function getInstanceCount() {
+        return $this->instanceCount;
+    }
+}
+
+$obj1 = new ExampleClass();
+$obj2 = new ExampleClass();
+
+echo $obj1->getInstanceCount(); // 出力: 1
+echo $obj2->getInstanceCount(); // 出力: 1
+
+
+もし$instanceCount変数にstaticキーワードを使用しない場合、この変数はクラスの各インスタンスに個別に存在することになる。
+つまりインスタンスが新しくつくられても、$instanceCountは1になる
+
+
+
+/#############################################################
+シングルトンパターンでは、クラスのインスタンスは一つだけ作成され、そのインスタンスへのアクセスはクラスの静的メソッドを通じて行われる!!
+/###########################################################

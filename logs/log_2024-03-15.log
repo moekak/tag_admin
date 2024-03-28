@@ -1,0 +1,13 @@
+[2024-03-15 12:32:44]post: session
+[2024-03-15 15:46:08]Invalid ID detected in /www/wwwroot/tag-admin.info/src/controllers/CategoryController.php at line 21. 
+ Received ID: Not Provided,
+ User ID: 21****9a,
+ REQUEST URL: /addCategory,
+ HTTP Method: POST,
+ Script: /index.php,
+ POST Data: {"category_name":""}
+
+[2024-03-15 17:27:08]post: session
+[2024-03-15 18:45:49]post: session
+[2024-03-15 22:29:02]post: session
+[2024-03-15 23:25:29]post: session

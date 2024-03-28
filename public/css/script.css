@@ -1,0 +1,32 @@
+.script_area{
+    /* width: 100px; */
+    /* height: 50px; */
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 999;
+    border-radius: 8px;
+    padding: 31px;
+    width: 678px;
+}
+.script_box{
+    background-color: #dededf71;
+    border: 1px solid rgba(128, 128, 128, 0.568);
+    border-radius: 5px;
+    padding: 2% 2%;
+}
+.pic_script{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+.copy_btn_script{
+    cursor: pointer;
+}
+.copy_btn_script2{
+    cursor: pointer;
+}
