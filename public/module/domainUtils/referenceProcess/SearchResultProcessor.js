@@ -55,7 +55,7 @@ export const setSelectedDomainIdAndName = (copy_site_btn, e) =>{
         inputValue["original_domain_id"] = selectedOriginalID;
     }
     
-    updateButtonState()
+    updateButtonState("add")
     enableTagReferenceBtn();
 }
 
@@ -70,6 +70,6 @@ export const setSelectedTagIdAndName = (copy_tag, e) =>{
     tag_input.value                             = selectedID;
     inputValue["tag_reference"]                 = selectedTagName;
     inputValue["tag_reference_id"]              = selectedID;
-    updateButtonState()
+    updateButtonState("add")
 
 }

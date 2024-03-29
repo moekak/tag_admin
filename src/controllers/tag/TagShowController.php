@@ -34,16 +34,9 @@ class TagShowController{
             exit;
         }
 
-        $is_reference = $this->domain_model->getTagReferenceId(intval($_GET["id"]), $_SESSION["user_id"]);
 
    
-        if($is_reference){
-            $this->domain_id = $this->domain_model->getDomainID($is_reference, $_SESSION["user_id"]);
-        }else{
-            $this->domain_id = $_GET["id"];
-        }
-   
-        $specificTagData     = $this->tag_model->getTagsInfo($_SESSION["user_id"], intval($this->domain_id));
+        $specificTagData     = $this->tag_model->getTagsInfo($_SESSION["user_id"], intval($_GET["id"]));
         $_SESSION["tagData"] = $specificTagData;
     
 

@@ -74,7 +74,6 @@ class TagWithoutReference implements TagTypeBase{
 
     public function setDataWithEdit(){
         $domain_info = [
-            "domain_category_id"    => intval($_POST["domain_category"]),
             "admin_id"              => $_SESSION["user_id"],
             "domain_name"           => DataValidation::sanitizeInput($_POST["domain_name"]),
             "domain_id"             => intval($_POST["domain_id"])

@@ -57,7 +57,7 @@ if(isset($tagData["ad_code"])){
                 <p>/</p>
                 <div class="tag_title">
                     <p class="white margin_0">広告コード</p>
-                    <h2 class="bold"><a href="<?=PATH?>tag/?id=<?=$tagData["id"]?>" class="textdecoration_none white"><?=$tagData["ad_code"]?></a></h2>
+                    <h2 class="bold"><?=$tagData["ad_code"] !== "" ?  $tagData["ad_code"] : $tagData["trigger_type"]?></h2>
                 </div>
             </div>
             

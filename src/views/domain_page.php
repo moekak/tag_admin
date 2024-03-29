@@ -18,6 +18,8 @@ if(isset($_SESSION["input_error"])){
     unset($_SESSION["input_error"]);
 } 
 
+
+
 $success_msg = "";
 if(isset($_SESSION["sucess_msg_index"])){
     $success_msg = $_SESSION["sucess_msg_index"];
@@ -169,13 +171,13 @@ if(isset($_SESSION["create_script_flag"])){
 
 
                         <!-- 他社のようにドメインの読み込みファイルを変える場合 -->
-                        <div class="form-check" id="js_checkTag" style="display: none;">
+                        <!-- <div class="form-check" id="js_checkTag" style="display: none;">
                         <div class="padding_t30"> </div>
                             <input class="form-check-input js_tagCheck" type="checkbox" value="" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 親ドメインタグ参照
                             </label>
-                        </div>
+                        </div> -->
                         <!-- end -->
 
                         <div class="cateogory_area" style="display: none;">
@@ -194,12 +196,16 @@ if(isset($_SESSION["create_script_flag"])){
                             <div class="padding_t30"></div>
                             <p class="label">タグ情報　<span class="red label">*必須</span></p>
                             <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="tag_new" value="new" name="tag_types">
+                                <label class="form-check-label" for="tag_new">タグ新規</label>
+                            </div>
+                            <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" id="tag" value="reference" name="tag_types">
                                 <label class="form-check-label" for="tag">タグ引継ぎ</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="tag_new" value="new" name="tag_types">
-                                <label class="form-check-label" for="tag_new">タグ新規</label>
+                            <div class="form-check form-check-inline js_withoutTag">
+                                <input class="form-check-input js_tagCheck" type="radio" value="withoutTag" id="flexCheckDefault" name="tag_types">
+                                <label class="form-check-label" for="flexCheckDefault">タグ参照</label>
                             </div>
                         </div>
                         
@@ -373,7 +379,7 @@ if(isset($_SESSION["create_script_flag"])){
         <p class="modal-font-size padding_left"><span class="bold">・オリジナルサイトの選択</span>: コピーサイトを設定する際、まずはその基となるオリジナルサイトを選択してください。</p>
         <div class="padding_t10"></div>
         <p style="margin-bottom: 5px;">2. タグ引継ぎ設定</p>
-        <p class="modal-font-size padding_left"><span class="bold">・タグ引継ぎの選択</span>: コピーサイトに対して、オリジナルサイトからタグ設定を引き継ぐかどうかを選択できます。引き継がない場合は、新規を選択してください</p>
+        <p class="modal-font-size padding_left"><span class="bold">・タグ引継ぎの選択</span>: コピーサイトに対して、オリジナルサイトからタグ設定を引き継ぐかどうかを選択できます。引き継がない場合は、新規を選択してください。タグを参照したい場合は、タグ参照を選択してください。</p>
         <div class="padding_t10"></div>
         <p style="margin-bottom: 5px;">3. タグ引継ぎ元の詳細</p>
         <p class="modal-font-size padding_left"><span class="bold">・引継ぎ元の詳細選択</span>: タグを引き継ぐ場合、具体的にどのオリジナルサイト、またはそのオリジナルサイトのコピーサイトからタグを引き継ぐかを選択してください。この選択により、コピーサイトのタグ設定が決定されます。</p>

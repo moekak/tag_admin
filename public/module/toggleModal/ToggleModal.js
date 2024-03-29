@@ -31,6 +31,7 @@ export const displayDomainHandlingModalWithNoAni = ()=>{
 // ドメイン追加、編集モーダル非表示
 export const closeDomainHandlingModal  = ()=>{
     modal_add.style.transform = "translateX(960px)"
+    modal_add.style.transition = "0.5s"
     modal_bg.classList.add("hidden")
 }
 

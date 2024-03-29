@@ -15,7 +15,7 @@ export const clearInputValueAll = ()=>{
     inputValue["tag_reference_id"] = ""
     inputValue["tag_type"] = ""
 
-    updateButtonState()
+    updateButtonState("add")
 }
 
 export const clearInputField = ()=>{
@@ -25,7 +25,7 @@ export const clearInputField = ()=>{
         clearInputValueAll()
     }   
 
-    updateButtonState()
+    updateButtonState("add")
 }
 
 export const clearRadioBtns = (btns)=>{
@@ -33,7 +33,7 @@ export const clearRadioBtns = (btns)=>{
         btn.checked = false
     })
 
-    updateButtonState()
+    updateButtonState("add")
 }
 
 export const clearReferences = (reference, title, id_name)=>{
@@ -41,7 +41,7 @@ export const clearReferences = (reference, title, id_name)=>{
     reference.disabled = true
     document.getElementById(id_name).value = "";
 
-    updateButtonState()
+    updateButtonState("add")
 }
 
 export const clearInputFieldValue = ()=>{
@@ -64,7 +64,7 @@ export const clearInputFieldValue = ()=>{
     clearReferences(tag_btn, "タグ参照先", "js_tag_reference_id")
 
     document.querySelector(".cateogory_area").style.display = "none"
-    document.getElementById("js_checkTag").style.display = "none"
+    // document.getElementById("js_checkTag").style.display = "none"
     const area = document.querySelector(".tagInfo_area")
     if(area.style.display == "none"){
         area.style.display = "block"
@@ -81,7 +81,7 @@ export const clearInputValue = ()=>{
     inputValue["original_domain_id"] = ""
     // inputValue["tag_reference_id"] = ""
 
-    updateButtonState()
+    updateButtonState("add")
 }
 
 // ドメインタイプがオリジナルの場合は、もし値が入ってたら空にする
@@ -90,7 +90,7 @@ export const clearObjectElements = ()=>{
        clearInputValue()
     }
 
-    updateButtonState()
+    updateButtonState("add")
     
 }
 

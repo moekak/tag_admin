@@ -1,6 +1,7 @@
 
 
-import {createPtagForTagDeleteModal, fetchTagReferenceDomain, copyTextToCplipboard , closeModal, clearAllValues, fetchDomainInfoBySearch, displayAlertModalForDeleteTag, fetchDomainDataByAll, fetchDomainDataByCategory, initializeModal, fetchDomainInfo, fetchTagData, displayEditModalAndInitializing, displayInfoModal, displayDomainHandlingModalWithNoAni, closeInfoModal, displayDomainHandlingModal , closeDomainHandlingModal,displayAlertModalForDeleteDomain, fetchDomainData, hideCollapse, inputValue, clearLocalStorage, getCategoryID, insertCategoriesID, insertDataToLocalstorage, isLocalStorageDataExisted, unsetLocalStorage, changeCategoryBtn, updateButtonState, updateUI, clearInputFieldValue, clearInputValueAll, clearInputField, clearSearchInput} from "@index/index.js";
+import {toggleInputField, setDataToDOM, setDataAndID, hideUnnecessaryForms, createPtagForTagDeleteModal, fetchTagReferenceDomain, copyTextToCplipboard , closeModal, clearAllValues, fetchDomainInfoBySearch, displayAlertModalForDeleteTag, fetchDomainDataByAll, fetchDomainDataByCategory, initializeModal, fetchDomainInfo, fetchTagData, displayEditModalAndInitializing, displayInfoModal, displayDomainHandlingModalWithNoAni, closeInfoModal, displayDomainHandlingModal , closeDomainHandlingModal,displayAlertModalForDeleteDomain, fetchDomainData, hideCollapse, inputValue, clearLocalStorage, getCategoryID, insertCategoriesID, insertDataToLocalstorage, isLocalStorageDataExisted, unsetLocalStorage, changeCategoryBtn, updateButtonState, updateUI, clearInputFieldValue, clearInputValueAll, clearInputField, clearSearchInput} from "@index/index.js";
+
 
 
 
@@ -28,8 +29,12 @@ fetchDomainInfoBySearch()
 
 const error = document.getElementById("js_error2");
 if(error.value === "edit"){
+
+    console.log(error.value);
     document.getElementById("js_domain_top_txt").innerHTML = "ドメイン編集"
     document.getElementById("js_create_btn").innerHTML = "更新"
+    hideUnnecessaryForms()
+
 }
 
 
@@ -98,6 +103,9 @@ if(error.value === "edit"){
         modal_btn.addEventListener("click", ()=>{
             
             clearAllValues()
+            document.getElementById("js_error").innerHTML = ""
+
+
         })
 
 
@@ -136,29 +144,29 @@ if(error.value === "edit"){
         
 
         input_domain_name.addEventListener("input", (e)=>{
-            updateUI("domain_name", "domain_name", e.target.value, inputValue)
+            updateUI("domain_name", "domain_name", e.target.value, inputValue, "add")
         })
 
         radio_domain_types.forEach((radio)=>{
             radio.addEventListener("change", (e)=>{
-                updateUI("domain_type", "domain_type",  e.target.value, inputValue)
+                updateUI("domain_type", "domain_type",  e.target.value, inputValue, "add")
             })
         })
     
         radio_domain_categories.forEach((radio)=>{
             radio.addEventListener("change", (e)=>{
-                updateUI("domain_category", "domain_category",  e.target.value, inputValue)
+                updateUI("domain_category", "domain_category",  e.target.value, inputValue, "add")
             })
         })
     
         radio_tag_info.forEach((radio)=>{
             radio.addEventListener("change", (e)=>{
-                updateUI("tag_type", "tag_type", e.target.value, inputValue)
+                updateUI("tag_type", "tag_type", e.target.value, inputValue, "add")
             })
         })
 
-        tag_check.addEventListener("change", ()=>{
-            updateUI("tag_type", "tag_type", tag_check.checked ? "withoutTag": "", inputValue)
+        tag_check.addEventListener("change", (e)=>{
+            updateUI("tag_type", "tag_type", e.target.value, inputValue, "add")
         })
     
         create_btn.addEventListener("click", (e)=>{
@@ -215,13 +223,35 @@ if(error.value === "edit"){
     {
         
         const error = document.getElementById("js_error")
+        const txt = document.getElementById("js_create_btn").innerHTML;
 
-        if(error.innerHTML !== ""){
+        if(error.innerHTML !== "" && txt == "追加"){
+            document.getElementById("js_create_btn").classList.remove("disabled_btn")
             displayDomainHandlingModalWithNoAni()
-            if(!isLocalStorageDataExisted){
-                closeDomainHandlingModal()
-            }
+            setDataAndID()
+            toggleInputField()
+            setDataToDOM()
+            updateButtonState("add")
+            
+           
+        } 
+
+        
+        if(error.innerHTML !== "" && txt == "更新"){
+            document.getElementById("js_create_btn").classList.remove("disabled_btn")
+            displayDomainHandlingModalWithNoAni()
+            setDataAndID()
+            setDataToDOM()
+            updateButtonState("edit")
         }
+
+                    
+        // if(!isLocalStorageDataExisted()){
+        //     document.getElementById("js_create_btn").classList.add("disabled_btn")
+        //     // closeDomainHandlingModal()
+        // }
+        
+        
     }
 
 
@@ -246,7 +276,7 @@ if(error.value === "edit"){
         
             clearInputFieldValue()
             clearInputValueAll()
-            updateButtonState()
+            updateButtonState("add")
 
             setTimeout(()=>{
                 success.classList.add("hidden")
@@ -259,7 +289,7 @@ if(error.value === "edit"){
 
 
         window.addEventListener("load", ()=>{
-            unsetLocalStorage("data")
+            // unsetLocalStorage("data")
         })
 
     }

@@ -30,7 +30,10 @@ class DomainEdit implements DomainProcessBase{
         FormValidation::checkEmptyData("domain_category", PATH . "index");
         FormValidation::checkValidID("domain_category", $this->domain_access->isCategoryIDExisted());
         FormValidation::checkValidData($this->allowedDomainTypes, "domain_type");
-        FormValidation::isDomainExisted(intval($_POST["domain_id"]), "edit");
+        if($_POST["domain_type"] !== "directory"){
+            FormValidation::isDomainExisted(intval($_POST["domain_id"]), "edit");
+        }
+
     }
 
     public function submissionProcess(){

@@ -22,6 +22,7 @@ class DomainController{
     }
 
     public function add(){
+
         $this->add->submissionProcess();
     }
 

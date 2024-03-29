@@ -290,7 +290,7 @@ class DomainsModel{
     //     }
     // }
     public function getDomainName($domain_name, $admin_id, $domain_id){
-        $query = "SELECT `domain_name` FROM domains WHERE admin_id = :admin_id AND domain_name = :domain_name AND is_deleted = '0'";
+        $query = "SELECT `domain_name` FROM domains WHERE admin_id = :admin_id AND domain_name = :domain_name AND domain_type != 'directory' AND is_deleted = '0'";
         if(isset($domain_id) && $domain_id){
             $query .= " AND id != :domain_id";
         }
@@ -655,13 +655,11 @@ class DomainsModel{
                 "UPDATE 
                     domains 
                 SET 
-                    domain_category_id = :domain_category_id, 
                     domain_name = :domain_name
                 WHERE 
                     admin_id = :admin_id 
                 AND 
                     id = :id" );
-            $statement->bindValue(':domain_category_id', $domain_info["domain_category_id"]);
             $statement->bindValue(':domain_name', $domain_info["domain_name"]);
             $statement->bindValue(':admin_id', $domain_info["admin_id"]);
             $statement->bindValue(':id', $domain_info["domain_id"]);

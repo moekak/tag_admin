@@ -15,7 +15,7 @@ const isDomainTypeCopyOrDirectory  = ()=>{
 }
 
 const isNewTag = ()=>{
-    return Boolean(inputValue["tag_type"] === "new" || inputValue["tag_type"] === "")
+    return Boolean(inputValue["tag_type"] === "new")
 }
 
 const WithoutTag = ()=>{
@@ -23,28 +23,26 @@ const WithoutTag = ()=>{
 }
 
 
-const toggleInputField = () =>{
-    if(isDomainTypeCopyOrDirectory()){
-        // タグを入れないか入れるかのチェックフォームを表示する
-        document.getElementById("js_checkTag").style.display = "block"
-    } else{
-        document.getElementById("js_checkTag").style.display = "none"
-    }
+export const toggleInputField = () =>{
+
+
+    // if(isDomainTypeCopyOrDirectory()){
+    //     // タグを入れないか入れるかのチェックフォームを表示する
+    //     document.getElementById("js_checkTag").style.display = "block"
+    // } else{
+    //     document.getElementById("js_checkTag").style.display = "none"
+    // }
 
     if(isDomainTypeOriginal()){
         document.querySelector(".cateogory_area").style.display = "block"
         document.querySelector(".copy_area").style.display = "none"
+        document.querySelector(".js_withoutTag").style.display = "none"
     }else{
         document.querySelector(".cateogory_area").style.display = "none"
         document.querySelector(".copy_area").style.display = "block"
+        document.querySelector(".js_withoutTag").style.display = "inline-block"
     }
-    if(WithoutTag()){
-        document.querySelector(".tagInfo_area").style.display = "none"
-        // document.querySelector(".tag_area").style.display = "none"
-    }else{
-        document.querySelector(".tagInfo_area").style.display = "block"
-        document.querySelector(".tag_area").style.display = "block"
-    }
+   
 }
 
 
@@ -79,29 +77,50 @@ export const enableTagReferenceBtn = ()=>{
 
 
 // 作成ボタンの無効化、有効化の切り替え関数
-export const updateButtonState = () =>{
+export const updateButtonState = (type) =>{
 
     const create_btn            = document.getElementById("js_create_btn")
     const data                  = inputValue || isLocalStorageDataExisted();
 
+    // 編集の場合
+    if(type == "edit"){
+        // console.log("edit");
+        // create_btn.classList.remove("disabled_btn")
+        // const hasValue = Boolean(data.domain_name)
 
-    // オリジナルドメインの場合
-    const isOriginalDomain                  = Boolean(data.domain_name && data.domain_category  && data.domain_type == "original" && data.tag_type === "new");
-    // オリジナルドメインの場合でタグを参照する場合
-    const isOriginalDomainWithTagReference  = Boolean(data.domain_name && data.domain_category && data.domain_type == "original" && data.tag_type === "reference" && data.tag_reference && data.tag_reference_id)
-    // コピーまたはディレクトリ別の場合
-    const isCopyOrDirectory                 = Boolean(data.domain_name && data.domain_category && (data.domain_type === "copy" || data.domain_type === "directory") && data.tag_type === "new" && data.copy_reference && data.copy_reference_id && data.original_domain_id);
-    // コピーまたはディレクトリ別の場合でタグを参照する場合
-    const isNewTagWithReference             = Boolean(data.domain_name && data.domain_category && (data.domain_type === "copy" || data.domain_type === "directory") && data.tag_type !== "new" && data.copy_reference && data.copy_reference_id && data.original_domain_id && data.tag_reference && data.tag_reference_id);
-    // コピーまたはディレクトリ別でタグを入れない
-    const isWithoutTag                      = Boolean(data.domain_name && data.domain_category  && (data.domain_type === "copy" || data.domain_type === "directory") && data.tag_type === "withoutTag" && data.copy_reference && data.copy_reference_id && data.original_domain_id && data.tag_reference && data.tag_reference_id);
-    // 作成ボタンの無効化有効化を切り替え
-    create_btn.classList.toggle("disabled_btn", !(isOriginalDomain || isCopyOrDirectory || isNewTagWithReference || isOriginalDomainWithTagReference || isWithoutTag))
+        // if(hasValue){
+        //     create_btn.classList.remove("disabled_btn")
+        // }else{
+        //     create_btn.classList.add("disabled_btn")
+        // }
+
+        // console.log(create_btn);
+        // // create_btn.classList.toggle("disabled_btn", (hasValue))
+    // 追加の場合
+    }else{
+        // オリジナルドメインの場合
+        const isOriginalDomain                  = Boolean(data.domain_name && data.domain_category  && data.domain_type == "original" && data.tag_type === "new");
+        // オリジナルドメインの場合でタグを参照する場合
+        const isOriginalDomainWithTagReference  = Boolean(data.domain_name && data.domain_category && data.domain_type == "original" && data.tag_type === "reference" && data.tag_reference && data.tag_reference_id)
+        // コピーまたはディレクトリ別の場合
+        const isCopyOrDirectory                 = Boolean(data.domain_name && data.domain_category && (data.domain_type === "copy" || data.domain_type === "directory") && data.tag_type === "new" && data.copy_reference && data.copy_reference_id && data.original_domain_id);
+        // コピーまたはディレクトリ別の場合でタグを参照する場合
+        const isNewTagWithReference             = Boolean(data.domain_name && data.domain_category && (data.domain_type === "copy" || data.domain_type === "directory") && data.tag_type !== "new" && data.copy_reference && data.copy_reference_id && data.original_domain_id && data.tag_reference && data.tag_reference_id);
+        // コピーまたはディレクトリ別でタグを入れない
+        const isWithoutTag                      = Boolean(data.domain_name && data.domain_category  && (data.domain_type === "copy" || data.domain_type === "directory") && data.tag_type === "withoutTag" && data.copy_reference && data.copy_reference_id && data.original_domain_id && data.tag_reference && data.tag_reference_id);
+        // 作成ボタンの無効化有効化を切り替え
+        create_btn.classList.toggle("disabled_btn", !(isOriginalDomain || isCopyOrDirectory || isNewTagWithReference || isOriginalDomainWithTagReference || isWithoutTag))
+    }
+
+
+
 }
 
 
+
+
 // UIを更新する
-export const updateUI = (key, key2, event, inputValue) =>{
+export const updateUI = (key, key2, event, inputValue, type) =>{
 
     if(!/^[\s]*$/.test(event) && event !== ""){
         inputValue[key] = event;
@@ -114,7 +133,7 @@ export const updateUI = (key, key2, event, inputValue) =>{
     // input fieldに選択されたデータをそれぞれ格納する
     
     document.getElementById(`js_${key2}`).value = event
-    updateButtonState();
+    updateButtonState(type);
     // enableTagInfoRadioBtn();
     toggleInputField()
     enableDomainReferenceBtn();

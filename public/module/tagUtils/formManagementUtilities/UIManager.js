@@ -78,6 +78,8 @@ export const clearInputValue = ()=>{
 
 // タグ追加ボタンの無効化、有効化切り替え
 export const enableAddBtn = ()=>{
+
+
     const btn = document.getElementById("js_tagCreate_btn")
     if(isExistedAllData()){
         btn.classList.remove("disabled_btn")

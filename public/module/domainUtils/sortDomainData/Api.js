@@ -107,6 +107,7 @@ export const fetchDomainInfoBySearch = () => {
           })
           .then((res) => {
               createIndexDiv(res);
+              displayEditModalAndInitializing()
           })
           .catch((error) => {
             sendErrorLog(error);

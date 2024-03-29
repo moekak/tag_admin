@@ -1,12 +1,13 @@
 // テスト環境
 
-export {updateDomainInfo} from "@modules/domainUtils/domainEdit/EditDomainInputSetter.js"
+export {updateDomainInfo, hideUnnecessaryForms} from "@modules/domainUtils/domainEdit/EditDomainInputSetter.js"
 export { sendErrorLog, redirectToErrorPage } from "@modules/errorUtils/LogError.js";
 export { fetchReferences, fetchDomainInfo, fetchTagID, fetchCopySIte, fetchTagReferenceDomain } from "@modules/domainUtils/domainEdit/Api.js"
 export { inputValue } from "@modules/domainUtils/formManagementUtilities/InputValue.js"
+export { setDataAndID, setDataToDOM } from "@modules/domainUtils/formManagementUtilities/ValidationResponseHandler.js"
 export { acEditor } from "@modules/tagUtils/formManagementUtilities/acEditor.js"
 export { makeParentDivEmpty, appendSearchResults, setSelectedDomainIdAndName, setSelectedTagIdAndName } from "@modules/domainUtils/referenceProcess/SearchResultProcessor.js";
-export { changeCategoryBtn, updateButtonState, updateUI, enableTagReferenceBtn, addStyleToMenuBtn, initializeModal,isActive, disableDelete, enableDelete} from "@modules/domainUtils/formManagementUtilities/UIManager.js";
+export { changeCategoryBtn, updateButtonState, updateUI, enableTagReferenceBtn, addStyleToMenuBtn, initializeModal,isActive, disableDelete, enableDelete, toggleInputField} from "@modules/domainUtils/formManagementUtilities/UIManager.js";
 export { createDiv } from "@modules/domainUtils/referenceProcess/SearchTemplate.js";
 export { displayEditModalAndInitializingForTag, setDataToObjWhenUpdateTagData } from "@modules/tagUtils/tagEdit/InitializeTagEditModal.js";
 export { clearLocalStorage, getCategoryID, insertCategoriesID, insertDataToLocalstorage, isLocalStorageDataExisted, unsetLocalStorage, } from "@modules/domainUtils/formManagementUtilities/LocalStrageManager.js";
