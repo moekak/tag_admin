@@ -81,7 +81,7 @@ if(isset($_SESSION["copySiteAll"])){
 <body>
     
     <div class="domain_wrapper relative">
-        <p id="js_success" class="green bold"><?= $success_msg?></p>
+        <p id="js_success" class="green bold hidden"><?= $success_msg?></p>
         <input type="hidden" value="<?=$domainData["id"]?>" id="domain_id">
         <div class="bg-gray absolute hidden"></div>
         <div class="domain_top_container domain_show container_paddingRL">
@@ -331,7 +331,7 @@ if(isset($_SESSION["copySiteAll"])){
                         <div class="domain_name_input_box relative tag_form">
                             <p class="label">配信トリガー　<span class="red label light">*必須</span></p>
                             <div class="trigger_input relative">
-                                <input type="text" class="domain_name_input border transparent  js_trigger"  name="trigger_category" value=""  readonly>
+                                <input type="text" class="domain_name_input border transparent  js_trigger js_trigger_btn"  name="trigger_category" value=""  readonly>
                                 <i class="fas fa-chevron-down absolute arrow js_arrowDown_btn pointer"></i>
                                 <i class="fas fa-chevron-up absolute arrow js_arrowUp_btn hidden pointer" ></i>
                                 <div class="trigger_btn absolute trigger_position trigger_msg">
@@ -398,11 +398,13 @@ if(isset($_SESSION["copySiteAll"])){
                         
                         <p class="label margin_t30">タグ</p>
                         <div class="textarea">
+                            <p class="label">&lt;head&gt;&lt;/head&gt;内に貼るタグ</p>
                             <div class="tag_textarea" data-id="1">
                                 <div id="editor1" class="js_tag_field" data-id="0" style="height: 300px;"></div>
                             </div>
                         </div>
                         <div class="textarea margin_t30">
+                            <p class="label">&lt;body&gt;&lt;/body&gt;内に貼るタグ</p>
                             <div class="tag_textarea" data-id="2">
                                 <div id="editor2" class="js_tag_field" data-id="0" style="height: 300px;"></div>
                             </div>

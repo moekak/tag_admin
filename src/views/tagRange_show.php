@@ -161,12 +161,14 @@ if(isset($first)){
                         
                         <p class="label margin_t30" >タグ</p>
                         <div class="textarea">
+                            <p class="label">&lt;head&gt;&lt;/head&gt;内に貼るタグ</p>
                             <div class="tag_textarea" data-id="1">
                                 <div id="editor1" class="js_tag_field" data-id="0" style="height: 300px;"></div>
                             </div>
                         </div>
                         <input type="hidden" id="tag_headData" value="<?= htmlspecialchars($tagData["tag_head"]) ?>">
                         <div class="textarea margin_t30">
+                            <p class="label">&lt;body&gt;&lt;/body&gt;内に貼るタグ</p>
                             <div class="tag_textarea" data-id="2">
                                 <div id="editor2" class="js_tag_field" data-id="0" style="height: 300px;"></div>
                             </div>

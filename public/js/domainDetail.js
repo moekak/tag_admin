@@ -113,11 +113,12 @@ addStyleToMenuBtn()
 
     if(success !== null){
         if(success.innerHTML !== ""){
+            success.classList.remove("hidden")
             setTimeout(()=>{
-                success.style.display = "none";
+                success.classList.add("hidden")
             }, 1500)
         }else{
-            success.style.display = "none";
+            success.classList.add("hidden")
         }
     }
 

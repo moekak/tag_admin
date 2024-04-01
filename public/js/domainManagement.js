@@ -30,7 +30,6 @@ fetchDomainInfoBySearch()
 const error = document.getElementById("js_error2");
 if(error.value === "edit"){
 
-    console.log(error.value);
     document.getElementById("js_domain_top_txt").innerHTML = "ドメイン編集"
     document.getElementById("js_create_btn").innerHTML = "更新"
     hideUnnecessaryForms()
@@ -225,6 +224,9 @@ if(error.value === "edit"){
         const error = document.getElementById("js_error")
         const txt = document.getElementById("js_create_btn").innerHTML;
 
+        console.log(error.innerHTML);
+        console.log("2222");
+
         if(error.innerHTML !== "" && txt == "追加"){
             document.getElementById("js_create_btn").classList.remove("disabled_btn")
             displayDomainHandlingModalWithNoAni()
@@ -233,7 +235,6 @@ if(error.value === "edit"){
             setDataToDOM()
             updateButtonState("add")
             
-           
         } 
 
         
@@ -244,13 +245,6 @@ if(error.value === "edit"){
             setDataToDOM()
             updateButtonState("edit")
         }
-
-                    
-        // if(!isLocalStorageDataExisted()){
-        //     document.getElementById("js_create_btn").classList.add("disabled_btn")
-        //     // closeDomainHandlingModal()
-        // }
-        
         
     }
 

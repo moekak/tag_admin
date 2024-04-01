@@ -27,6 +27,8 @@ class DomainEdit implements DomainProcessBase{
  
     public function formValidator(){
         FormValidation::checkCSRF();
+        FormValidation::checkEmptyData("domain_id", PATH . "index");
+        FormValidation::checkValidID("domain_id", $this->domain_access->isDomainDataExisted("domain_id"));
         FormValidation::checkEmptyData("domain_category", PATH . "index");
         FormValidation::checkValidID("domain_category", $this->domain_access->isCategoryIDExisted());
         FormValidation::checkValidData($this->allowedDomainTypes, "domain_type");
@@ -38,8 +40,6 @@ class DomainEdit implements DomainProcessBase{
 
     public function submissionProcess(){
         $this->formValidator();
-        // print_r($_POST);
-        // exit;
         $this->instancce->getInstance()->submissionProcessWithEdit();
 
         SystemFeedback::showSuccessMsg(SUCCESS_UPDATE_DOMAIN, PATH . "index", "index");

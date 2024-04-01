@@ -28,12 +28,12 @@ class TagWithoutReference implements TagTypeBase{
         $this->common               = new Common();
     }
 
-    public function formValidator(){
-        FormValidation::checkAllNecessaryValues(DomainValidation::hasAllNecessaryValuesForCopyOrDirectorySite(), PATH . "index");
+    public function formValidator($error){
+        FormValidation::checkAllNecessaryValues(DomainValidation::hasAllNecessaryValuesForCopyOrDirectorySite(), PATH . "index", $error);
     }
 
     public function operateDatabaseWithAdd(){
-        $this->formValidator();
+        $this->formValidator("create");
         
         //  必要なデータがすべてあった場合、データーベースに保存する
         $id = $this->domain_access->insertDomainDataToDB($this->setDataWithAdd());
@@ -47,7 +47,7 @@ class TagWithoutReference implements TagTypeBase{
     }
 
     public function operateDatabaseWithEdit(){
-        $this->formValidator();
+        $this->formValidator("edit");
     
         $this->domain_access->updateDomainDataToDB($this->setDataWithEdit());
     }

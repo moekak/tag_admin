@@ -184,11 +184,8 @@ body{
     display: flex;
 }
 .input_txt{
-    width: 60px;
-    display: flex;
-    align-items: end;
     text-align: center;
-    justify-content: center;
+    margin-top: 4.5%;
 }
 .ad_area {
     width: 100%;

@@ -194,6 +194,7 @@ class SystemFeedback{
       $currentFile, $currentLine, $emptyFieldsString, $userId, $requestURL, $httpMethod, $scriptName);
 
       SystemFeedback::writeErrorLog($logMessage);
+      
       SystemFeedback::redirectToIndexWithError(ERROR_INPUT_DOMAIN_ERROR, $location);
   }
 

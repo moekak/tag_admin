@@ -19,7 +19,7 @@ class TagWithoutCode extends TagValidationBase{
 
     // バリデーションチェック
     public function individualFormValidator(){
-        \FormValidation::checkAllNecessaryValues(\TagValidation::hasAllNecessaryValuesForTriggerAll(), $_POST["referrer"]);
+        \FormValidation::checkAllNecessaryValues(\TagValidation::hasAllNecessaryValuesForTriggerAll(), $_POST["referrer"], "");
     }
 
     public function formValidatorForEdit(){

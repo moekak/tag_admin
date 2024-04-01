@@ -19,7 +19,7 @@ class TagWithCodeRange extends TagValidationBase{
 
     // バリデーションチェック
     public function individualFormValidator(){
-        \FormValidation::checkAllNecessaryValues(\TagValidation::hasAllNecessaryValuesForTriggerwithAdCodeAndRange(), $_POST["referrer"]);
+        \FormValidation::checkAllNecessaryValues(\TagValidation::hasAllNecessaryValuesForTriggerwithAdCodeAndRange(), $_POST["referrer"], "");
         \DataValidation::isHalfWidthChars($_POST["ad_code"], "ad_code");
         \DataValidation::isHalfWidthNumber($_POST["ad_num"], "ad_num");
         \DataValidation::isValidNumRange(100, 1, $_POST["ad_range"], "ad_range");

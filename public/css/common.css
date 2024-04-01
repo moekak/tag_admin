@@ -32,6 +32,7 @@ body{
     -ms-transform: translateX(-50%);
     border: 1px solid gray;
     border-radius: 9px;
+    z-index: 999;
 }
 p{
     font-size: 16px;

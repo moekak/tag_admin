@@ -44,7 +44,7 @@ if(isset($_SESSION["script_rd"])){
     $script_rd = htmlspecialchars($_SESSION["script_rd"]);
 }
 
-$flag;
+$flag = "";
 if(isset($_SESSION["create_script_flag"])){
     $flag = $_SESSION["create_script_flag"];
     unset($_SESSION["create_script_flag"]);
@@ -77,7 +77,7 @@ if(isset($_SESSION["create_script_flag"])){
             <h1 class="bold margin_0">タグ管理画面</h1>
         </div>
         <div class="domain_info_container container_paddingRL">
-            <p id="js_success" class="green bold hidden"><?= $success_msg?></p>
+            <p id="js_success" class="green bold hidden "><?= $success_msg?></p>
             <input type="hidden" value="<?=$error?>" id="js_error2">
     
             <div class="domain_info_area">

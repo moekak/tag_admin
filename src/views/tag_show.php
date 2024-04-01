@@ -28,7 +28,6 @@ if(isset($tagData["ad_code"])){
 
 
 
-
 ?>
 
 
@@ -151,7 +150,7 @@ if(isset($tagData["ad_code"])){
                                     </div>
                                     <div class="input_box" style="margin-right: 5%;">
                                         <p class="label prohibited" style="margin-bottom: 0;">作成数</p>
-                                        <input type="text" class="domain_name_input border js_adRange_field prohibited js_data_field disabledInput"  style="width: 160px;"  name="ad_range" placeholder="1～100まで" readonly value="1">
+                                        <input type="text" class="domain_name_input border js_adRange_field prohibited js_data_field disabledInput"  style="width: 160px;"  name="ad_range" placeholder="1～100まで" readonly value="<?= $completeAdCode !== "" ? "1" : ""?>">
                                         <p class="alert_txt red hidden">半角数字, 1～100までの数字で入力してください</p>
                                     </div>
                                 </div>
@@ -168,12 +167,14 @@ if(isset($tagData["ad_code"])){
                         
                         <p class="label margin_t30">タグ</p>
                         <div class="textarea">
+                            <p class="label">&lt;head&gt;&lt;/head&gt;内に貼るタグ</p>
                             <div class="tag_textarea" data-id="1">
                                 <div id="editor1" class="js_tag_field" data-id="0" style="height: 300px;"></div>
                             </div>
                         </div>
                         <input type="hidden" id="tag_headData" value="<?= htmlspecialchars($tagData["tag_head"]) ?>">
                         <div class="textarea margin_t30">
+                            <p class="label">&lt;body&gt;&lt;/body&gt;内に貼るタグ</p>
                             <div class="tag_textarea" data-id="2">
                                 <div id="editor2" class="js_tag_field" data-id="0" style="height: 300px;"></div>
                             </div>

@@ -2,7 +2,9 @@ const path = require("path");
 const webpack = require("webpack");
 
 
+
 module.exports = (env) => {
+    console.log('env.production:', env.production);
     const isProduction = env.production === 'true';
     const basePath = isProduction ? "public/module" : "public/module"
     const baseJsPath = isProduction ? "public/js" : "public/js"
@@ -10,6 +12,7 @@ module.exports = (env) => {
 
     return{
         mode: isProduction ? 'production' : 'development',
+        
         entry: {
             domainDetail: path.resolve(__dirname, `${baseJsPath}/domainDetail.js`),
             domainManagement: path.resolve(__dirname, `${baseJsPath}/domainManagement.js`),

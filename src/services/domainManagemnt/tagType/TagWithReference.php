@@ -34,16 +34,16 @@ class TagWithReference implements TagTypeBase{
         $this->tag_operation        = new InsertTagDataToFile();
     }
 
-    public function formValidator(){
+    public function formValidator($error){
        // 必要なデータがすべてあるか
-        FormValidation::checkAllNecessaryValues(DomainValidation::hasAllNecessaryValuesForCopySiteWhenReferenceTag(), PATH . "index");
+        FormValidation::checkAllNecessaryValues(DomainValidation::hasAllNecessaryValuesForCopySiteWhenReferenceTag(), PATH . "index", $error);
         //不正ドメインIDかの検証(このIDでタグテーブルにデータが保存されてるか)
         FormValidation::checkValidID("parent_tag_id", ($this->tag_access->isTagDataExisted(intval($_POST["parent_tag_id"]))) || $this->tag_access->isTagDataWithRangeExisted(intval($_POST["parent_tag_id"])));
     }
 
     public function operateDatabaseWithAdd(){
 
-        $this->formValidator();
+        $this->formValidator("create");
     // タグ参照するドメインに紐づいたタグデータを取得する
         $tag_results = $this->tag_access->getTagsInfo(intval($_POST["parent_tag_id"]));
         $tagRange_results = $this->tag_access->getTagsRangeInfo(intval($_POST["parent_tag_id"]));
@@ -75,7 +75,7 @@ class TagWithReference implements TagTypeBase{
     }
 
     public function operateDatabaseWithEdit(){
-        $this->formValidator();
+        $this->formValidator("edit");
         // ドメイン更新
         $this->domain_access->updateDomainDataToDB($this->setDataWithEdit()); 
     }

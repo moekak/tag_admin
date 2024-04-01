@@ -32,8 +32,9 @@ class FormValidation{
     }
 
      // 必要なデータがすべてあるかチェック
-     public static function checkAllNecessaryValues($fn, $value){
+     public static function checkAllNecessaryValues($fn, $value, $error){
         if($fn !== []){
+            $_SESSION["error_code"] = $error;
             SystemFeedback::missingDataError($fn, $value);
             exit;
         }
