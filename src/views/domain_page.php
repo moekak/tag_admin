@@ -66,7 +66,8 @@ if(isset($_SESSION["create_script_flag"])){
     <link rel="stylesheet" href="<?=PATH?>public/css/script.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/49c418fc8e.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <link rel="shortcut icon" href="<?= PATH ?>favicon.ico">
+    <title>タグ管理画面</title>
 </head>
 <body>
     <input type="hidden" value="<?= $flag?>" id="script_flag">
@@ -191,26 +192,8 @@ if(isset($_SESSION["create_script_flag"])){
                                 </div>
                             <?php }?>
                         </div>
-                        
-                        <div class="tagInfo_area">
-                            <div class="padding_t30"></div>
-                            <p class="label">タグ情報　<span class="red label">*必須</span></p>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="tag_new" value="new" name="tag_types">
-                                <label class="form-check-label" for="tag_new">タグ新規</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="tag" value="reference" name="tag_types">
-                                <label class="form-check-label" for="tag">タグ引継ぎ</label>
-                            </div>
-                            <div class="form-check form-check-inline js_withoutTag">
-                                <input class="form-check-input js_tagCheck" type="radio" value="withoutTag" id="flexCheckDefault" name="tag_types">
-                                <label class="form-check-label" for="flexCheckDefault">タグ参照</label>
-                            </div>
-                        </div>
-                        
-                        <div class="option_btn_container">
-                            <div class="collapse1 copy_area relative">
+                      
+                        <div class="collapse1 copy_area relative padding_t10">
                                 <button class="btn copy_btn active copy_reference"  type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1" style="display: flex;" disabled id="js_copy_site">
                                     <img src="<?=PATH?>public/img/copy.png" alt="" class="domain_info_icon">
                                     <p style="margin: 0;" class="label">コピーサイト参照先</p>
@@ -238,6 +221,26 @@ if(isset($_SESSION["create_script_flag"])){
                                     </div>
                                 </div>
                             </div>
+
+                        
+                        <div class="tagInfo_area">
+                            <div class="padding_t30"></div>
+                            <p class="label">タグ情報　<span class="red label">*必須</span></p>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="tag_new" value="new" name="tag_types">
+                                <label class="form-check-label" for="tag_new">タグ新規</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="tag" value="reference" name="tag_types">
+                                <label class="form-check-label" for="tag">タグ引継ぎ</label>
+                            </div>
+                            <div class="form-check form-check-inline js_withoutTag">
+                                <input class="form-check-input js_tagCheck" type="radio" value="withoutTag" id="flexCheckDefault" name="tag_types">
+                                <label class="form-check-label" for="flexCheckDefault">タグ参照</label>
+                            </div>
+                        </div>
+                        
+                        <div class="option_btn_container" style="margin-top: 10px;">
                             <div class="collapse1 tag_area relative">
                                 <button class="btn copy_btn active tag_reference" type="button" data-bs-toggle="collapse" data-bs-target="#tag_reference_collapse" aria-expanded="false" aria-controls="collapseExample2" style="display: flex;" id="js_copy_tag" disabled>
                                     <img src="<?=PATH?>public/img/copy.png" alt="" class="domain_info_icon">

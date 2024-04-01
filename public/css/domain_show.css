@@ -170,7 +170,7 @@ body{
 } */
 .tag_textarea{
     width: 100%;
-    font-size: 14px;
+    /* font-size: 14px; */
     color: rgba(0, 0, 0, 0.562);
 }
 .flex{
@@ -215,4 +215,20 @@ body{
     font-size: 14px;
     margin: 0 !important;
     text-decoration: underline;
+}
+.dummy_down{
+    /* background-color: pink; */
+    top: 0;
+    width: 32%;
+    height: 100%;
+    z-index: 50;
+    cursor: pointer;
+}
+.dummy_up{
+    /* background-color: pink; */
+    top: 0;
+    width: 32%;
+    height: 100%;
+    z-index: 80;
+    cursor: pointer;
 }

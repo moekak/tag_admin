@@ -74,12 +74,10 @@ export const clearInputFieldValue = ()=>{
 
 // 
 export const clearInputValue = ()=>{
-    // inputValue["tag_type"] = ""
-    // inputValue["tag_reference"] = ""
+
     inputValue["copy_reference"] = ""
     inputValue["copy_reference_id"] = ""
     inputValue["original_domain_id"] = ""
-    // inputValue["tag_reference_id"] = ""
 
     updateButtonState("add")
 }
@@ -104,16 +102,6 @@ export const clearSearchInput = ()=>{
 
 
 export const clearAllValues = ()=>{
-    // const name_filed = document.querySelector('input[name="domain_name"]')
-    // const domain_type_fileds = document.querySelectorAll('input[name="type"]')
-    // const radio_tag_info            = document.querySelectorAll('input[name="tag_types"]')
-    // const check = document.querySelectorAll(".js_tagCheck")
-
-    // name_filed.value = "";
-    // clearRadioBtns(domain_type_fileds)
-    // clearRadioBtns(radio_tag_info)
-    // clearRadioBtns(check)
-
     clearInputFieldValue()
-            clearInputValueAll()
+    clearInputValueAll()
 }

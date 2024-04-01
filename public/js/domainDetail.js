@@ -132,19 +132,23 @@ addStyleToMenuBtn()
     const script = document.querySelector(".script_txt")
     const script2 = document.querySelector(".script_txt2")
 
-    script_btn.addEventListener("click", ()=>{
+    if(script_btn){
+        script_btn.addEventListener("click", ()=>{
         document.querySelector(".script_txt").textContent = `<script src='https://tag-tracker.biz/index.js?id=${document.getElementById("js_script_name").innerHTML}'></script>`
         document.querySelector(".script_txt2").textContent = `<script src='https://tag-tracker.biz/rd.js?id=${document.getElementById("js_script_name").innerHTML}'></script>`
-       document.querySelector(".script_area").classList.remove("hidden")
-       document.querySelector(".bg-gray").classList.remove("hidden")
-       copyTextToCplipboard(copy_btn, script.textContent)
-       copyTextToCplipboard(copy_btn2, script2.textContent)
-    })
-
+        document.querySelector(".script_area").classList.remove("hidden")
+        document.querySelector(".bg-gray").classList.remove("hidden")
+        copyTextToCplipboard(copy_btn, script.textContent)
+        copyTextToCplipboard(copy_btn2, script2.textContent)
+        })
+    }
 
     const close_btn = document.querySelector(".js_close_btns3")
-    close_btn.addEventListener("click", ()=>{
-        document.querySelector(".script_area").classList.add("hidden")
-        document.querySelector(".bg-gray").classList.add("hidden")
-    })
+    if(close_btn){
+        close_btn.addEventListener("click", ()=>{
+            document.querySelector(".script_area").classList.add("hidden")
+            document.querySelector(".bg-gray").classList.add("hidden")
+        })
+    }
+    
 }

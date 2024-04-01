@@ -15,7 +15,7 @@ const isDomainTypeCopyOrDirectory  = ()=>{
 }
 
 const isNewTag = ()=>{
-    return Boolean(inputValue["tag_type"] === "new")
+    return Boolean(inputValue["tag_type"] === "new" || inputValue["tag_type"] == "")
 }
 
 const WithoutTag = ()=>{
@@ -84,18 +84,7 @@ export const updateButtonState = (type) =>{
 
     // 編集の場合
     if(type == "edit"){
-        // console.log("edit");
-        // create_btn.classList.remove("disabled_btn")
-        // const hasValue = Boolean(data.domain_name)
-
-        // if(hasValue){
-        //     create_btn.classList.remove("disabled_btn")
-        // }else{
-        //     create_btn.classList.add("disabled_btn")
-        // }
-
-        // console.log(create_btn);
-        // // create_btn.classList.toggle("disabled_btn", (hasValue))
+        return
     // 追加の場合
     }else{
         // オリジナルドメインの場合
@@ -134,7 +123,6 @@ export const updateUI = (key, key2, event, inputValue, type) =>{
     
     document.getElementById(`js_${key2}`).value = event
     updateButtonState(type);
-    // enableTagInfoRadioBtn();
     toggleInputField()
     enableDomainReferenceBtn();
     enableTagReferenceBtn();

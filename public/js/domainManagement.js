@@ -98,7 +98,6 @@ if(error.value === "edit"){
         // ドメイン追加時の閉じるボタン押したときの処理
         const modal_btn = document.querySelector(".domain_modal_btn")
 
-        console.log(modal_btn);
         modal_btn.addEventListener("click", ()=>{
             
             clearAllValues()
@@ -160,6 +159,12 @@ if(error.value === "edit"){
     
         radio_tag_info.forEach((radio)=>{
             radio.addEventListener("change", (e)=>{
+                if(e.target.value == "new"){
+                    hideCollapse(document.getElementById("collapseExample1"))
+                    hideCollapse(document.getElementById("tag_reference_collapse"))
+                    document.getElementById("js_search_tag").value = ""
+                    document.querySelector(".tag_search_results_container").innerHTML = "";
+                }
                 updateUI("tag_type", "tag_type", e.target.value, inputValue, "add")
             })
         })
@@ -224,8 +229,6 @@ if(error.value === "edit"){
         const error = document.getElementById("js_error")
         const txt = document.getElementById("js_create_btn").innerHTML;
 
-        console.log(error.innerHTML);
-        console.log("2222");
 
         if(error.innerHTML !== "" && txt == "追加"){
             document.getElementById("js_create_btn").classList.remove("disabled_btn")

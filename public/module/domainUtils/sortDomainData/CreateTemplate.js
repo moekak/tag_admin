@@ -111,7 +111,6 @@ export const createIndexDivForMore = (resArray)=>{
     return table;
 }
 export const createIndexCopyDiv = (res)=>{
-    console.log(res);
     let rows = "";
 
     res.forEach((item)=>{

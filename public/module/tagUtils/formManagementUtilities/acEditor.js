@@ -1,4 +1,4 @@
-import {tag_data, insertTagToObj, setTagDataToInputField } from "@index/index.js";
+import {insertTagToObj, setTagDataToInputField } from "@index/index.js";
 
 export const acEditor =(tag_category, clickCount)=>{
     const name = `editor${clickCount}`

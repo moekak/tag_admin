@@ -1,4 +1,7 @@
-<div class="script_container">
+
+
+<div class="script_container relative">
+    <p class="js_copy_success absolute green bold hidden" style="top: -5%;">コピーされました</p>
     <h3 class="text_color js_close_btns3" style="cursor: pointer; text-align: left; margin-top: -2%; padding-bottom: 3%;">×</h3>
     <p>下のコードをコピーしてindex<span class="bold">&lt;head&gt;</span>内のなるべく上のほうに張り付けてください。<br>他のスクリプトタグが<span class="bold">&lt;head&gt;</span>内にある場合はそれよりも上に張り付けてください。</p>
     <div class="script_box">

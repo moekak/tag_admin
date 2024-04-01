@@ -31,3 +31,13 @@
 .copy_btn_script2{
     cursor: pointer;
 }
+.js_copy_success {
+    background-color: white;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    z-index: 999;
+    padding: 2% 3%;
+    border: 1px solid gray;
+}

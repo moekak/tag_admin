@@ -22,6 +22,7 @@ if(isset($_SESSION["login_error"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= PATH ?>src/auth/style/auth.css">
     <link rel="stylesheet" href="<?= PATH ?>public/css/common.css">
+    <link rel="shortcut icon" href="<?= PATH ?>favicon.ico">
     <title>タグ管理画面</title>
 </head>
 <body>
@@ -36,7 +37,7 @@ if(isset($_SESSION["login_error"])){
             </div>
             <div class="auth_input_container">
                 <label for="" class="white">パスワード</label>
-                <input type="text" class="input_style"  name="password" id="js_input_password">
+                <input type="password" class="input_style"  name="password" id="js_input_password">
             </div>
             <div class="auth_btn_container">
                 <button type="submit" class="c auth_btn disabled_btn" id="js_login_btn">ログイン</button>

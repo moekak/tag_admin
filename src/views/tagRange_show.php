@@ -44,9 +44,10 @@ if(isset($first)){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="<?=PATH?>public/css/domain_show.css">
     <link rel="stylesheet" href="<?=PATH?>public/css/common.css">
+    <link rel="shortcut icon" href="<?= PATH ?>favicon.ico">
     <script src="https://kit.fontawesome.com/49c418fc8e.js" crossorigin="anonymous"></script>
     
-    <title>Document</title>
+    <title>タグ管理画面</title>
 </head>
 <body>
     <div class="domain_wrapper relative">

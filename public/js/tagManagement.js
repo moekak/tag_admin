@@ -8,23 +8,31 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 
 // タグ追加のdropの操作の処理
 {
+    const btn_down = document.querySelector(".dummy_down")
+    const btn_up= document.querySelector(".dummy_up")
     const btnDown = document.querySelector(".js_arrowDown_btn")
     const btnUp = document.querySelector(".js_arrowUp_btn")
 
-    if(btnDown !== null){
-        btnDown.addEventListener("click", ()=>{
-            changeArrowImg(btnDown, btnUp)
+    if(btn_down){
+         btn_down.addEventListener("click", ()=>{
             displayTriggerCategories()
+            changeArrowImg(btnDown, btnUp)
+            btn_down.classList.add("hidden")
+            btn_up.classList.remove("hidden")
         })
     }
-    
-    if(btnUp !== null){
-        btnUp.addEventListener("click", ()=>{
+
+   
+   
+
+    if(btn_up){
+        btn_up.addEventListener("click", ()=>{
             changeArrowImg(btnUp, btnDown)
             hideTriggerCategories()
+            btn_down.classList.remove("hidden")
+            btn_up.classList.add("hidden")
         })  
-    }
-    
+    } 
 }
 
 // 配信トリガー選択したときの処理
@@ -37,6 +45,8 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 
     trigger_btns.forEach((btn)=>{
         btn.addEventListener("click", (e)=>{
+            document.querySelector(".dummy_down").classList.remove("hidden")
+            document.querySelector(".dummy_up").classList.add("hidden")
            
             let target = e.currentTarget
             let type = target.getAttribute("data-type")
@@ -174,9 +184,16 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 
 
 
+if(document.getElementById("editor1")){
+    acEditor("tag_head", 1)
+    setDataToObjWhenUpdateTagData()
+}
 
-acEditor("tag_head", 1)
-acEditor("tag_body", 2)
+if(document.getElementById("editor2")){
+    acEditor("tag_body", 2)
+    setDataToObjWhenUpdateTagData()
+}
 
 
-setDataToObjWhenUpdateTagData()
+
+

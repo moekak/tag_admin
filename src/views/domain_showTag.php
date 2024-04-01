@@ -74,9 +74,10 @@ if(isset($_SESSION["copySiteAll"])){
     <link rel="stylesheet" href="<?=PATH?>public/css/domain_show.css">
     <link rel="stylesheet" href="<?=PATH?>public/css/common.css">
     <link rel="stylesheet" href="<?=PATH?>public/css/script.css">
+    <link rel="shortcut icon" href="<?= PATH ?>favicon.ico">
     <script src="https://kit.fontawesome.com/49c418fc8e.js" crossorigin="anonymous"></script>
     
-    <title>Document</title>
+    <title>タグ管理画面</title>
 </head>
 <body>
     
@@ -321,7 +322,7 @@ if(isset($_SESSION["copySiteAll"])){
             <!-- タグ追加 -->
             <p id="js_error" class="red"><?= $input_error?></p>
             <div class="tag_index_container js_adtag_site hidden">
-                <form class="tag_index_box" action="<?=PATH?>addTag" method="post">
+                <form class="tag_index_box myForm" action="<?=PATH?>addTag" method="post">
                     <div class="flex">
                         <p class="box_paddingRL">タグ追加</p>
                         <button class="add_btn disabled_btn" id="js_tagCreate_btn" style="margin-right: 5%;">追加</button>
@@ -331,6 +332,8 @@ if(isset($_SESSION["copySiteAll"])){
                         <div class="domain_name_input_box relative tag_form">
                             <p class="label">配信トリガー　<span class="red label light">*必須</span></p>
                             <div class="trigger_input relative">
+                                <div class="dummy_up absolute hidden"></div>
+                                <div class="dummy_down absolute"></div>
                                 <input type="text" class="domain_name_input border transparent  js_trigger js_trigger_btn"  name="trigger_category" value=""  readonly>
                                 <i class="fas fa-chevron-down absolute arrow js_arrowDown_btn pointer"></i>
                                 <i class="fas fa-chevron-up absolute arrow js_arrowUp_btn hidden pointer" ></i>
@@ -362,7 +365,7 @@ if(isset($_SESSION["copySiteAll"])){
                                 <div class="input_container">
                                     <div class="input_box" style="margin-right: 5%;">
                                         <p class="label" style="margin-bottom: 0;">コード</p>
-                                        <input type="text" class="domain_name_input border js_ad_field js_data_field" style="width: 160px;"  name="ad_code" placeholder="(例)aaa※半角数字">
+                                        <input type="text" class="domain_name_input border js_ad_field js_data_field js_input" style="width: 160px;"  name="ad_code" placeholder="(例)aaa※半角数字">
                                         <div class="form-check margin_t10">
                                             <input class="form-check-input" type="checkbox" value="" id="apply_all">
                                             <label class="form-check-label label" for="apply_all">
@@ -373,7 +376,7 @@ if(isset($_SESSION["copySiteAll"])){
                                     </div>
                                     <div class="input_box" style="margin-right: 2%;">
                                         <p class="label" style="margin-bottom: 0;">スタート番号</p>
-                                        <input type="text" class="domain_name_input border js_adNum_field js_data_field" style="width: 160px;"  name="ad_num" placeholder="(例)001※半角数字">
+                                        <input type="text" class="domain_name_input border js_adNum_field js_data_field js_input" style="width: 160px;"  name="ad_num" placeholder="(例)001※半角数字">
                                         <p class="alert_txt red hidden">半角数字で入力してください</p>
                                     </div>
                                     <div class="input_box input_txt" style="width: 60px; margin-right: 2%;">
@@ -381,7 +384,7 @@ if(isset($_SESSION["copySiteAll"])){
                                     </div>
                                     <div class="input_box" style="margin-right: 5%;">
                                         <p class="label" style="margin-bottom: 0;">作成数</p>
-                                        <input type="text" class="domain_name_input border js_adRange_field js_data_field" style="width: 160px;"  name="ad_range" placeholder="1～100まで">
+                                        <input type="text" class="domain_name_input border js_adRange_field js_data_field" js_input style="width: 160px;"  name="ad_range" placeholder="1～100まで">
                                         <p class="alert_txt red hidden">半角数字, 1～100までの数字で入力してください</p>
                                     </div>
                                 </div>
@@ -459,6 +462,14 @@ if(isset($_SESSION["copySiteAll"])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
     <script type="module" src="<?=PATH?>dist/domainDetail.js"></script>
     <script type="module" src="<?=PATH?>dist/tagManagement.js"></script>
+    <script>
+        document.querySelector('.myForm').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+            event.preventDefault();  // エンターキーでのフォーム送信を防止
+            }
+        });
+    </script>
+
 
 
 </body>
