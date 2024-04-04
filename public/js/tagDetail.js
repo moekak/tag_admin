@@ -4,6 +4,8 @@ const trigger_type = document.querySelector(".trigger_msg").querySelector(".labe
 const ad_code = document.querySelector(".js_ad_field").value
 const ad_num = document.querySelector(".js_adNum_field").value
 const typeValue = document.getElementById("js_type")
+const tagHead = document.getElementById("tag_headData")
+const tagBody = document.getElementById("tag_bodyData")
 const range = document.querySelector(".js_adRange_field").value
 
 
@@ -12,7 +14,11 @@ const range = document.querySelector(".js_adRange_field").value
     tag_data["trigger"] = trigger_type
     tag_data["ad_range"] = range
 
-    if(tag_data["ad_range"] === "1"){
+    tag_data["tag_head"] = tagHead.value == "" ? "" : tagHead.value
+    tag_data["tag_body"] = tagBody.value == "" ? "" : tagBody.value
+
+
+    if(tag_data["ad_range"] === ""){
         tag_data["applygingAll"] = "checked"
     } else{
         tag_data["applygingAll"] = "unchecked"
@@ -28,8 +34,8 @@ const range = document.querySelector(".js_adRange_field").value
     }
 
 
-    // console.log(tag_data);
-    // console.log("3");
+  
+
 
     enableAddBtn()
 

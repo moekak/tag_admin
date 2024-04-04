@@ -53,7 +53,7 @@ export const setDataToObjWhenUpdateTagData = ()=>{
     tag_data["trigger"] = trigger_type
     tag_data["ad_range"] = range
 
-    if(tag_data["ad_range"] === "1"){
+    if(tag_data["ad_range"] === ""){
         tag_data["applygingAll"] = "checked"
     } else{
         tag_data["applygingAll"] = "unchecked"

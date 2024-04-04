@@ -360,10 +360,10 @@ padding, margin
 .ace_line{
     height: 20px !important;
 } */
-#editor{
+/* #editor{
     height: 254px !important;
     width: 93% !important;
-}
+} */
 
 .loading{
     position: fixed;

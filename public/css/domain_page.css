@@ -370,7 +370,9 @@
     cursor: pointer;
     pointer-events: auto;
     overflow-y: scroll;
-    max-height: 300px;
+    max-height: 230px;
+    position: relative;
+    z-index: 999;
 }
 .tag_search_results_container{
     cursor: pointer;

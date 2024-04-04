@@ -322,105 +322,114 @@ if(isset($_SESSION["copySiteAll"])){
             <!-- タグ追加 -->
             <p id="js_error" class="red"><?= $input_error?></p>
             <div class="tag_index_container js_adtag_site hidden">
-                <form class="tag_index_box myForm" action="<?=PATH?>addTag" method="post">
-                    <div class="flex">
-                        <p class="box_paddingRL">タグ追加</p>
-                        <button class="add_btn disabled_btn" id="js_tagCreate_btn" style="margin-right: 5%;">追加</button>
-                    </div>
-                    
-                    <div class="box_paddingRL padding_t20">
-                        <div class="domain_name_input_box relative tag_form">
-                            <p class="label">配信トリガー　<span class="red label light">*必須</span></p>
-                            <div class="trigger_input relative">
-                                <div class="dummy_up absolute hidden"></div>
-                                <div class="dummy_down absolute"></div>
-                                <input type="text" class="domain_name_input border transparent  js_trigger js_trigger_btn"  name="trigger_category" value=""  readonly>
-                                <i class="fas fa-chevron-down absolute arrow js_arrowDown_btn pointer"></i>
-                                <i class="fas fa-chevron-up absolute arrow js_arrowUp_btn hidden pointer" ></i>
-                                <div class="trigger_btn absolute trigger_position trigger_msg">
-                                    <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
-                                    <p class="label margin_0">選択してください</p>
+                <div class="tag_index_box">
+                    <form class=" myForm" action="<?=PATH?>addTag" method="post">
+                        <div class="flex">
+                            <p class="box_paddingRL">タグ追加</p>
+                            <button class="add_btn disabled_btn" id="js_tagCreate_btn" style="margin-right: 5%;">追加</button>
+                        </div>
+                        
+                        <div class="box_paddingRL padding_t20">
+                            <div class="domain_name_input_box relative tag_form">
+                                <p class="label">配信トリガー　<span class="red label light">*必須</span></p>
+                                <div class="trigger_input relative">
+                                    <div class="dummy_up absolute hidden"></div>
+                                    <div class="dummy_down absolute"></div>
+                                    <input type="text" class="domain_name_input border transparent  js_trigger js_trigger_btn"  name="trigger_category" value=""  readonly>
+                                    <i class="fas fa-chevron-down absolute arrow js_arrowDown_btn pointer"></i>
+                                    <i class="fas fa-chevron-up absolute arrow js_arrowUp_btn hidden pointer" ></i>
+                                    <div class="trigger_btn absolute trigger_position trigger_msg">
+                                        <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
+                                        <p class="label margin_0">選択してください</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="trigger_category border js_trigger_modal">
+                                    <div class="trigger_btn pointer js_trigger_btns" data-type="index">
+                                        <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
+                                        <p class="label margin_0">index</p>
+                                    </div>
+                                    <div class="trigger_btn margin_t10 pointer js_trigger_btns" data-type="rd">
+                                        <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
+                                        <p class="label margin_0">rd</p>
+                                    </div>
+
+                                    <div class="trigger_btn margin_t10 pointer js_trigger_btns" data-type="all_pages">
+                                        <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
+                                        <p class="label margin_0">all_pages</p>
+                                    </div>
                                 </div>
                             </div>
                             
-                            <div class="trigger_category border js_trigger_modal">
-                                <div class="trigger_btn pointer js_trigger_btns" data-type="index">
-                                    <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
-                                    <p class="label margin_0">index</p>
-                                </div>
-                                <div class="trigger_btn margin_t10 pointer js_trigger_btns" data-type="rd">
-                                    <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
-                                    <p class="label margin_0">rd</p>
-                                </div>
-
-                                <div class="trigger_btn margin_t10 pointer js_trigger_btns" data-type="all_pages">
-                                    <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
-                                    <p class="label margin_0">all_pages</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex_trigger">
-                            <div class="domain_name_input_box relative margin_t30 js_adCode" style="width: 100%;">
-                                <p class="label">広告コード</p>
-                                <div class="input_container">
-                                    <div class="input_box" style="margin-right: 5%;">
-                                        <p class="label" style="margin-bottom: 0;">コード</p>
-                                        <input type="text" class="domain_name_input border js_ad_field js_data_field js_input" style="width: 160px;"  name="ad_code" placeholder="(例)aaa※半角数字">
-                                        <div class="form-check margin_t10">
-                                            <input class="form-check-input" type="checkbox" value="" id="apply_all">
-                                            <label class="form-check-label label" for="apply_all">
-                                                全ページに適用
-                                            </label>
+                            <div class="flex_trigger">
+                                <div class="domain_name_input_box relative margin_t30 js_adCode" style="width: 100%;">
+                                    <p class="label">広告コード</p>
+                                    <div class="input_container">
+                                        <div class="input_box" style="margin-right: 5%;">
+                                            <p class="label" style="margin-bottom: 0;">コード</p>
+                                            <input type="text" class="domain_name_input border js_ad_field js_data_field js_input" style="width: 160px;"  name="ad_code" placeholder="(例)aaa※半角数字">
+                                            <div class="form-check margin_t10">
+                                                <input class="form-check-input" type="checkbox" value="" id="apply_all">
+                                                <label class="form-check-label label" for="apply_all">
+                                                    全ページに適用
+                                                </label>
+                                            </div>
+                                            <p class="alert_txt red hidden">半角文字で入力してください</p>
                                         </div>
-                                        <p class="alert_txt red hidden">半角文字で入力してください</p>
+                                        <div class="input_box" style="margin-right: 2%;">
+                                            <p class="label" style="margin-bottom: 0;">スタート番号</p>
+                                            <input type="text" class="domain_name_input border js_adNum_field js_data_field js_input" style="width: 160px;"  name="ad_num" placeholder="(例)001※半角数字">
+                                            <p class="alert_txt red hidden">半角数字で入力してください</p>
+                                        </div>
+                                        <div class="input_box input_txt" style="width: 60px; margin-right: 2%;">
+                                            <p class="label">から</p>
+                                        </div>
+                                        <div class="input_box" style="margin-right: 5%;">
+                                            <p class="label" style="margin-bottom: 0;">作成数</p>
+                                            <input type="text" class="domain_name_input border js_adRange_field js_data_field" js_input style="width: 160px;"  name="ad_range" placeholder="1～100まで">
+                                            <p class="alert_txt red hidden">半角数字, 1～100までの数字で入力してください</p>
+                                        </div>
                                     </div>
-                                    <div class="input_box" style="margin-right: 2%;">
-                                        <p class="label" style="margin-bottom: 0;">スタート番号</p>
-                                        <input type="text" class="domain_name_input border js_adNum_field js_data_field js_input" style="width: 160px;"  name="ad_num" placeholder="(例)001※半角数字">
-                                        <p class="alert_txt red hidden">半角数字で入力してください</p>
-                                    </div>
-                                    <div class="input_box input_txt" style="width: 60px; margin-right: 2%;">
-                                        <p class="label">から</p>
-                                    </div>
-                                    <div class="input_box" style="margin-right: 5%;">
-                                        <p class="label" style="margin-bottom: 0;">作成数</p>
-                                        <input type="text" class="domain_name_input border js_adRange_field js_data_field" js_input style="width: 160px;"  name="ad_range" placeholder="1～100まで">
-                                        <p class="alert_txt red hidden">半角数字, 1～100までの数字で入力してください</p>
-                                    </div>
+                                    
+                                    
                                 </div>
-                                
-                                
                             </div>
+                            <!-- <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="delivered_trigger">
+                                <label class="form-check-label label" for="flexCheckDefault">
+                                    離脱クリック
+                                </label>
+                            </div> -->
+                            
+                           
+                            <input type="hidden" name="type" value="" id="js_type">
+                            <input type="hidden" name="referrer" value="<?= $_SERVER['REQUEST_URI']?>">
+                            <input type="hidden" id="tag_head" name="tag_head">
+                            <input type="hidden" id="tag_body" name="tag_body">
+                            <input type="hidden" name="domain_id" value="<?=isset($domainData["tag_reference_id"]) ? $domainData["tag_reference_id"]: $domainData["id"]?>">
+                            <input type="hidden" name="csrf_token" value=<?=$_SESSION['csrf_token']?>>
                         </div>
-                        <!-- <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="delivered_trigger">
-                            <label class="form-check-label label" for="flexCheckDefault">
-                                離脱クリック
-                            </label>
-                        </div> -->
                         
-                        <p class="label margin_t30">タグ</p>
+                    </form>
+                    <div class="tag_area box_paddingRL">
+                         <p class="label margin_t30">タグ</p>
                         <div class="textarea">
                             <p class="label">&lt;head&gt;&lt;/head&gt;内に貼るタグ</p>
                             <div class="tag_textarea" data-id="1">
-                                <div id="editor1" class="js_tag_field" data-id="0" style="height: 300px;"></div>
+                                <div id="editor1" class="js_tag_field" data-id="0" style="height: 300px; width: 100%;"></div>
                             </div>
                         </div>
+                
                         <div class="textarea margin_t30">
                             <p class="label">&lt;body&gt;&lt;/body&gt;内に貼るタグ</p>
                             <div class="tag_textarea" data-id="2">
                                 <div id="editor2" class="js_tag_field" data-id="0" style="height: 300px;"></div>
                             </div>
                         </div>
-                        <input type="hidden" name="type" value="" id="js_type">
-                        <input type="hidden" name="referrer" value="<?= $_SERVER['REQUEST_URI']?>">
-                        <input type="hidden" id="tag_head" name="tag_head">
-                        <input type="hidden" id="tag_body" name="tag_body">
-                        <input type="hidden" name="domain_id" value="<?=isset($domainData["tag_reference_id"]) ? $domainData["tag_reference_id"]: $domainData["id"]?>">
-                        <input type="hidden" name="csrf_token" value=<?=$_SESSION['csrf_token']?>>
-                    </div>
-                </form>
+                    </div> 
+                </div>
             </div>
+ 
         </div>
          <!-- ドメイン編集、削除などのモーダル -->
         <div class="admin_modal_container hidden fixed js_alert_modal js_modals">

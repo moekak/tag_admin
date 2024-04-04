@@ -62,9 +62,11 @@ body{
     max-height: 78vh;
     background-color: transparent;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* justify-content: center; */
     margin-top: 6%;
     overflow-y: auto;
+    align-items: center;
 }
 .tag_index_box{
     width: 85%;

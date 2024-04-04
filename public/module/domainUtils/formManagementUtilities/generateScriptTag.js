@@ -12,7 +12,7 @@ export const copyTextToCplipboard = (btn, txt)=>{
 
      
     }).catch(err =>{
-      console.log(err);
+     
     })
 
   })

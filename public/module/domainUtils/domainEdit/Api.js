@@ -139,7 +139,7 @@ export const fetchTagReferenceDomain = (id) => {
 export const fetchCopySIte = ()=>{
     const id = document.querySelector(".js_selectedID").value;
 
-    console.log(id);
+   
 
     fetch(`${process.env.API_URL}/checkCopySite.php`, {
         // 第1引数に送り先

@@ -25,7 +25,6 @@ export const setDataAndID = ()=>{
 
     const data = isLocalStorageDataExisted()
 
-    console.log(data);
     const classes = ["domain_name","copy_reference_id", "original_domain_id", "tag_reference_id", "domain_type", "domain_id", "copy_reference", "domain_category", "tag_reference", "tag_type"]
 
     for(let i = 0; i < classes.length; i++){
@@ -35,14 +34,11 @@ export const setDataAndID = ()=>{
         
         inputValue[classes[i]] = data[classes[i]] || ""
     }
-
-    console.log(inputValue);
 }
 
 export const setDataToDOM = ()=>{
     const data = isLocalStorageDataExisted()
 
-    console.log(data);
     document.getElementById("domain_name").value = data["domain_name"] || "";
     const radio_domain_categories   = document.querySelectorAll('input[name="type"]')
     const radio_tag_categories   = document.querySelectorAll('input[name="tag_types"]')

@@ -46,7 +46,7 @@ const fetchDomainInfo = (clickCount)=>{
     })
     .then((res) => {
 
-        console.log(res);
+   
         if(res.length <=0){
 
             document.querySelector(".js_btn").innerHTML = "全て読み込まれました"

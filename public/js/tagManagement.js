@@ -184,15 +184,15 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 
 
 
-if(document.getElementById("editor1")){
-    acEditor("tag_head", 1)
-    setDataToObjWhenUpdateTagData()
-}
 
-if(document.getElementById("editor2")){
-    acEditor("tag_body", 2)
-    setDataToObjWhenUpdateTagData()
-}
+acEditor("tag_head", 1)
+setDataToObjWhenUpdateTagData()
+
+
+
+acEditor("tag_body", 2)
+setDataToObjWhenUpdateTagData()
+
 
 
 

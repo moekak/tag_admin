@@ -147,6 +147,11 @@ if(error.value === "edit"){
 
         radio_domain_types.forEach((radio)=>{
             radio.addEventListener("change", (e)=>{
+                if(e.target.value == "original"){
+                    hideCollapse(document.getElementById("collapseExample1"))
+                    document.getElementById("js_search_domain").value = ""
+                    document.querySelector(".domain_search_results_container").innerHTML = "";
+                }
                 updateUI("domain_type", "domain_type",  e.target.value, inputValue, "add")
             })
         })
@@ -160,10 +165,12 @@ if(error.value === "edit"){
         radio_tag_info.forEach((radio)=>{
             radio.addEventListener("change", (e)=>{
                 if(e.target.value == "new"){
-                    hideCollapse(document.getElementById("collapseExample1"))
                     hideCollapse(document.getElementById("tag_reference_collapse"))
                     document.getElementById("js_search_tag").value = ""
-                    document.querySelector(".tag_search_results_container").innerHTML = "";
+                    setTimeout(()=>{
+                        document.querySelector(".tag_search_results_container").innerHTML = "";
+                    }, 500)
+                    
                 }
                 updateUI("tag_type", "tag_type", e.target.value, inputValue, "add")
             })

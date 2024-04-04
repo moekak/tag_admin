@@ -84,7 +84,7 @@ if(isset($tagData["ad_code"])){
                 <form class="tag_index_box" action="<?=PATH?>editTag" method="post">
                     <div class="flex">
                         <p class="box_paddingRL">タグ(個別) / 編集</p>
-                        <button class="add_btn disabled_btn" id="js_tagCreate_btn" style="margin-right: 5%;">更新</button>
+                        <button class="add_btn" id="js_tagCreate_btn" style="margin-right: 5%;">更新</button>
                     </div>
                     
                     <div class="box_paddingRL padding_t20">
@@ -173,6 +173,7 @@ if(isset($tagData["ad_code"])){
                                 <div id="editor1" class="js_tag_field" data-id="0" style="height: 300px;"></div>
                             </div>
                         </div>
+
                         <input type="hidden" id="tag_headData" value="<?= htmlspecialchars($tagData["tag_head"]) ?>">
                         <div class="textarea margin_t30">
                             <p class="label">&lt;body&gt;&lt;/body&gt;内に貼るタグ</p>
@@ -198,7 +199,8 @@ if(isset($tagData["ad_code"])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
     <script type="module" src="<?=PATH?>dist/domainDetail.js"></script>
     <script type="module" src="<?=PATH?>dist/tagManagement.js"></script>
-    <script type="module" src="<?=PATH?>dist/tagDetail.js"></script>
+    <!-- <script type="module" src="<?=PATH?>dist/tagDetail.js"></script> -->
+    
     <script>
         //ユニコードエスケープシーケンスの変換
         function decodeUnicodeEscapeSequence(encodedString) {
@@ -212,9 +214,6 @@ if(isset($tagData["ad_code"])){
             // HTMLエンティティに変換をしないとそもそもデータが取得できない
             // HTMLエンティティに変換された文字列(ダブルクオーテーションが変換されてるため、json文字列になっていない)
             const tagDataString = document.getElementById("tag_headData").value
-
-
-            
             // HTMLエンティティに変換された文字列をHTMLエンティティのデコードし、ユニコードエスケープシーケンスの変換(scriptタグの形にしてjsonの配列の形にする)
             if(tagDataString !== ""){
                 const decoded = JSON.parse(decodeUnicodeEscapeSequence(tagDataString))
@@ -223,6 +222,8 @@ if(isset($tagData["ad_code"])){
                 for (var i = 0; i < decoded.length; i++) {
                     combinedScripts += decoded[i];
                 }
+
+                console.log(combinedScripts);
                 editor.setValue(combinedScripts);
             }
             
@@ -237,8 +238,11 @@ if(isset($tagData["ad_code"])){
                 // 配列内の全ての要素を連結
                 var combinedScripts2 = '';
                 for (var i = 0; i < decoded2.length; i++) {
-                    combinedScripts2 += decoded2[i] + '\n'+ '\n' + '\n';
+                    combinedScripts2 += decoded2[i];
                 }
+
+
+                console.log(combinedScripts2);
                 editor2.setValue(combinedScripts2);
             }  
         }

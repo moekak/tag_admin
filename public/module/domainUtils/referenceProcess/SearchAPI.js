@@ -35,7 +35,7 @@ export const fetchDomainData = (copy_site_btn)=>{
             })
             .then((res) => {
 
-                console.log(res);
+           
 
                 // 検索結果が一つもなかったら、何も表示させない
                 if(res.length <= 0){

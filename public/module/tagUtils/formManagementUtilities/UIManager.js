@@ -60,6 +60,7 @@ export const enableCodeInputField = () =>{
 export const isExistedAllData = ()=>{;
     let dataCheckObj = createDataCheckObj()
     // 配信トリガーがallの場合
+
     if(isTriggerAll()){
         return dataCheckObj.trigger_all
     }else{
@@ -78,8 +79,6 @@ export const clearInputValue = ()=>{
 
 // タグ追加ボタンの無効化、有効化切り替え
 export const enableAddBtn = ()=>{
-
-
     const btn = document.getElementById("js_tagCreate_btn")
     if(isExistedAllData()){
         btn.classList.remove("disabled_btn")

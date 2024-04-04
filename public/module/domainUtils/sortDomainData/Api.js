@@ -18,8 +18,6 @@ export const fetchDomainDataByCategory = (category_id) => {
       return response.json();
     })
     .then((res) => {
-
-      console.log(res);
       // 結果分だけ表示させる
       createIndexDiv(res);
       displayEditModalAndInitializing()
