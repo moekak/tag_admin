@@ -75,32 +75,4 @@ class DomainShowController{
     public function error(){
         SystemFeedback::invalidIDErrorForShowPage("id");
     }
-
-    public function getDomainData(){
-
-        // 不正IDまたは値が入ってるかのチェック
-        if(!isset($_GET["id"]) || !DataValidation::isValidID($_GET["id"]) || !$this->domain_access->isDomainDataExistedGet("id")){
-            SystemFeedback::invalidIDErrorForShowPage("id");
-        } 
-
-   
-        $specificDomainData             = $this->domain_model->getSpecificDomainData($_SESSION["user_id"], intval($_GET["id"]));
-        $copySite                       = $this->domain_model->getCopyDomainData($_SESSION["user_id"], intval($_GET["id"]), "copy");
-        $directorySite                  = $this->domain_model->getCopyDomainData($_SESSION["user_id"], intval($_GET["id"]), "directory");
-      
-        $_SESSION["domainData"]         = $specificDomainData;
-        $_SESSION["copySites"]          = $copySite;
-        $_SESSION["sirectorySites"]     = $directorySite;
-
-        $_SESSION["tagData"]            = "";
-        $_SESSION["tagDataWithRange"]   = "";
-
-        Security::generateCsrfToken();
-     
-        require __DIR__ . '/../../../src/views/domain_show.php';
-    
-    }
-
- 
-
 }

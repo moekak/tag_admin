@@ -54,4 +54,8 @@ export const checkTagTriggerType = () =>{
     if(tag_data["ad_code"] && tag_data["ad_num"] && (tag_data["ad_range"] !== "" && tag_data["ad_range"] !== "1")){
         typeValue.value = "withCodeRange"
     }
+
+    if(tag_data["ad_code"] == "" || tag_data["ad_num"] == "" || tag_data["ad_range"] == ""){
+        typeValue.value = "withoutCode"
+    }
 }

@@ -71,6 +71,10 @@ export const enableTagReferenceBtn = ()=>{
         tag_btn.querySelector(".label").innerHTML = "タグ参照先"
         inputValue["tag_reference"] = ""
         inputValue["tag_reference_id"] = ""
+    }else{
+        tag_btn.querySelector(".label").innerHTML = "タグ参照先"
+        inputValue["tag_reference"] = ""
+        inputValue["tag_reference_id"] = ""
     }
 }
 

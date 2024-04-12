@@ -31,17 +31,12 @@ $keyword = "%" . $res["keyword"] . "%";
 
 
 
-// if(!empty($res["domain_id"])){
-//     $results = $domainModel->getTagReferenceDataForEdit($user_id, $res["domain_id"], $keyword);
-//     $results2 = $tagRangeModel->getTagReferenceDataForEdit($user_id, $res["domain_id"], $keyword);
 
-//     $combinedData = array_merge($results, $results2);
-// }else{
-    $results = $domainModel->getTagReferenceData($user_id, $keyword);
-    $results2 = $tagRangeModel->getTagReferenceData($user_id, $keyword);
+$results = $domainModel->getTagReferenceData($user_id, $keyword);
+$results2 = $tagRangeModel->getTagReferenceData($user_id, $keyword);
 
-    $combinedData = array_merge($results, $results2);
-// }
+$combinedData = array_merge($results, $results2);
+
 
 
 

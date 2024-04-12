@@ -88,7 +88,7 @@ if(isset($_SESSION["copySiteAll"])){
         <div class="domain_top_container domain_show container_paddingRL">
             <div class="domain_show_title">
                 <p class="white margin_0">ドメイン名</p>
-                <h2 class="bold"><?=$domainData["domain_name"]?></h2>
+                <h2 class="bold domain_title"><?=$domainData["domain_name"]?></h2>
             </div>
         </div>
         <div class="main_wrapper">
@@ -124,7 +124,7 @@ if(isset($_SESSION["copySiteAll"])){
                 </div>
 
                 <?php if($domainData["domain_type"] !== "original"){?>
-                <div style="margin-top: 103%;">
+                <div style="overflow-wrap:break-word;">
                      <div class="LPName_container">
                         <p class="lp_title">親ドメインLP</p>
                         <p class="lp_name"><?= $parent_domain?></p>
@@ -154,7 +154,7 @@ if(isset($_SESSION["copySiteAll"])){
                                 <tbody class="js_table" id="js_table">
                                     <?php foreach($tagData as $tag) {?>
                                         <tr>
-                                            <td class="align-middle"><a href="<?=PATH?>tag/?id=<?=$tag["id"]?>" class="textdecoration_none"><?= ($tag["ad_code"] ? $tag["ad_code"] : $tag["trigger_type"])?></a></td>
+                                            <td class="align-middle tag_name"><a href="<?=PATH?>tag/?id=<?=$tag["id"]?>" class="textdecoration_none"><?= ($tag["ad_code"] ? $tag["ad_code"] : $tag["trigger_type"])?></a></td>
                                             <td class="align-middle">
                                                 <button class="trigger_btn">
                                                     <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
@@ -206,7 +206,7 @@ if(isset($_SESSION["copySiteAll"])){
                                 <tbody class="js_table" id="js_table2">
                                     <?php foreach($tagDataWithRange as $tag) {?>
                                         <tr>
-                                            <td class="align-middle">
+                                            <td class="align-middle tag_name"">
                                                 <a href="<?=PATH?>tagRange/?id=<?=$tag["id"]?>" class="textdecoration_none">
                                                     <?php 
                                                         $json = json_decode($tag["code_range"]);
@@ -275,13 +275,13 @@ if(isset($_SESSION["copySiteAll"])){
                            
                                 <?php foreach($domainData["domain_type"] === "original" ? $copyAll_domain : $copySites as $copySite) {?>
                                     <tr>
-                                        <td class="domain_name align-middle">
-                                            <a href="<?=PATH?>showTag/?id=<?=$copySite["id"]?>" class="textdecoration_none"><?= $copySite["domain_name"]?></a>
+                                        <td class="domain_name align-middle" style="max-width: 157px;">
+                                            <a href="<?=PATH?>showTag/?id=<?=$copySite["id"]?>" class="textdecoration_none overflow_copy"><?= $copySite["domain_name"]?></a>
                                         </td>
                                         <td class="original_check align-middle <?= $copySite["is_active"] === "1" ? "green" : "red"?>">
                                             <?= $copySite["is_active"] === "1" ? "使用" : "未使用"?>
                                         </td>
-                                        <td class="text_color align-middle"><?= $copySite["random_domain_id"] !== "0" ? $copySite["random_domain_id"] : ""?></td>
+                                        <td class="text_color align-middle"><?= $copySite["random_domain_id"] !== "0" ? $copySite["random_domain_id"] : $copySite["tag_reference_randomID"]?></td>
                                     </tr>
                                 <?php }?>
                             </tbody>
@@ -305,13 +305,13 @@ if(isset($_SESSION["copySiteAll"])){
                             <tbody class="js_table">
                                 <?php foreach($directorySites as $directorySite) {?>
                                     <tr>
-                                        <td class="domain_name align-middle">
-                                            <a href="<?=PATH?>showTag/?id=<?=$directorySite["id"]?>" class="textdecoration_none"><?= $directorySite["domain_name"]?></a>
+                                        <td class="domain_name align-middle" style="max-width: 157px;">
+                                            <a href="<?=PATH?>showTag/?id=<?=$directorySite["id"]?>" class="textdecoration_none overflow_copy"><?= $directorySite["domain_name"]?></a>
                                         </td>
                                         <td class="original_check align-middle <?= $directorySite["is_active"] === "1" ? "green" : "red"?>">
                                             <?= $directorySite["is_active"] === "1" ? "使用" : "未使用"?>
                                         </td>
-                                        <td class="text_color align-middle"><?= $directorySite["random_domain_id"] !== "0" ? $directorySite["random_domain_id"] : ""?></td>
+                                        <td class="text_color align-middle"><?= $directorySite["random_domain_id"] !== "0" ? $directorySite["random_domain_id"] : $directorySite["tag_reference_randomID"]?></td>
                                     </tr>
                                 <?php }?>
                             </tbody>
@@ -367,7 +367,7 @@ if(isset($_SESSION["copySiteAll"])){
                                     <div class="input_container">
                                         <div class="input_box" style="margin-right: 5%;">
                                             <p class="label" style="margin-bottom: 0;">コード</p>
-                                            <input type="text" class="domain_name_input border js_ad_field js_data_field js_input" style="width: 160px;"  name="ad_code" placeholder="(例)aaa※半角数字">
+                                            <input type="text" maxlength="6" class="domain_name_input border js_ad_field js_data_field js_input" style="width: 160px;"  name="ad_code" placeholder="(例)aaa※最大7文字">
                                             <div class="form-check margin_t10">
                                                 <input class="form-check-input" type="checkbox" value="" id="apply_all">
                                                 <label class="form-check-label label" for="apply_all">

@@ -52,9 +52,8 @@ if(isset($tagData["ad_code"])){
             <div class="showTitle">
                 <div class="domain_show_title">
                     <p class="white margin_0">ドメイン名</p>
-                    <h2 class="bold"><a href="<?=PATH?>show/?id=<?=$domainData["id"]?>" class="textdecoration_none white"><?=$domainData["domain_name"]?></a></h2>
+                    <h2 class="bold white scroll" style="max-width: 900px; display: block";><?=$domainData["domain_name"]?></h2>
                 </div>
-                <p>/</p>
                 <div class="tag_title">
                     <p class="white margin_0">広告コード</p>
                     <h2 class="bold"><?=$tagData["ad_code"] !== "" ?  $tagData["ad_code"] : $tagData["trigger_type"]?></h2>
@@ -199,7 +198,7 @@ if(isset($tagData["ad_code"])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
     <script type="module" src="<?=PATH?>dist/domainDetail.js"></script>
     <script type="module" src="<?=PATH?>dist/tagManagement.js"></script>
-    <!-- <script type="module" src="<?=PATH?>dist/tagDetail.js"></script> -->
+    <script type="module" src="<?=PATH?>dist/tagEdit.js"></script>
     
     <script>
         //ユニコードエスケープシーケンスの変換

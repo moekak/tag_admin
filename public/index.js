@@ -14,7 +14,7 @@ export { clearLocalStorage, getCategoryID, insertCategoriesID, insertDataToLocal
 export { clearInputFieldValue, clearInputValueAll, clearInputField,clearAllValues, clearSearchInput, clearObjectElements, clearInputValue, clearRadioBtns, clearReferences} from "@modules/domainUtils/formManagementUtilities/InputHelpers.js";
 export { copyTextToCplipboard } from "@modules/domainUtils/formManagementUtilities/generateScriptTag.js";
 export { hideCollapse } from "@modules/domainUtils/referenceProcess/CollapseControl.js";
-export { fetchDomainData, fetchTagData } from "@modules/domainUtils/referenceProcess/SearchAPI.js";
+export { fetchDomainData, fetchTagData, fetchTagDataWithReference } from "@modules/domainUtils/referenceProcess/SearchAPI.js";
 export { displayInfoModal, displayDomainHandlingModalWithNoAni, closeInfoModal, displayDomainHandlingModal , closeDomainHandlingModal, closeModal, displaySettingModal, displayAlertModalForDeleteDomain, displayAlertModalForDeleteTag} from "@modules/toggleModal/ToggleModal.js";
 export { displayEditModalAndInitializing, initializeDomainEditModal } from "@modules/domainUtils/domainEdit/InitializeDomainEditModal.js";
 export { fetchDomainDataByAll, fetchDomainDataByCategory, fetchDomainInfoBySearch} from "@modules/domainUtils/sortDomainData/Api.js";

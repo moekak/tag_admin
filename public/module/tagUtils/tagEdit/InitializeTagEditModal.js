@@ -68,5 +68,5 @@ export const setDataToObjWhenUpdateTagData = ()=>{
         typeValue.value = "withoutCode"
     }
 
-    enableAddBtn()
+    // enableAddBtn()
 }

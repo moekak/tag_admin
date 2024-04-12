@@ -35,10 +35,13 @@ body{
     z-index: 999;
 }
 p{
-    font-size: 16px;
+    font-size: 18px;
+}
+a{
+    font-size: 17px;
 }
 .modal-font-size{
-    font-size: 15px;
+    font-size: 17px;
 }
 
 
@@ -46,7 +49,7 @@ p{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    /* font-family: 'Inter', sans-serif; */
     /* overflow-x: hidden; */
 }
 
@@ -55,11 +58,11 @@ p{
 /* ################################################# */
 
 .label{
-    font-size: 14px;
+    font-size: 15px;
     color: #444;
 }
 .alert_txt{
-    font-size: 10px;
+    font-size: 13px;
     margin-top: 3px;
 }
 .alert_active{
@@ -96,6 +99,9 @@ p{
 }
 .border{
  border: 1px solid var(--border-color);
+}
+h2{
+    font-size: 1.4rem;
 }
 /* ######################################################
 padding, margin
@@ -256,9 +262,8 @@ padding, margin
 .domain_top_container{
     background-color: var(--dark-blue-bg);
     color: white;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    height: 113px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -376,6 +381,40 @@ padding, margin
     width: 93px;
 }
 .folder_icon{
-    width: 29px;
-    padding-right: 5px;
+    width: 103%;
+    padding-right: 5
+}
+
+
+.overflow_copy{
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    overflow-wrap: break-word;
+
+}
+.img_container{
+    width: 27px;
+}
+.copy_icon{
+    width: 103%;
+}
+.domain_title{
+    max-width: 1086px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+}
+.hyper_link{
+    width: 300px;
+}
+.tag_name{
+    max-width: 300px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.scroll{
+    max-width: 872px;
+    display: block;
+    overflow-wrap: anywhere;
 }

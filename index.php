@@ -91,11 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $controller = new DomainShowController();
             $controller->get();
             break;
-        case preg_match('/\/tag_admin\/show\/\?id=\d+/', $_SERVER['REQUEST_URI']):
-            require __DIR__ . '/src/controllers/domain/DomainShowController.php';
-            $controller = new DomainShowController();
-            $controller->getDomainData();
-            break;
         case preg_match('/\/tag_admin\/tag\/\?id=\d+/', $_SERVER['REQUEST_URI']):
             require __DIR__ . '/src/controllers/tag/TagShowController.php';
             $controller = new TagShowController();
@@ -221,11 +216,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 //             require __DIR__ . '/src/controllers/domain/DomainShowController.php';
 //             $controller = new DomainShowController();
 //             $controller->get();
-//             break;
-//         case preg_match('/^\/show\/\?id=\d+/', $_SERVER['REQUEST_URI']) === 1:
-//             require __DIR__ . '/src/controllers/domain/DomainShowController.php';
-//             $controller = new DomainShowController();
-//             $controller->getDomainData();
 //             break;
 //         case preg_match('/^\/tag\/\?id=\d+/', $_SERVER['REQUEST_URI']) === 1:
 //             require __DIR__ . '/src/controllers/tag/TagShowController.php';

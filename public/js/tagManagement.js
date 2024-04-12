@@ -57,7 +57,7 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
             hideTriggerCategories()
             changeArrowImg(btnUp, btnDown)
             // disableAdInput()
-            enableAddBtn()
+            // enableAddBtn()
             // checkTagTriggerType(typeValue)
         })
     })
@@ -80,14 +80,19 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
                 // オブジェクト変数を空にする
                 clearTagDataObj("ad_code")
                 removeAlertStyle(ad_field)
-            } else{
+         
+            }else{
                 addAlertStyle(ad_field)
+                clearTagDataObj("ad_code")
             }
+            
+            
+            
 
             // データをオブジェクト変数の中にセット
             insertAdCodeAndTriggerToObj("ad_code", ad_field.value)
             checkTagTriggerType()
-            enableAddBtn()
+            // enableAddBtn()
         
         })
     }
@@ -108,7 +113,7 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
             }
     
             insertAdCodeAndTriggerToObj("ad_num", adNum_field.value)
-            enableAddBtn()
+            // enableAddBtn()
             checkTagTriggerType()
         })
     }
@@ -131,7 +136,7 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 
             insertAdCodeAndTriggerToObj("ad_range", adRange_field.value)
             checkTagTriggerType()
-            enableAddBtn()
+            // enableAddBtn()
 
         })
     }
@@ -154,7 +159,7 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
                 insertAdCodeAndTriggerToObj("applygingAll", "unchecked")
                 enableCodeInputField()
             }
-            enableAddBtn()
+            // enableAddBtn()
         })
     }
     
@@ -176,8 +181,6 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 
 
 
-   
-
 
 }
 
@@ -186,12 +189,9 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 
 
 acEditor("tag_head", 1)
-setDataToObjWhenUpdateTagData()
-
-
 
 acEditor("tag_body", 2)
-setDataToObjWhenUpdateTagData()
+
 
 
 

@@ -1,6 +1,6 @@
 
 
-import {toggleInputField, setDataToDOM, setDataAndID, hideUnnecessaryForms, createPtagForTagDeleteModal, fetchTagReferenceDomain, copyTextToCplipboard , closeModal, clearAllValues, fetchDomainInfoBySearch, displayAlertModalForDeleteTag, fetchDomainDataByAll, fetchDomainDataByCategory, initializeModal, fetchDomainInfo, fetchTagData, displayEditModalAndInitializing, displayInfoModal, displayDomainHandlingModalWithNoAni, closeInfoModal, displayDomainHandlingModal , closeDomainHandlingModal,displayAlertModalForDeleteDomain, fetchDomainData, hideCollapse, inputValue, clearLocalStorage, getCategoryID, insertCategoriesID, insertDataToLocalstorage, isLocalStorageDataExisted, unsetLocalStorage, changeCategoryBtn, updateButtonState, updateUI, clearInputFieldValue, clearInputValueAll, clearInputField, clearSearchInput} from "@index/index.js";
+import {fetchTagDataWithReference, toggleInputField, setDataToDOM, setDataAndID, hideUnnecessaryForms, createPtagForTagDeleteModal, fetchTagReferenceDomain, copyTextToCplipboard , closeModal, clearAllValues, fetchDomainInfoBySearch, displayAlertModalForDeleteTag, fetchDomainDataByAll, fetchDomainDataByCategory, initializeModal, fetchDomainInfo, fetchTagData, displayEditModalAndInitializing, displayInfoModal, displayDomainHandlingModalWithNoAni, closeInfoModal, displayDomainHandlingModal , closeDomainHandlingModal,displayAlertModalForDeleteDomain, fetchDomainData, hideCollapse, inputValue, clearLocalStorage, getCategoryID, insertCategoriesID, insertDataToLocalstorage, isLocalStorageDataExisted, unsetLocalStorage, changeCategoryBtn, updateButtonState, updateUI, clearInputFieldValue, clearInputValueAll, clearInputField, clearSearchInput} from "@index/index.js";
 
 
 
@@ -164,14 +164,15 @@ if(error.value === "edit"){
     
         radio_tag_info.forEach((radio)=>{
             radio.addEventListener("change", (e)=>{
-                if(e.target.value == "new"){
-                    hideCollapse(document.getElementById("tag_reference_collapse"))
-                    document.getElementById("js_search_tag").value = ""
-                    setTimeout(()=>{
-                        document.querySelector(".tag_search_results_container").innerHTML = "";
-                    }, 500)
+              
+                hideCollapse(document.getElementById("tag_reference_collapse"))
+                document.getElementById("js_search_tag").value = ""
+                setTimeout(()=>{
+                    document.querySelector(".tag_search_results_container").innerHTML = "";
+                }, 500)
                     
-                }
+               
+
                 updateUI("tag_type", "tag_type", e.target.value, inputValue, "add")
             })
         })
@@ -217,15 +218,24 @@ if(error.value === "edit"){
         // ================================= DOM要素 ===============================================
 
         const copy_tag          = document.getElementById("js_copy_tag")
-        const tag_container     = document.getElementById("tag_reference_collapse")
 
         // =========================================================================================
     
-        copy_tag.addEventListener("click", ()=>{
 
-            hideCollapse(document.getElementById("collapseExample1"))
-            fetchTagData(copy_tag, tag_container)
-        })
+        const search_input_field = document.getElementById("js_search_tag");
+        search_input_field.addEventListener("input", () => {
+            const domain_id = document.getElementById("js_domain_id").value;
+            const data = {
+                keyword: search_input_field.value,
+                domain_id: domain_id || ""
+            };
+
+            if (inputValue["tag_type"] === "withoutTag") {
+                fetchTagDataWithReference(copy_tag, data);
+            } else if (inputValue["tag_type"] === "reference") {
+                fetchTagData(copy_tag, data);
+            }
+        });
     
     }
 

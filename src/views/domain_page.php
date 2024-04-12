@@ -196,7 +196,7 @@ if(isset($_SESSION["create_script_flag"])){
                         <div class="collapse1 copy_area relative padding_t10">
                                 <button class="btn copy_btn active copy_reference"  type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1" style="display: flex;" disabled id="js_copy_site">
                                     <img src="<?=PATH?>public/img/copy.png" alt="" class="domain_info_icon">
-                                    <p style="margin: 0;" class="label">コピーサイト参照先</p>
+                                    <p style="margin: 0; width: 74%; overflow: hidden; text-align: left;" class="label">コピーサイト参照先</p>
                                 </button>
                                 <!-- ドメイン参照 -->
                                 <div class="btn copy_btn"  style="display: none;" id="reference">
@@ -244,7 +244,7 @@ if(isset($_SESSION["create_script_flag"])){
                             <div class="collapse1 tag_area relative">
                                 <button class="btn copy_btn active tag_reference" type="button" data-bs-toggle="collapse" data-bs-target="#tag_reference_collapse" aria-expanded="false" aria-controls="collapseExample2" style="display: flex;" id="js_copy_tag" disabled>
                                     <img src="<?=PATH?>public/img/copy.png" alt="" class="domain_info_icon">
-                                    <p style="margin: 0;" class="label">タグ参照先</p>
+                                    <p style="margin: 0;width: 74%; overflow: hidden; text-align: left;" class="label">タグ参照先</p>
                                 </button> 
                                 <div class="collapse" id="tag_reference_collapse">
                                     <div class="card card-body">

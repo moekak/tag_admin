@@ -56,12 +56,11 @@ if(isset($first)){
             <div class="showTitle">
                 <div class="domain_show_title">
                     <p class="white margin_0">ドメイン名</p>
-                    <h2 class="bold"><a href="<?=PATH?>show/?id=<?=$domainData["id"]?>" class="textdecoration_none white"><?=$domainData["domain_name"]?></a></h2>
+                    <h2 class="bold white scroll" style="max-width: 900px; display: block";><?=$domainData["domain_name"]?></h2>
                 </div>
-                <p>/</p>
                 <div class="tag_title">
                     <p class="white margin_0">広告コード範囲</p>
-                    <h2 class="bold"><a href="<?=PATH?>tagRange/?id=<?=$tagData["id"]?>" class="textdecoration_none white"><?=$code?></a></h2>
+                    <h2 class="bold white"><?=$code?></h2>
                 </div>
             </div>
             
@@ -192,7 +191,7 @@ if(isset($first)){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ext-language_tools.js"></script>
     <script type="module" src="<?=PATH?>dist/domainDetail.js"></script>
     <script type="module" src="<?=PATH?>dist/tagManagement.js"></script>
-    <!-- <script type="module" src="<?=PATH?>dist/tagDetail.js"></script> -->
+    <script type="module" src="<?=PATH?>dist/tagEdit.js"></script>
     <script>
         //ユニコードエスケープシーケンスの変換
         function decodeUnicodeEscapeSequence(encodedString) {

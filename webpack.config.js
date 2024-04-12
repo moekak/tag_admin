@@ -19,8 +19,8 @@ module.exports = (env) => {
             domainShow: path.resolve(__dirname, `${baseJsPath}/domainShow.js`),
             infiniteScroll: path.resolve(__dirname, `${baseJsPath}/infiniteScroll.js`),
             sortDomainDataByCategory: path.resolve(__dirname, `${baseJsPath}/sortDomainDataByCategory.js`),
-            tagDetail: path.resolve(__dirname, `${baseJsPath}/tagDetail.js`),
             tagManagement: path.resolve(__dirname, `${baseJsPath}/tagManagement.js`),
+            tagEdit: path.resolve(__dirname, `${baseJsPath}/tagEdit.js`),
         },
         resolve: {
             alias: {

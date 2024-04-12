@@ -41,7 +41,7 @@ export const createIndexDiv = (resArray)=>{
     const template2 = 
         ` <thead style="position: sticky; top: 0;" id="js_table">
             <tr>
-                <th scope="col">ドメイン名</th>
+                <th scope="col" style="width: 376px;">ドメイン名</th>
                 <th scope="col">オリジナルLP</th>
                 <th scope="col">ステータス</th>
                 <th scope="col">ドメインID</th>
@@ -122,7 +122,14 @@ export const createIndexCopyDiv = (res)=>{
 
         rows += 
         `<tr class="js_copySites">
-            <td class="domain_name align-middle"style="padding-left: 3%;"><img src="${process.env.SYSTEM_URL}public/img/copy1.png" alt="" class="copy_icon"><a href="${redirect_url}" class="textdecoration_none">${item["domain_name"]}</a></td>
+            <td class="domain_name align-middle"style="padding-left: 8%;">
+                <div class="img_container">
+                    <img src="${process.env.SYSTEM_URL}public/img/copy1.png" alt="" class="copy_icon">
+                </div>
+                <div class="hyper_link">
+                    <a href="${redirect_url}" class="textdecoration_none">${item["domain_name"]}</a>
+                </div>
+            </td>
             <td class="original_check align-middle"></td>
             <td class="align-middle ${domainActive}">${domainActiveText}</td>
             <td class="text_color align-middle">${random_domain_id}</td>
@@ -147,7 +154,14 @@ export const createIndexCopyDirectoryDiv = (res)=>{
 
         rows += 
         `<tr class="js_copySites">
-            <td class="domain_name align-middle" style="padding-left: 8%;"><img src="${process.env.SYSTEM_URL}public/img/folder.png" alt="" class="folder_icon"><a href="${redirect_url}" class="textdecoration_none">${item["domain_name"]}</a></td>
+            <td class="domain_name align-middle" style="padding-left: 8%;">
+                <div class="img_container">
+                    <img src="${process.env.SYSTEM_URL}public/img/copy1.png" alt="" class="copy_icon">
+                </div>
+                <div class="hyper_link">
+                    <a href="${redirect_url}" class="textdecoration_none">${item["domain_name"]}</a>
+                </div>
+            </td>
             <td class="original_check align-middle"></td>
             <td class="align-middle ${domainActive}">${domainActiveText}</td>
             <td class="text_color align-middle">${random_domain_id}</td>
@@ -170,7 +184,13 @@ export const createIndexDirectoryDiv = (res)=>{
 
         rows += 
         `<tr class="js_copySites">
-            <td class="domain_name align-middle" style="padding-left: 3%;"><img src="${process.env.SYSTEM_URL}public/img/folder.png" alt="" class="folder_icon"><a href="${redirect_url}" class="textdecoration_none">${item["domain_name"]}</a></td>
+            <td class="domain_name align-middle" style="padding-left: 8%;">
+                <div class="img_container">
+                    <img src="${process.env.SYSTEM_URL}public/img/copy1.png" alt="" class="copy_icon">
+                </div>
+                <div class="hyper_link">
+                    <a href="${redirect_url}" class="textdecoration_none">${item["domain_name"]}</a>
+                </div></td>
             <td class="original_check align-middle"></td>
             <td class="align-middle ${domainActive}">${domainActiveText}</td>
             <td class="text_color align-middle">${random_domain_id}</td>

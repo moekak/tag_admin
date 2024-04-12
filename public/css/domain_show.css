@@ -34,10 +34,10 @@ body{
 }
 .menu_bar{
     background-color: #3c4b64;
-    height: 100vh;
-    width: 20%;
+    min-height: 100vh;
+    width: 260px;
     top: 0;
-    padding-top: 5%;
+    padding-top: 2%;
 }
 .menu-icon{
     width: 24px;
@@ -64,7 +64,7 @@ body{
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    margin-top: 6%;
+    margin-top: 3%;
     overflow-y: auto;
     align-items: center;
 }
@@ -198,16 +198,16 @@ body{
     align-items: center;
     overflow-y: auto;
 }
-.ad_container{
+/* .ad_container{
     margin-top: 7.2%;
-}
+} */
 .showTitle{
     display: flex;
     gap: 20px;
     align-items: end;
 }
 .LPName_container{
-    padding: 2% 3% 2% 13%;
+    padding: 2% 5% 2% 8%;
 }
 .LPName_container p{
     color: white;
