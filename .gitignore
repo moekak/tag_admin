@@ -1,3 +1,6 @@
 node_modules
 tagFiles
 logs
+dist
+.env
+vendor
