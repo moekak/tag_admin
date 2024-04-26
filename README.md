@@ -1,8 +1,8 @@
 # ローカル環境での動かし方手順
 
-1. 
 
-```bash
+
+1. ```bash
 git@github.com:If-you-give-up-then-it-all-ends-here/tag_admin.git
 ```
 
