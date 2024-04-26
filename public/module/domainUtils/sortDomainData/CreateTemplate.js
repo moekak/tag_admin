@@ -154,9 +154,9 @@ export const createIndexCopyDirectoryDiv = (res)=>{
 
         rows += 
         `<tr class="js_copySites">
-            <td class="domain_name align-middle" style="padding-left: 8%;">
+            <td class="domain_name align-middle" style="padding-left: 16%;">
                 <div class="img_container">
-                    <img src="${process.env.SYSTEM_URL}public/img/copy1.png" alt="" class="copy_icon">
+                    <img src="${process.env.SYSTEM_URL}public/img/folder.png" alt="" class="copy_icon">
                 </div>
                 <div class="hyper_link">
                     <a href="${redirect_url}" class="textdecoration_none">${item["domain_name"]}</a>
@@ -186,7 +186,7 @@ export const createIndexDirectoryDiv = (res)=>{
         `<tr class="js_copySites">
             <td class="domain_name align-middle" style="padding-left: 8%;">
                 <div class="img_container">
-                    <img src="${process.env.SYSTEM_URL}public/img/copy1.png" alt="" class="copy_icon">
+                    <img src="${process.env.SYSTEM_URL}public/img/folder.png" alt="" class="copy_icon">
                 </div>
                 <div class="hyper_link">
                     <a href="${redirect_url}" class="textdecoration_none">${item["domain_name"]}</a>
