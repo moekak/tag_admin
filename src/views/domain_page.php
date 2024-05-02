@@ -330,7 +330,7 @@ if(isset($_SESSION["create_script_flag"])){
     <div class="domain_delete_modal_container fixed hidden js_alert_modal">
         <h5 class="bold">本当に削除しますか？</h5>
         <div class="padding_t20"></div>
-        <p class="modal-font-size"><span class="red bold ">重要</span>: このドメインを削除すると、それに関連するすべてのタグも同時に削除されます。この操作は元に戻すことができません。選択されたドメイン<span class="domain_color">blue-river.biz</span> を本当に削除してもよろしいですか？</p>
+        <p class="modal-font-size"><span class="red bold ">重要</span>: このドメインを削除すると、それに関連するすべてのタグも同時に削除されます。この操作は元に戻すことができません。選択されたドメインを本当に削除してもよろしいですか？</p>
         <div class="padding_t10"></div>
         <div class="modal_btn_container">
         <form class="js_deleteDomain_form" action="<?=PATH?>deleteDomain" method="post">

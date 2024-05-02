@@ -69,8 +69,6 @@ class DomainsModel{
                 AND     
                     admin_id = :admin_id
                 AND is_deleted = '0' 
-                AND
-                    domain_type != 'directory'
                 ORDER BY created_at DESC
                 ");
             $statement->bindValue(':admin_id', $admin_id);

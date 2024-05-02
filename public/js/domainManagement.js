@@ -299,13 +299,6 @@ if(error.value === "edit"){
             success.classList.add("hidden")
         }
 
-
-
-
-        window.addEventListener("load", ()=>{
-            // unsetLocalStorage("data")
-        })
-
     }
 
     const close_btn = document.querySelector(".js_close_btns3")

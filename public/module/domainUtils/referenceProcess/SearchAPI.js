@@ -39,7 +39,7 @@ export const fetchDomainData = (copy_site_btn) => {
           return response.json();
         })
         .then((res) => {
-          console.log(res);
+
 
           // 検索結果が一つもなかったら、何も表示させない
           if (res.length <= 0) {
@@ -97,8 +97,6 @@ export const fetchTagDataWithReference = (copy_tag, data) => {
         return response.json();
       })
       .then((res) => {
-        console.log(res);
-
         // 既に見たidを記録するためのSetオブジェクトを作成
         const seenIds = new Set();
 
@@ -160,8 +158,7 @@ export const fetchTagData = (copy_tag, data) => {
         return response.json();
       })
       .then((res) => {
-        console.log(res);
-
+    
         // 既に見たidを記録するためのSetオブジェクトを作成
         const seenIds = new Set();
 
