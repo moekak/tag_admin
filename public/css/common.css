@@ -418,3 +418,11 @@ padding, margin
     display: block;
     overflow-wrap: anywhere;
 }
+
+#js_info_btn{
+    cursor: pointer;
+}
+
+.border_under {
+    background: linear-gradient(transparent 50%, #ffff00 10% 90%, transparent 90%);
+}

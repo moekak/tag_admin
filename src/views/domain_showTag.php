@@ -336,8 +336,6 @@ if(isset($_SESSION["copySiteAll"])){
                                     <div class="dummy_up absolute hidden"></div>
                                     <div class="dummy_down absolute"></div>
                                     <input type="text" class="domain_name_input border transparent  js_trigger js_trigger_btn"  name="trigger_category" value=""  readonly>
-                                    <i class="fas fa-chevron-down absolute arrow js_arrowDown_btn pointer"></i>
-                                    <i class="fas fa-chevron-up absolute arrow js_arrowUp_btn hidden pointer" ></i>
                                     <div class="trigger_btn absolute trigger_position trigger_msg">
                                         <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
                                         <p class="label margin_0">選択してください</p>
@@ -363,7 +361,10 @@ if(isset($_SESSION["copySiteAll"])){
                             
                             <div class="flex_trigger">
                                 <div class="domain_name_input_box relative margin_t30 js_adCode" style="width: 100%;">
-                                    <p class="label">広告コード</p>
+                                    <div style="display: flex; gap:2%;">
+                                        <p class="label">広告コード</p>
+                                        <img src="<?=PATH?>public/img/icons8-info-50.png" alt="" style="width: 20px;height: 20px; margin-top: 2px;" id="js_info_btn">
+                                    </div>
                                     <div class="input_container">
                                         <div class="input_box" style="margin-right: 5%;">
                                             <p class="label" style="margin-bottom: 0;">コード</p>
@@ -460,6 +461,19 @@ if(isset($_SESSION["copySiteAll"])){
             <div class="modal_btn_container">
             <button class="modal_btn bold bg-white border js_delete_btn">いいえ</button> 
             </div> 
+        </div>
+         <!-- ドメイン情報設定モーダル-->
+        <div class="domain_setting_modal fixed hidden" id="js_info_modal">
+            <h4 class="bold">広告コードの設定について</h4>
+            <div class="padding_t10"></div>
+            <p style="margin-bottom: 5px;" class="bold">1. コード+番号（例：aaa001）の場合</p>
+            <p class="modal-font-size padding_left" style="font-size: 15px; padding-left: 5%;">コード、スタート番号、作成数のすべてを入力してください。</p>
+            <div class="padding_t10"></div>
+            <p style="margin-bottom: 5px;" class="bold">2. コードのみ（例：aaa）の場合</p>
+            <p class="modal-font-size padding_left" style="font-size: 15px;padding-left: 5%;">コードと作成数を入力し、スタート番号は空にしてください。<br> ※この場合は範囲指定はできません。作成数欄に1と入力してください。</p>
+            <div class="padding_t10"></div>
+            <p style="margin-bottom: 5px;" class="bold">3. 番号のみ（例：001）の場合</p>
+            <p class="modal-font-size padding_left" style="font-size: 15px;padding-left: 5%;">スタート番号と作成数を入力し、コード欄は空にしてください。</p>
         </div>
 
             <!-- script表示 -->

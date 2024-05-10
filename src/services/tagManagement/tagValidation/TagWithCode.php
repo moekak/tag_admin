@@ -20,8 +20,14 @@ class TagWithCode extends TagValidationBase{
     // バリデーションチェック
     public function individualFormValidator(){
         \FormValidation::checkAllNecessaryValues(\TagValidation::hasAllNecessaryValuesForTriggerWithAdCode(), $_POST["referrer"], "");
-        \DataValidation::isHalfWidthChars($_POST["ad_code"], "ad_code");
-        \DataValidation::isHalfWidthNumber($_POST["ad_num"], "ad_num"); 
+        if(isset($_POST["ad_code"]) && $_POST["ad_code"] !== ""){
+            \DataValidation::isHalfWidthChars($_POST["ad_code"], "ad_code");
+        }
+        if(isset($_POST["ad_num"]) && $_POST["ad_num"] !== ""){
+            \DataValidation::isHalfWidthNumber($_POST["ad_num"], "ad_num"); 
+        }
+        
+        
     }
 
     public function formValidatorForEdit(){

@@ -150,9 +150,9 @@ if(isset($_SESSION["create_script_flag"])){
                     </div>
                     <div class="padding_t30"></div>
                     <div class="domain_name_input_box js_form">
-                        <div class="domain_name_input_flex">
+                        <div class="domain_name_input_flex"  style="align-items: start;">
                             <p class="text_color bold">ドメイン情報 </p>
-                            <p class="bold info_btn" id="js_info_btn" style="cursor: pointer;">i</p>
+                            <img src="<?=PATH?>public/img/icons8-info-50.png" alt="" style="width: 20px;height: 20px; margin-top: 2px;" id="js_info_btn">
                         </div>
                         <div class="padding_t10"></div>
 
@@ -397,8 +397,8 @@ if(isset($_SESSION["create_script_flag"])){
 
     <!-- テスト環境 -->
     <script type="module" src="<?=PATH?>dist/sortDomainDataByCategory.js"></script>
-    <script type="module" src="<?=PATH?>dist/domainManagement.js"></script>
     <script type="module" src="<?=PATH?>dist/infiniteScroll.js"></script>
+    <script type="module" src="<?=PATH?>dist/domainManagement.js"></script>
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
 </body>

@@ -56,6 +56,8 @@ export const enableCodeInputField = () =>{
 
 }
 
+
+
 // 必要なデータがすべて入力されてるか確認する(boolen型で返す)
 export const isExistedAllData = ()=>{;
     let dataCheckObj = createDataCheckObj()

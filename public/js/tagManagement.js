@@ -10,13 +10,11 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 {
     const btn_down = document.querySelector(".dummy_down")
     const btn_up= document.querySelector(".dummy_up")
-    const btnDown = document.querySelector(".js_arrowDown_btn")
-    const btnUp = document.querySelector(".js_arrowUp_btn")
+
 
     if(btn_down){
          btn_down.addEventListener("click", ()=>{
             displayTriggerCategories()
-            changeArrowImg(btnDown, btnUp)
             btn_down.classList.add("hidden")
             btn_up.classList.remove("hidden")
         })
@@ -27,7 +25,6 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 
     if(btn_up){
         btn_up.addEventListener("click", ()=>{
-            changeArrowImg(btnUp, btnDown)
             hideTriggerCategories()
             btn_down.classList.remove("hidden")
             btn_up.classList.add("hidden")
@@ -38,8 +35,7 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 // 配信トリガー選択したときの処理
 {
     const trigger_btns  = document.querySelectorAll(".js_trigger_btns")
-    const btnDown       = document.querySelector(".js_arrowDown_btn")
-    const btnUp         = document.querySelector(".js_arrowUp_btn")
+
 
     
 
@@ -55,10 +51,7 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
             setSelectedTrigger(type)
             insertAdCodeAndTriggerToObj("trigger", type)
             hideTriggerCategories()
-            changeArrowImg(btnUp, btnDown)
-            // disableAdInput()
-            // enableAddBtn()
-            // checkTagTriggerType(typeValue)
+
         })
     })
 

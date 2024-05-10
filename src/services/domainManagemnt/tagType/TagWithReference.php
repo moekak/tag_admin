@@ -56,8 +56,9 @@ class TagWithReference implements TagTypeBase{
         // スクリプトタグ生成
         $random_id = $this->domain_access->getRandomDomainIDForTagReferene($id);
     
-        $_SESSION["script_index"] = "<script src='" . PATH_INDEX . $random_id . "'></script>";
-        $_SESSION["script_rd"] = "<script src='" . PATH_RD . $random_id . "'></script>";
+        
+        $_SESSION["script_index"] = "<script src='" . PATH_INDEX . $random_id . "' data-config='KD_tagadmin'></script>";
+        $_SESSION["script_rd"] = "<script src='" . PATH_RD . $random_id . "' data-config='KD_tagadmin'></script>";
         $_SESSION["create_script_flag"] = 1;
 
         foreach($tag_results as $key => $value){

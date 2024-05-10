@@ -60,9 +60,9 @@ export const setDataToObjWhenUpdateTagData = ()=>{
     }
 
 
-    if(ad_code !== "" && ad_num !== "" && range !== "1"){
+    if(ad_num !== "" && range !== "1"){
         typeValue.value = "withCodeRange"
-    } else if(ad_code !== "" && ad_num !== "" && range === "1"){
+    } else if((ad_code !== "" || ad_num !== "") && range === "1"){
         typeValue.value = "withCode"
     }else{
         typeValue.value = "withoutCode"

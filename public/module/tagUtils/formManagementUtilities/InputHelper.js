@@ -47,15 +47,15 @@ export const setTagDataToInputField = ()=>{
 export const checkTagTriggerType = () =>{
     const typeValue  = document.getElementById("js_type")
     
-    if(tag_data["ad_code"] && tag_data["ad_num"] && tag_data["ad_range"] === "1"){
+    if((tag_data["ad_code"] !== "" || tag_data["ad_num"] !== "") && tag_data["ad_range"] === "1"){
 
         typeValue.value = "withCode"
     }
-    if(tag_data["ad_code"] && tag_data["ad_num"] && (tag_data["ad_range"] !== "" && tag_data["ad_range"] !== "1")){
+    if(tag_data["ad_num"] !=="" && (tag_data["ad_range"] !== "" && tag_data["ad_range"] !== "1")){
         typeValue.value = "withCodeRange"
     }
 
-    if(tag_data["ad_code"] == "" || tag_data["ad_num"] == "" || tag_data["ad_range"] == ""){
+    if(tag_data["ad_code"] == "" && tag_data["ad_num"] == "" && tag_data["ad_range"] == ""){
         typeValue.value = "withoutCode"
     }
 }

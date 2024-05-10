@@ -18,10 +18,8 @@ export const isValidNum = (num, min_length, max_length)=>{
 export const createDataCheckObj = ()=>{
     return {
         trigger_all : Boolean(tag_data["trigger"] && (tag_data["tag_head"] || tag_data["tag_body"])),
-        trigger_exceptAll : Boolean(tag_data["trigger"] && tag_data["ad_code"] && tag_data["ad_num"] && (tag_data["tag_head"] || tag_data["tag_body"])),
-        trigger_exceptAllWithAdRange : Boolean(tag_data["trigger"] && tag_data["ad_code"] && tag_data["ad_num"] && tag_data["ad_range"] && (tag_data["tag_head"] || tag_data["tag_body"])),
-        trigger_exceptAll_dataCheck: Boolean(isHalfWidthChars(tag_data["ad_code"]) && isHalfWidthNumber(tag_data["ad_num"])),
-        trigger_exceptAllWithAdRAnge_dataCheck: Boolean(isHalfWidthChars(tag_data["ad_code"]) && isHalfWidthNumber(tag_data["ad_num"]) && isHalfWidthNumber(tag_data["ad_range"]) && isValidNum(tag_data["ad_range"], 1, 100))
+        trigger_exceptAllWithAdRange : Boolean(tag_data["trigger"]  && tag_data["ad_range"] && (tag_data["ad_range"] == 1 ? true : tag_data["ad_num"]) && (tag_data["tag_head"] || tag_data["tag_body"])),
+        trigger_exceptAllWithAdRAnge_dataCheck: Boolean((tag_data["ad_num"] == "" ? true : isHalfWidthNumber(tag_data["ad_num"])) && isHalfWidthNumber(tag_data["ad_range"]) && isValidNum(tag_data["ad_range"], 1, 100) && (tag_data["ad_code"] == "" ? true : isHalfWidthChars(tag_data["ad_code"])))
     }
  
 }

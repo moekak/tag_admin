@@ -41,8 +41,9 @@ class withoutTag implements TagTypeBase{
         $random_id = $this->domain_access->getRandomDomainIDForTagReferene($this->domain_access->hasTagReferenceID($id));
 
      
-        $_SESSION["script_index"] = "<script src='" . PATH_INDEX . $random_id . "'></script>";
-        $_SESSION["script_rd"] = "<script src='" . PATH_RD . $random_id . "'></script>";
+        
+        $_SESSION["script_index"] = "<script src='" . PATH_INDEX . $random_id . "' data-config='KD_tagadmin'></script>";
+        $_SESSION["script_rd"] = "<script src='" . PATH_RD . $random_id . "' data-config='KD_tagadmin'></script>";
         $_SESSION["create_script_flag"] = 1;
     }
 

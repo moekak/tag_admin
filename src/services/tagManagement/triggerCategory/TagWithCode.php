@@ -17,7 +17,17 @@ class TagWithCode extends Base{
 
     // タグがすでにぞんざいしてるか確認
     public function isTagDataExisted($adCode){
-        return $this->tag_access->getTagsDataWithAdCode(intval($_POST["domain_id"]), ($_POST["ad_code"]. $_POST["ad_num"]), $_POST["trigger_category"]);
+        
+        $code = "";
+        if($_POST["ad_code"] !== "" && $_POST["ad_num"] !== ""){
+            $code = $_POST["ad_code"] . $_POST["ad_num"];
+        } else if($_POST["ad_code"] == "" && $_POST["ad_num"] !== ""){
+            $code = $_POST["ad_num"];
+        }else if($_POST["ad_code"] !== "" && $_POST["ad_num"] == ""){
+            $code = $_POST["ad_code"];
+        }
+
+        return $this->tag_access->getTagsDataWithAdCode(intval($_POST["domain_id"]), $code, $_POST["trigger_category"]);
     }
 
     // データベースに値を保存する

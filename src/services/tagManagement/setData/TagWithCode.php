@@ -18,7 +18,7 @@ class TagWithCode extends SetDataBase{
             "domain_id"             => intval($_POST["domain_id"]),
             "tag_head"              => $_POST["tag_head"] ? $this->changeToJsonData($_POST["tag_head"]) : '[]',
             "tag_body"              => $_POST["tag_body"] ? $this->changeToJsonData($_POST["tag_body"]): '[]',
-            "tag_code"              => $this->generateAdCode(\DataValidation::sanitizeInput($_POST["ad_code"]), \DataValidation::sanitizeInput($_POST["ad_num"])),
+            "tag_code"              => $this->generateAdCode(isset($_POST["ad_code"]) ?\DataValidation::sanitizeInput($_POST["ad_code"]) : "", isset($_POST["ad_num"]) ? \DataValidation::sanitizeInput($_POST["ad_num"]) : ""),
             "trigger"               => \DataValidation::sanitizeInput($_POST["trigger_category"]),
             "parent_tag_id"         => null
 
@@ -48,7 +48,14 @@ class TagWithCode extends SetDataBase{
 
     // 広告コードを作成
     public function generateAdCode($code, $num){
-        return $code . $num;
+        if($code !== "" && $num !== ""){
+            return $code . $num;
+        } else if($code == "" && $num !== ""){
+            return $num;
+        }else if($code !== "" && $num == ""){
+            return $code;
+        }
+        
     }
 
 }

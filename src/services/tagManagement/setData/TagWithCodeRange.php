@@ -14,7 +14,7 @@ class TagWithCodeRange extends SetDataBase{
             "domain_id"             => intval($_POST["domain_id"]),
             "tag_head"              => $_POST["tag_head"] ? $this->changeToJsonData($_POST["tag_head"]) : '[]',
             "tag_body"              => $_POST["tag_body"] ? $this->changeToJsonData($_POST["tag_body"]): '[]',
-            "tag_code"              => $this->generateAdCode(\DataValidation::sanitizeInput($_POST["ad_code"])),
+            "tag_code"              => $this->generateAdCode(isset($_POST["ad_code"]) ? \DataValidation::sanitizeInput($_POST["ad_code"]) : ""),
             "trigger"               => \DataValidation::sanitizeInput($_POST["trigger_category"]),
             "parent_tag_id"         => null
 
@@ -48,7 +48,7 @@ class TagWithCodeRange extends SetDataBase{
         $adNumArray = \DataValidation::generateNumberRange($_POST["ad_num"], $_POST["ad_range"]);
 
         for($i = 0; $i <= count($adNumArray) -1; $i ++){
-            $codeArray[] = $code . $adNumArray[$i] ;
+            $codeArray[] =  $code !== "" ? $code . $adNumArray[$i] : $adNumArray[$i];
         }
         return json_encode($codeArray, true);
     }

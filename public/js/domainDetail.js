@@ -125,6 +125,7 @@ addStyleToMenuBtn()
     
 }
 
+
 {
     const script_btn = document.querySelector(".js_script_tag")
     const copy_btn = document.querySelector(".copy_btn_script")
@@ -134,8 +135,8 @@ addStyleToMenuBtn()
 
     if(script_btn){
         script_btn.addEventListener("click", ()=>{
-        document.querySelector(".script_txt").textContent = `<script src='https://tag-tracker.biz/index.js?id=${document.getElementById("js_script_name").innerHTML}'></script>`
-        document.querySelector(".script_txt2").textContent = `<script src='https://tag-tracker.biz/rd.js?id=${document.getElementById("js_script_name").innerHTML}'></script>`
+        document.querySelector(".script_txt").textContent = `<script src='https://tag-tracker.biz/index.js?id=${document.getElementById("js_script_name").innerHTML}' data-config='KD_tagadmin'></script>`
+        document.querySelector(".script_txt2").textContent = `<script src='https://tag-tracker.biz/rd.js?id=${document.getElementById("js_script_name").innerHTML}' data-config='KD_tagadmin'></script>`
         document.querySelector(".script_area").classList.remove("hidden")
         document.querySelector(".bg-gray").classList.remove("hidden")
         copyTextToCplipboard(copy_btn, script.textContent)
@@ -151,4 +152,22 @@ addStyleToMenuBtn()
         })
     }
     
+}
+
+
+
+{
+    const info_btn = document.getElementById("js_info_btn")
+
+    if(info_btn !== null && info_btn !== ""){
+        info_btn.addEventListener("click", ()=>{
+            document.getElementById("js_info_modal").classList.remove("hidden")
+            document.querySelector(".bg-gray").classList.remove("hidden")
+        })
+    }
+
+    document.querySelector(".bg-gray").addEventListener("click", ()=>{
+        document.getElementById("js_info_modal").classList.add("hidden")
+        document.querySelector(".bg-gray").classList.add("hidden")
+    })
 }
