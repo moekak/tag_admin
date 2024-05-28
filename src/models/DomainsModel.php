@@ -325,7 +325,7 @@ class DomainsModel{
         }
     }
     public function getDomainNameWithTagReference($tag_reference_id , $admin_id){
-        $query = "SELECT `domain_name`, `id` FROM domains WHERE admin_id = :admin_id AND tag_reference_id = :tag_reference_id AND domain_type = 'copy' AND is_deleted = '0'";
+        $query = "SELECT `domain_name`, `id` FROM domains WHERE admin_id = :admin_id AND (tag_reference_id = :tag_reference_id OR id = :tag_reference_id)  AND is_deleted = '0'";
  
         try{
             $statement = $this->pdo->prepare($query);
@@ -341,7 +341,7 @@ class DomainsModel{
         }
     }
     public function getDomainNameWithTagReferenceDirectory($tag_reference_id , $admin_id){
-        $query = "SELECT `domain_name`, `id`, `tag_reference_id`, `parent_domain_id` FROM domains WHERE admin_id = :admin_id AND tag_reference_id = :tag_reference_id AND domain_type = 'directory' AND is_deleted = '0'";
+        $query = "SELECT `domain_name`, `id`, `tag_reference_id`, `parent_domain_id` FROM domains WHERE admin_id = :admin_id AND  (tag_reference_id = :tag_reference_id OR id = :tag_reference_id) AND domain_type = 'directory' AND is_deleted = '0'";
  
         try{
             $statement = $this->pdo->prepare($query);
@@ -357,7 +357,7 @@ class DomainsModel{
         }
     }
     public function getDomainRandomId($domain_id, $admin_id){
-        $query = "SELECT `random_domain_id` FROM domains WHERE admin_id = :admin_id AND id = :id AND is_deleted = '0'";
+        $query = "SELECT `random_domain_id`, `tag_reference_randomID` FROM domains WHERE admin_id = :admin_id AND id = :id AND is_deleted = '0'";
   
         try{
             $statement = $this->pdo->prepare($query);
@@ -372,8 +372,52 @@ class DomainsModel{
             exit;
         }
     }
+    public function getDomainRandomId2($domain_id, $admin_id){
+        $query = "SELECT 
+        `tag_reference_randomID`,
+        CASE 
+          WHEN `tag_reference_randomID` IS NULL THEN `random_domain_id`
+          ELSE NULL 
+        END AS `random_domain_id`
+      FROM domains 
+      WHERE admin_id = :admin_id 
+        AND id = :id 
+        AND is_deleted = '0'
+      ";
+  
+        try{
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue(':admin_id', $admin_id);
+            $statement->bindValue(':id', $domain_id);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC); // Fetch as associative array
+            return $result;
+            // return null; // データが存在しない場合、nullを返す
+
+        }catch(PDOException $e){
+            $this->feedback->logError($e->getMessage());
+            SystemFeedback::redirectToSystemErrorPage(ERROR_TEXT, ERROR_CODE_LOGIN);
+            exit;
+        }
+    }
     public function getTagReferenceId($domain_id, $admin_id){
         $query = "SELECT `tag_reference_randomID` FROM domains WHERE admin_id = :admin_id AND id = :id AND is_deleted = '0'";
+  
+        try{
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue(':admin_id', $admin_id);
+            $statement->bindValue(':id', $domain_id);
+            $statement->execute();
+            return $statement->fetchColumn();
+
+        }catch(PDOException $e){
+            $this->feedback->logError($e->getMessage());
+            SystemFeedback::redirectToSystemErrorPage(ERROR_TEXT, ERROR_CODE_LOGIN);
+            exit;
+        }
+    }
+    public function getTagReferneceID($domain_id, $admin_id){
+        $query = "SELECT `tag_reference_id` FROM domains WHERE admin_id = :admin_id AND id = :id AND is_deleted = '0'";
   
         try{
             $statement = $this->pdo->prepare($query);

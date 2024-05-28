@@ -62,7 +62,7 @@ class withoutTag implements TagTypeBase{
             "original_parent_id"    => $_POST["original_parent_id"] ? intval($_POST["original_parent_id"]): null,
             "domain_name"           => DataValidation::sanitizeInput($_POST["domain_name"]),
             "domain_type"           => DataValidation::sanitizeInput($_POST["domain_type"]),
-            "tag_reference_id"      => intval($_POST["parent_tag_id"]),
+            "tag_reference_id"      => $this->domain_access->getTagReferenceID(intval($_POST["parent_tag_id"])) ?? intval($_POST["parent_tag_id"]),
             "tag_reference_randomID" => $this->domain_access->getRandomDomainIDForTagReferene(intval($_POST["parent_tag_id"]))
         ];
 

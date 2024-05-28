@@ -361,7 +361,7 @@ if(isset($_SESSION["create_script_flag"])){
         <div class="padding_t10"></div>
         <div class="modal_btn_container">
         <form class="js_deleteTag_form" action="<?=PATH?>deleteTagIndex" method="post">
-            <input type="hidden" class="js_selectedID" value="" name="id">
+            <input type="hidden" class="js_selectedID_tag" value="" name="id">
             <input type="hidden" name="csrf_token" value=<?=$_SESSION['csrf_token']?>>
             <input type="hidden" name="referrer" value="<?= $_SERVER['REQUEST_URI']?>">
             <input type="hidden" value="withCode" name="type">

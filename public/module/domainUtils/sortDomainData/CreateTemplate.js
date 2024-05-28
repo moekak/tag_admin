@@ -34,6 +34,8 @@ export const createPtagForTagDeleteModal = (data)=>{
 
 // ドメイン情報をカテゴリーごとに表示させる
 export const createIndexDiv = (resArray)=>{
+
+    console.log(resArray);
     const table = document.querySelector(".js_table");
 
     table.innerHTML = "";
@@ -60,6 +62,7 @@ export const createIndexDiv = (resArray)=>{
         const domainActiveText  = res["is_active"] === "0" ? "未使用" : "使用";
         const style = res["domain_type"] === "original" ? "table-light" : ""
         const random_domain_id = res["random_domain_id"] == "0" ? res["tag_reference_randomID"] : res["random_domain_id"]
+        const tag_domain_id = res["tag_reference_id"] != null ?  res["tag_reference_id"] : res["id"]
 
         const redirect_url = `${process.env.SYSTEM_URL}showTag/?id=${res["id"]}`
         const template = 
@@ -69,7 +72,7 @@ export const createIndexDiv = (resArray)=>{
                 <td class="original_check align-middle">${domainStatus}</td>
                 <td class="align-middle ${domainActive}">${domainActiveText}</td>
                 <td class="text_color align-middle">${random_domain_id}</td>
-                <td class="text_color align-middle edit_modal_btns" data-id="${res["id"]}" data-id-active=${res["is_active"]}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
+                <td class="text_color align-middle edit_modal_btns" data-id="${res["id"]}" data-id-active=${res["is_active"]} data-tag-domain-id=${tag_domain_id}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
             </tr>
             ${directorySites}
             ${copySites}
@@ -90,6 +93,7 @@ export const createIndexDivForMore = (resArray)=>{
         const domainActiveText  = res["is_active"] === "0" ? "未使用" : "使用";
         const style = res["domain_type"] === "original" ? "table-light" : ""
         const random_domain_id = res["random_domain_id"] == "0" ? res["tag_reference_randomID"]  : res["random_domain_id"]
+        const tag_domain_id = res["tag_reference_id"] != null ?  res["tag_reference_id"] : res["id"]
 
         const redirect_url = `${process.env.SYSTEM_URL}showTag/?id=${res["id"]}`
         const template = 
@@ -99,7 +103,7 @@ export const createIndexDivForMore = (resArray)=>{
                 <td class="original_check align-middle">${domainStatus}</td>
                 <td class="align-middle ${domainActive}">${domainActiveText}</td>
                 <td class="text_color align-middle">${random_domain_id}</td>
-                <td class="text_color align-middle edit_modal_btns" data-id="${res["id"]}" data-id-active=${res["is_active"]}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
+                <td class="text_color align-middle edit_modal_btns" data-id="${res["id"]}" data-id-active=${res["is_active"]} data-tag-domain-id=${tag_domain_id}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
             </tr>
             ${directorySites}
             ${copySites}
@@ -111,6 +115,8 @@ export const createIndexDivForMore = (resArray)=>{
     return table;
 }
 export const createIndexCopyDiv = (res)=>{
+
+    console.log(res);
     let rows = "";
 
     res.forEach((item)=>{
@@ -119,6 +125,7 @@ export const createIndexCopyDiv = (res)=>{
         const domainActiveText  = item["is_active"] === "0" ? "未使用" : "使用";
         const random_domain_id  = item["random_domain_id"] == "0" ? item["tag_reference_randomID"]  : item["random_domain_id"]
         const redirect_url      = `${process.env.SYSTEM_URL}showTag/?id=${item["id"]}`
+        const tag_domain_id = item["tag_reference_id"] != null ?  item["tag_reference_id"] : item["id"]
 
         rows += 
         `<tr class="js_copySites">
@@ -133,7 +140,7 @@ export const createIndexCopyDiv = (res)=>{
             <td class="original_check align-middle"></td>
             <td class="align-middle ${domainActive}">${domainActiveText}</td>
             <td class="text_color align-middle">${random_domain_id}</td>
-            <td class="text_color align-middle edit_modal_btns js_tables" data-id="${item["id"]}" data-id-active=${item["is_active"]}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
+            <td class="text_color align-middle edit_modal_btns js_tables" data-id="${item["id"]}" data-id-active=${item["is_active"]} data-tag-domain-id=${tag_domain_id}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
         </tr>
         ${directorySites}
 
@@ -151,6 +158,7 @@ export const createIndexCopyDirectoryDiv = (res)=>{
         const domainActiveText  = item["is_active"] === "0" ? "未使用" : "使用";
         const random_domain_id  = item["random_domain_id"] == "0" ? item["tag_reference_randomID"]  : item["random_domain_id"]
         const redirect_url      =  `${process.env.SYSTEM_URL}showTag/?id=${item["id"]}`
+        const tag_domain_id = item["tag_reference_id"] != null ?  item["tag_reference_id"] : item["id"]
 
         rows += 
         `<tr class="js_copySites">
@@ -165,7 +173,7 @@ export const createIndexCopyDirectoryDiv = (res)=>{
             <td class="original_check align-middle"></td>
             <td class="align-middle ${domainActive}">${domainActiveText}</td>
             <td class="text_color align-middle">${random_domain_id}</td>
-            <td class="text_color align-middle edit_modal_btns js_tables" data-id="${item["id"]}" data-id-active=${item["is_active"]}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
+            <td class="text_color align-middle edit_modal_btns js_tables" data-id="${item["id"]}" data-id-active=${item["is_active"]} data-tag-domain-id=${tag_domain_id}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
         </tr>
         `    
     })
@@ -181,6 +189,7 @@ export const createIndexDirectoryDiv = (res)=>{
         const domainActiveText  = item["is_active"] === "0" ? "未使用" : "使用";
         const random_domain_id  = item["random_domain_id"] == "0" ? item["tag_reference_randomID"] : item["random_domain_id"]
         const redirect_url      =  `${process.env.SYSTEM_URL}showTag/?id=${item["id"]}`
+        const tag_domain_id =  item["tag_reference_id"] != null ?  item["tag_reference_id"] : item["id"]
 
         rows += 
         `<tr class="js_copySites">
@@ -194,7 +203,7 @@ export const createIndexDirectoryDiv = (res)=>{
             <td class="original_check align-middle"></td>
             <td class="align-middle ${domainActive}">${domainActiveText}</td>
             <td class="text_color align-middle">${random_domain_id}</td>
-            <td class="text_color align-middle edit_modal_btns js_tables" data-id="${item["id"]}" data-id-active=${item["is_active"]}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
+            <td class="text_color align-middle edit_modal_btns js_tables" data-id="${item["id"]}" data-id-active=${item["is_active"]} data-tag-domain-id=${tag_domain_id}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
         </tr>`    
     })
 

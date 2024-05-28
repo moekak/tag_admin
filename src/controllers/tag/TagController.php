@@ -81,13 +81,17 @@ class TagController{
 
     // この処理はタグタイプ全て同じ処理
     public function deleteIndex(){
+       
         $this->instance_validation->getInstance()->commonFormValidatorForDeactivate();
         $this->instance_validation->getInstance()->commonFormValidatorForDeactivateIndex();
 
         try{
+          
             // トランザクション開始
             $this->pdo->beginTransaction();
+            
             $this->instance_trigger->getInstance()->deativateTagForIndex();
+
 
             $fileOperation= new InsertTagDataToFile();
             $fileOperation->deleteTagDataFile(intval($_POST["id"]));

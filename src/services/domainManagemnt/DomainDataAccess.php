@@ -29,9 +29,15 @@ class DomainDataAccess{
     }
 
     public function getRandomDomainIDForTagReferene($domain_id){
-        return $this->domain_model->getDomainRandomId($domain_id, $_SESSION["user_id"]);
+        $result = $this->domain_model->getDomainRandomId2($domain_id, $_SESSION["user_id"]);
+        return $result["random_domain_id"] == "" ? $result["tag_reference_randomID"] : $result["random_domain_id"];
     }
 
+    public function getTagReferenceID($domain_id){
+        // echo $this->domain_model->getTagReferneceID($domain_id, $_SESSION["user_id"]);
+        // exit;
+        return $this->domain_model->getTagReferneceID($domain_id, $_SESSION["user_id"]);
+    }
     // public function getDirectoryDomainData($parent_domain_id){
     //     return $this->domain_model->getDirectoryDomainData($_SESSION["user_id"], $parent_domain_id);
     // }

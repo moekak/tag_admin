@@ -27,8 +27,8 @@ $data = json_decode($raw, true); // json形式をphp変数に変換
 $res = $data;
 
 
-$result = $tagModel->checkTagActive($user_id, $res);
-$result2 = $tagRangeModal->checkTagActive($user_id, $res);
+$result = $tagModel->checkTagActive2($user_id, $res);
+$result2 = $tagRangeModal->checkTagActive2($user_id, $res);
 
 $combinedArray = array_merge($result, $result2);
 

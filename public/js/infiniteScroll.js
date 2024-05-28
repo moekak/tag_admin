@@ -53,6 +53,8 @@ const fetchDomainInfo = (clickCount)=>{
         }else{
             document.querySelector(".js_btn").innerHTML = "もっと表示させる"
         }
+
+        console.log(res);
         
         createIndexDivForMore(res)
 
@@ -112,6 +114,7 @@ const createIndexDivForScroll = (resArray)=>{
         const domainActiveText  = res["is_active"] === "0" ? "未使用" : "使用";
         const style = res["domain_type"] === "original" ? "table-light" : ""
         const random_domain_id = res["random_domain_id"] == "0" ? "" : res["random_domain_id"]
+        const tag_domain_id = res["tag_reference_id"] != null ?  res["tag_reference_id"] : res["id"]
         const template = 
         `<tbody>
             <tr class="${style}" data-id=${res["id"]}>
@@ -119,7 +122,7 @@ const createIndexDivForScroll = (resArray)=>{
                 <td class="original_check align-middle">${domainStatus}</td>
                 <td class="align-middle ${domainActive}">${domainActiveText}</td>
                 <td class="text_color align-middle">${random_domain_id}</td>
-                <td class="text_color align-middle edit_modal_btns" data-id="${res["id"]}" data-id-active=${res["is_active"]}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
+                <td class="text_color align-middle edit_modal_btns" data-id="${res["id"]}" data-id-active=${res["is_active"]} data-tag-domain-id=${tag_domain_id}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
             </tr>
         </tbody>` 
 
@@ -139,6 +142,7 @@ const createIndexCopyDivForScroll = (resArray)=>{
         const domainActive      = res["is_active"] === "0" ? "red" : "green";
         const domainActiveText  = res["is_active"] === "0" ? "未使用" : "使用";
         const random_domain_id = res["random_domain_id"] == "0" ? "" : res["random_domain_id"]
+        const tag_domain_id = res["tag_reference_id"] != null ?  res["tag_reference_id"] : res["id"]
         // const style = res["random_domain_id"] == "0" ? "table-warning" : ""
 
         const template = 
@@ -147,7 +151,7 @@ const createIndexCopyDivForScroll = (resArray)=>{
             <td class="original_check align-middle">${domainStatus}</td>
             <td class="align-middle ${domainActive}">${domainActiveText}</td>
             <td class="text_color align-middle">${random_domain_id}</td>
-            <td class="text_color align-middle edit_modal_btns" data-id="${res["id"]}" data-id-active=${res["is_active"]}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
+            <td class="text_color align-middle edit_modal_btns" data-id="${res["id"]}" data-id-active=${res["is_active"]} data-tag-domain-id=${tag_domain_id}><i class="fas fa-ellipsis-v text_color"></i></td>                                 
         </tr>` 
 
         parent.insertAdjacentHTML('beforeend', template.trim());

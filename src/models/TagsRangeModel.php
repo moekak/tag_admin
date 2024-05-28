@@ -75,7 +75,22 @@ class TagsRangeModel{
 
     public function checkTagActive($admin_id, $domain_id){
         try{
-            $statement = $this->pdo->prepare("SELECT * FROM `tags_range` WHERE admin_id = :admin_id AND domain_id = :domain_id AND is_active = '1'");
+            $statement = $this->pdo->prepare("SELECT * FROM `tags_range` LEFT JOIN domains ON domains.original_parent_id = tags_range.domain_id WHERE tags_range.admin_id = :admin_id AND ((tags_range.domain_id = :domain_id) OR (tags_range.domain_id = domains.original_parent_id)) AND tags_range.is_active = '1'");
+            $statement->bindValue(':admin_id', $admin_id);
+            $statement->bindValue(':domain_id', $domain_id);
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        }catch(PDOException $e){
+            $this->feedback->logError($e->getMessage());
+            SystemFeedback::redirectToSystemErrorPage(ERROR_TEXT, ERROR_CODE_LOGIN);
+            exit;
+        }
+    }
+
+    public function checkTagActive2($admin_id, $domain_id){
+        try{
+            $statement = $this->pdo->prepare("SELECT * FROM `tags_range` WHERE tags_range.admin_id = :admin_id AND tags_range.domain_id = :domain_id AND tags_range.is_active = '1'");
             $statement->bindValue(':admin_id', $admin_id);
             $statement->bindValue(':domain_id', $domain_id);
             $statement->execute();

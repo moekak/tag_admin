@@ -5,8 +5,11 @@ import { copyTextToCplipboard, addStyleToMenuBtn, displayEditModalAndInitializin
 {
     const delete_btn = document.querySelector(".js_delete_tag")
 
+   
+
         if(delete_btn !== null){
             delete_btn.addEventListener("click", (e)=>{
+                
                 
                 // タグ削除のアラートモーダルを表示
                 displayAlertModalForDeleteTag()

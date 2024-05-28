@@ -28,18 +28,19 @@ $res = $data;
 
 $results = $domainModel->getDomainNameWithTagReference($res, $user_id);
 
-$results2 = $domainModel->getDomainNameWithTagReferenceDirectory($res, $user_id);
+// $results2 = $domainModel->getDomainNameWithTagReferenceDirectory($res, $user_id);
 
-$domain_name;
+// $domain_name;
 
-foreach($results2 as &$result){
-    $domain_name = $domainModel->getDomainNameForDirectory($user_id, $result["parent_domain_id"]);
-    $directory = $result["domain_name"];
-    $result["domain_name"] = $domain_name . "/" . $directory;
-}
-
-
+// foreach($results2 as &$result){
+//     $domain_name = $domainModel->getDomainNameForDirectory($user_id, $result["parent_domain_id"]);
+//     $directory = $result["domain_name"];
+//     $result["domain_name"] = $domain_name . "/" . $directory;
+// }
 
 
 
-echo json_encode(array_merge($results, $results2), true);
+
+
+// echo json_encode(array_merge($results, $results2), true);
+echo json_encode($results);

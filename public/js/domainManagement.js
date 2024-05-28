@@ -383,8 +383,16 @@ if(error.value === "edit"){
     const delete_btn = document.querySelector(".js_delete_tag")
 
         delete_btn.addEventListener("click", (e)=>{
-            fetchTagReferenceDomain(document.querySelector(".js_selectedID").value)
+
+           
+            
+            let id = document.querySelector(".js_delete_tag").getAttribute("data-id")
+
+            document.querySelector(".js_selectedID_tag").value = id
+            fetchTagReferenceDomain(id)
             .then((res)=>{
+
+                console.log(res);
 
                 createPtagForTagDeleteModal(res)
 

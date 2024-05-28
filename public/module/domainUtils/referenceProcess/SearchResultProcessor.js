@@ -61,9 +61,14 @@ export const setSelectedDomainIdAndName = (copy_site_btn, e) =>{
 
 // タグ参照LPのidとドメイン名をinputタグにセットする
 export const setSelectedTagIdAndName = (copy_tag, e) =>{
+
+    
     const tag_input         = document.getElementById("js_tag_reference_id")
     let target              = e.currentTarget;
-    let selectedID          = target.querySelector(".label").getAttribute("data-id");
+    let selectedID          = target.querySelector(".label").getAttribute("data-original-id") == "null" ? target.querySelector(".label").getAttribute("data-id") : target.querySelector(".label").getAttribute("data-original-id")
+    // let selectedID          = target.querySelector(".label").getAttribute("data-id")
+
+    
     let selectedTagName     = target.querySelector(".label").innerHTML
 
     copy_tag.querySelector(".label").innerHTML  = selectedTagName;

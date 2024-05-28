@@ -12,13 +12,21 @@ export const initializeDomainEditModal = (event)=>{
 
     // 選択したドメインのIDの取得、設置
     let target = event.currentTarget
+
+    console.log(target);
+
+  
     let selected_id = target.getAttribute("data-id")
+
     input_selectedID.forEach((id)=>{
         id.value = selected_id
     })
+    
 
     // 使用有無の切り替えで使うidを取得、設置
     active_num.value= target.getAttribute("data-id-active")
+
+    return target.getAttribute("data-tag-domain-id")
 
 }
 
@@ -30,17 +38,17 @@ export const displayEditModalAndInitializing = ()=>{
     modal_btn.forEach((btn)=>{
         btn.addEventListener("click", (e)=>{
             //ドメイン編集モーダルの初期化
-            initializeDomainEditModal(e)
+            let id = initializeDomainEditModal(e)
             // モーダルのドメイン削除文言の切り替え
-            fetchTagID()
+            fetchTagID(id)
             fetchCopySIte()
             //ドメイン使用の有無の文言切り替え
             isActive()
             setTimeout(() => {
-               displaySettingModal() 
-            }, 100);
-            
-            
+                displaySettingModal() 
+             }, 100);
+
+             document.querySelector(".js_delete_tag").setAttribute("data-id", id)
         })
     })
 }
