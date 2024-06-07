@@ -15,6 +15,7 @@ class AdminsModel{
         $this->feedback = new SystemFeedback();
     }
 
+
     public function getUserName($username){
         try{
             $statement = $this->pdo->prepare(
@@ -33,13 +34,44 @@ class AdminsModel{
             exit;
         }
     }
+    public function getAdminName($id){
+        try{
+            $statement = $this->pdo->prepare(
+                "SELECT username
+                        FROM admins WHERE id = :id
+            ");
+            $statement->bindValue(':id', $id);
+            $statement->execute();
+            return $statement->fetchColumn();
+
+        } catch(PDOException $e){
+            $this->feedback->logError($e->getMessage());
+            SystemFeedback::redirectToSystemErrorPage(ERROR_TEXT, ERROR_CODE_LOGIN);
+            exit;
+        }
+    }
+
+    public function getAllAdminInfo(){
+        try{
+            $statement = $this->pdo->prepare(
+                "SELECT `username`, `created_at`, `id` FROM admins WHERE `role` IS NULL" );
+
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch(PDOException $e){
+            $this->feedback->logError($e->getMessage());
+            SystemFeedback::redirectToSystemErrorPage(ERROR_TEXT, ERROR_CODE_LOGIN);
+            exit;
+        }
+    }
     
 
     public function getPasswordAndId($username){
         try{
             $statement = $this->pdo->prepare(
                 "SELECT 
-                    `encrypted_password`, `id`
+                    `encrypted_password`, `id`, `role`
                 FROM 
                     admins 
                 WHERE 

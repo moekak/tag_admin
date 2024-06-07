@@ -9,6 +9,7 @@ session_start();
 
 $request = $_SERVER['REQUEST_URI'];
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     switch($request){
         case '/tag_admin/':
@@ -71,11 +72,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
 } else if($_SERVER['REQUEST_METHOD'] === 'GET'){
     switch (true) {
+        
         case $request === '/tag_admin/':
             require __DIR__ . '/src/auth/controllers/LoginController.php';
             $controller = new LoginController();
             $controller->get();
             break;
+        case $request === '/tag_admin/admin' && isset($_SESSION["role"]) == "admin":
+            require __DIR__ . '/src/auth/controllers/SuperAdminController.php';
+            $controller = new SuperAdminController();
+            $controller->get();
+                    break;
         case $request === '/tag_admin/error':
             require __DIR__ . '/src/controllers/ErrorController.php';
             $controller = new ErrorController();
@@ -197,11 +204,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 //     }
 // } else if($_SERVER['REQUEST_METHOD'] === 'GET'){
 //     switch (true) {
-//         case $request === PATH :
-//             require __DIR__ . '/src/auth/controllers/LoginController.php';
-//             $controller = new LoginController();
-//             $controller->get();
-//             break;
+//           case $request === PATH:
+            //     require __DIR__ . '/src/auth/controllers/LoginController.php';
+            //     $controller = new LoginController();
+            //     $controller->get();
+            //     break;
+            // case $request === PATH . 'admin' && isset($_SESSION["role"]) == "admin":
+            //     require __DIR__ . '/src/auth/controllers/SuperAdminController.php';
+            //     $controller = new SuperAdminController();
+            //     $controller->get();
+            //             break;
 //         case $request === PATH .'error':
 //             require __DIR__ . '/src/controllers/ErrorController.php';
 //             $controller = new ErrorController();

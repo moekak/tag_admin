@@ -25,7 +25,8 @@ class TagWithCodeRange extends SetDataBase{
 
     public function setVariableForDeactivate(){
         $domain_model = new \DomainsModel();
-        $tagData    = $domain_model->getTagDataWithRangeAndDomain($_SESSION["user_id"], intval($_POST["id"]));
+        $user_id = isset($_SESSION["admin_id"]) ? $_SESSION["admin_id"] : $_SESSION["user_id"];
+        $tagData    = $domain_model->getTagDataWithRangeAndDomain($user_id, intval($_POST["id"]));
 
 
         $tag_info = [

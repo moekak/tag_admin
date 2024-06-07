@@ -426,3 +426,12 @@ padding, margin
 .border_under {
     background: linear-gradient(transparent 50%, #ffff00 10% 90%, transparent 90%);
 }
+.user_icon{
+    width: 30px;
+    height: 30px;
+}
+.user_flex{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

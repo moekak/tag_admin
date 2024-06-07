@@ -3,18 +3,16 @@
 
 session_start();
 
-require_once(dirname(__FILE__) . "/../models/DomainsModel.php");
+require_once(dirname(__FILE__) . "/../models/AdminsModel.php");
 require_once(dirname(__FILE__) . "/../../vendor/autoload.php");
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__FILE__) . "/../../");
 $dotenv->load();
 
-$user_id = "";
-if(isset($_SESSION["user_id"])){
-    $user_id = $_SESSION["user_id"];
-}
 
-$domainModel = new DomainsModel();
+$amdin_model = new AdminsModel();
+
+
 
 
 $raw = file_get_contents('php://input'); // POSTされた生のデータを受け取る
@@ -22,10 +20,10 @@ $data = json_decode($raw, true); // json形式をphp変数に変換
 
 $res = $data;
 
-$results = $domainModel->getCopyDataByCategory($user_id, $res["domain_id"]);
+$_SESSION["admin_id"] = $res["id"];
+$_SESSION["admin_info"] = $amdin_model->getAdminName($res["id"]);
 
 
 
 
-
-echo json_encode($results, true);
+echo json_encode($_SESSION["admin_id"], true);

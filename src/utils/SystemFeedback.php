@@ -5,6 +5,9 @@ require_once dirname(__FILE__) . "/../utils/Security.php";
 
 class SystemFeedback{
    public $logFile = LOG_FILE_PATH;
+   public $user_id;
+
+ 
 
    // ログファイルに書き込む処理
    public static function writeErrorLog($error_msg){
@@ -78,7 +81,8 @@ class SystemFeedback{
       $currentLine = $caller['line'];
 
       $receivedId = ($_POST[$data] !== "") ? $_POST[$data] : 'Not Provided';
-      $userId     = isset($_SESSION["user_id"]) ? Security::maskUserId($security->tokenizeUserId($_SESSION["user_id"])): 'Not Logged In';
+      $user_id = isset($_SESSION["admin_id"]) ? $_SESSION["admin_id"] : $_SESSION["user_id"];
+      $userId     = isset($user_id) ? Security::maskUserId($security->tokenizeUserId($user_id)): 'Not Logged In';
       $requestURL = $_SERVER["REQUEST_URI"];
       $httpMethod = $_SERVER["REQUEST_METHOD"];
       $scriptName = $_SERVER["SCRIPT_NAME"];
@@ -128,7 +132,8 @@ class SystemFeedback{
       $currentLine = $caller['line'];
 
       $receivedId = $_GET[$data];
-      $userId     = isset($_SESSION["user_id"]) ? Security::maskUserId($security->tokenizeUserId($_SESSION["user_id"])): 'Not Logged In';
+      $user_id = isset($_SESSION["admin_id"]) ? $_SESSION["admin_id"] : $_SESSION["user_id"];
+      $userId     = isset($user_id) ? Security::maskUserId($security->tokenizeUserId($user_id)): 'Not Logged In';
       $requestURL = $_SERVER["REQUEST_URI"];
       $httpMethod = $_SERVER["REQUEST_METHOD"];
       $scriptName = $_SERVER["SCRIPT_NAME"];
@@ -156,7 +161,8 @@ class SystemFeedback{
       $currentLine = $caller['line'];
   
       $receivedData =  ($_POST[$data] !== "") ? $_POST[$data] : 'Not Provided data';
-      $userId     = isset($_SESSION["user_id"]) ? Security::maskUserId($security->tokenizeUserId($_SESSION["user_id"])): 'Not Logged In';
+      $user_id = isset($_SESSION["admin_id"]) ? $_SESSION["admin_id"] : $_SESSION["user_id"];
+      $userId     = isset($user_id) ? Security::maskUserId($security->tokenizeUserId($user_id)): 'Not Logged In';
       $requestURL = $_SERVER["REQUEST_URI"];
       $httpMethod = $_SERVER["REQUEST_METHOD"];
       $scriptName = $_SERVER["SCRIPT_NAME"];

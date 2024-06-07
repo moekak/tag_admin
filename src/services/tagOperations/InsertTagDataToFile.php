@@ -16,11 +16,13 @@ class InsertTagDataToFile{
    public $tag_model;
    public $tag_range_model;
    public $domain_model;
+   public $user_id;
 
     public function __construct(){
         $this->tag_model        = new TagsModel();
         $this->tag_range_model  = new TagsRangeModel;
         $this->domain_model     = new DomainsModel();
+        $this->user_id = isset($_SESSION["admin_id"]) ? $_SESSION["admin_id"] : $_SESSION["user_id"];
     }
 
     public function genereateFilePath($code, $position, $domain_id, $tagType, $type){
@@ -220,19 +222,19 @@ class InsertTagDataToFile{
 
     // tagsテーブルから特定のデータを取得
     public function getTagData($position, $type, $id, $code){
-        $tagDataWithCode = $this->tag_model->getMatchedTagData($_SESSION["user_id"], intval($id), $position, $type, $code);
+        $tagDataWithCode = $this->tag_model->getMatchedTagData($this->user_id, intval($id), $position, $type, $code);
         return $this->generateTagArray($tagDataWithCode);
     }
 
     // tags_rangeテーブルから特定のデータを取得
     public function getTagDataForRange($position, $type, $id, $code, $excluded_code){
-        $tagDataWithCodeRange = $this->tag_range_model->getMatchedTagData($_SESSION["user_id"], intval($id), $position, $type, $code, $excluded_code);
+        $tagDataWithCodeRange = $this->tag_range_model->getMatchedTagData($this->user_id, intval($id), $position, $type, $code, $excluded_code);
         return $this->generateTagArray($tagDataWithCodeRange);
     }
 
     // tagsテーブルから特定のデータを取得
     public function getTagDataWithoutCode($position, $type, $id){
-        $tagDataWithCode = $this->tag_model->getMatchedTagData($_SESSION["user_id"], intval($id), $position, $type, "");
+        $tagDataWithCode = $this->tag_model->getMatchedTagData($this->user_id, intval($id), $position, $type, "");
         return $this->generateTagArray($tagDataWithCode);
     }
 
@@ -255,7 +257,7 @@ class InsertTagDataToFile{
 
     //オリジナルドメインIDを取得する
     public function getRandomDomainID($domain_id){
-        $original_id = $this->domain_model->getDomainRandomId($domain_id, $_SESSION["user_id"]);
+        $original_id = $this->domain_model->getDomainRandomId($domain_id, $this->user_id);
 
         return $original_id;
     }

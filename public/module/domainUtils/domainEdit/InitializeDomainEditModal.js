@@ -11,11 +11,7 @@ export const initializeDomainEditModal = (event)=>{
     clearInputField()
 
     // 選択したドメインのIDの取得、設置
-    let target = event.currentTarget
-
-    console.log(target);
-
-  
+    let target      = event.currentTarget
     let selected_id = target.getAttribute("data-id")
 
     input_selectedID.forEach((id)=>{

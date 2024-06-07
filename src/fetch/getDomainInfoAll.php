@@ -9,11 +9,7 @@ require_once(dirname(__FILE__) . "/../../vendor/autoload.php");
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__FILE__) . "/../../");
 $dotenv->load();
 
-$user_id = "";
-if(isset($_SESSION["user_id"])){
-    $user_id = $_SESSION["user_id"];
-}
-
+$user_id = isset($_SESSION["admin_id"]) ? $_SESSION["admin_id"] : $_SESSION["user_id"];
 $domainModel = new DomainsModel();
 
 

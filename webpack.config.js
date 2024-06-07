@@ -4,7 +4,6 @@ const webpack = require("webpack");
 
 
 module.exports = (env) => {
-    console.log('env.production:', env.production);
     const isProduction = env.production === 'true';
     const basePath = isProduction ? "public/module" : "public/module"
     const baseJsPath = isProduction ? "public/js" : "public/js"
@@ -21,6 +20,7 @@ module.exports = (env) => {
             sortDomainDataByCategory: path.resolve(__dirname, `${baseJsPath}/sortDomainDataByCategory.js`),
             tagManagement: path.resolve(__dirname, `${baseJsPath}/tagManagement.js`),
             tagEdit: path.resolve(__dirname, `${baseJsPath}/tagEdit.js`),
+            superAdmin: path.resolve(__dirname, `${baseJsPath}/superAdmin.js`),
         },
         resolve: {
             alias: {

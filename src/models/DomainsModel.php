@@ -83,6 +83,31 @@ class DomainsModel{
             exit;
         }
     }
+    public function searchData($keyword){
+        try{
+            $statement = $this->pdo->prepare(
+                "SELECT 
+                    *, `domains`.id AS domain_id
+                FROM 
+                    `domains` 
+                INNER JOIN `admins`ON `admins`.id = `domains`.admin_id 
+                WHERE 
+                    (`domains`.domain_name LIKE :keyword OR `domains`.random_domain_id LIKE :keyword OR `domains`.tag_reference_randomID LIKE :keyword)
+                AND 
+                    `domains`.is_deleted = '0' 
+                ");
+
+            $statement->bindValue(':keyword', $keyword);
+
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        }catch(PDOException $e){
+            $this->feedback->logError($e->getMessage());
+            SystemFeedback::redirectToSystemErrorPage(ERROR_TEXT, ERROR_CODE_LOGIN);
+            exit;
+        }
+    }
     public function getParentDomainData($admin_id, $domain_id){
         try{
             $statement = $this->pdo->prepare(
@@ -596,7 +621,7 @@ class DomainsModel{
         try{
             $statement = $this->pdo->prepare(
                 "SELECT 
-                    * 
+                    *
                 FROM 
                     domains 
                 WHERE 

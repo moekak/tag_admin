@@ -5,8 +5,9 @@ class DomainValidation{
 
     //  ドメインがすでに登録されてるかのチェック
     public function isDomainNameAlreadyExisted($domain_id){
+        $user_id = isset($_SESSION["admin_id"]) ? $_SESSION["admin_id"] : $_SESSION["user_id"];
         $domain_model  = new DomainsModel();
-        return $domain_model->getDomainName(DataValidation::sanitizeInput($_POST["domain_name"]), $_SESSION["user_id"], $domain_id);
+        return $domain_model->getDomainName(DataValidation::sanitizeInput($_POST["domain_name"]), $user_id, $domain_id);
     }
     
     // ##############################################################################

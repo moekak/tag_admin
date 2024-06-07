@@ -63,8 +63,6 @@ if(isset($first)){
                     <h2 class="bold white"><?=$code?></h2>
                 </div>
             </div>
-            
-        
         </div>
         <div class="main_wrapper">
             <div class="menu_bar sticky">
@@ -152,13 +150,6 @@ if(isset($first)){
                                 </div>
                             <?php }?>
                         </div>
-                        <!-- <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="delivered_trigger">
-                            <label class="form-check-label label" for="flexCheckDefault">
-                                離脱クリック
-                            </label>
-                        </div> -->
-                        
                         <p class="label margin_t30" >タグ</p>
                         <div class="textarea">
                             <p class="label">&lt;head&gt;&lt;/head&gt;内に貼るタグ</p>

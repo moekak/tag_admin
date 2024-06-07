@@ -158,6 +158,7 @@ export const disableDelete = () =>{
         btn.getElementsByTagName("p")[0].style.color = "rgba(255, 0, 0, 0.25)"
 
         btn.getElementsByTagName("img")[0].src = `${process.env.SYSTEM_URL}public/img/trash_2.png`
+        btn.style.pointerEvents = "none"
 
 }
 
@@ -169,6 +170,7 @@ export const enableDelete = () =>{
         btn.getElementsByTagName("p")[0].style.color = "red"
 
         btn.getElementsByTagName("img")[0].src = `${process.env.SYSTEM_URL}public/img/trash.png`
+        btn.style.pointerEvents = "auto"
 
 }
 

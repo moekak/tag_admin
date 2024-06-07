@@ -391,18 +391,12 @@ if(error.value === "edit"){
             document.querySelector(".js_selectedID_tag").value = id
             fetchTagReferenceDomain(id)
             .then((res)=>{
-
-                console.log(res);
-
                 createPtagForTagDeleteModal(res)
-
             })
             .then(()=>{
                 // タグ削除のアラートモーダルを表示
                 displayAlertModalForDeleteTag()
             })
-            
-
         })
 
     const cancel_btns = document.querySelectorAll(".js_delete_btn");
@@ -429,10 +423,6 @@ if(error.value === "edit"){
     deleteBtn.addEventListener("click", ()=>{
         document.querySelector(".loading").classList.remove("hidden")
     })
-
-
-
-
 }
 
 

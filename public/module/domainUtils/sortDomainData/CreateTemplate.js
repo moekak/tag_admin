@@ -35,7 +35,6 @@ export const createPtagForTagDeleteModal = (data)=>{
 // ドメイン情報をカテゴリーごとに表示させる
 export const createIndexDiv = (resArray)=>{
 
-    console.log(resArray);
     const table = document.querySelector(".js_table");
 
     table.innerHTML = "";
@@ -115,8 +114,7 @@ export const createIndexDivForMore = (resArray)=>{
     return table;
 }
 export const createIndexCopyDiv = (res)=>{
-
-    console.log(res);
+    
     let rows = "";
 
     res.forEach((item)=>{

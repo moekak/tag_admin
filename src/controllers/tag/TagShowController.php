@@ -15,12 +15,14 @@ class TagShowController{
     public $domain_model;
     public $tagRange_model;
     public $domain_id;
+    public $user_id;
 
     public function __construct(){
         $this->tag_model  = new TagsModel();
         $this->domain_model = new DomainsModel();
         $this->tagRange_model = new TagsRangeModel();
         $this->tag_access = new TagDataAccess();
+        $this->user_id = isset($_SESSION["admin_id"]) ? $_SESSION["admin_id"] : $_SESSION["user_id"];
     }
 
     // ##########################################################
@@ -36,7 +38,7 @@ class TagShowController{
 
 
    
-        $specificTagData     = $this->tag_model->getTagsInfo($_SESSION["user_id"], intval($_GET["id"]));
+        $specificTagData     = $this->tag_model->getTagsInfo($this->user_id, intval($_GET["id"]));
         $_SESSION["tagData"] = $specificTagData;
     
 
@@ -54,7 +56,7 @@ class TagShowController{
             exit;
         }
    
-        $specificTagData     = $this->tagRange_model->getTagsRangeData($_SESSION["user_id"], intval($_GET["id"]));
+        $specificTagData     = $this->tagRange_model->getTagsRangeData($this->user_id, intval($_GET["id"]));
         $_SESSION["tagData"] = $specificTagData;
     
         Security::generateCsrfToken();

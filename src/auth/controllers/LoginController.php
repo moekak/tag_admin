@@ -69,7 +69,14 @@ class LoginController{
         // セッション固定攻撃の防止、セッションハイジャックのリスク軽減
         session_regenerate_id(true);
         $_SESSION["user_id"] = $results["id"];  //ユーザーid
-        header("Location:" . PATH . "index");
+        $_SESSION["role"] = $results["role"];
+
+        if(isset($_SESSION["role"])){
+            header("Location:" . PATH . "admin");
+        }else{
+            header("Location:" . PATH . "index");
+        }
+        
         exit;
       
     }

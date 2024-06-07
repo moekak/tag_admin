@@ -66,11 +66,7 @@ export const fetchReferences = (res2, id_type, reference_type, btn)=>{
 
 // タグが編集で選択されたドメインに紐づいてるかの確認
 export const fetchTagID = (id)=>{
-    
     const data_id =  id
-
-    // console.log(data_id);
-   
 
     fetch(`${process.env.API_URL}/checkTagID.php`, {
         // 第1引数に送り先
@@ -89,7 +85,6 @@ export const fetchTagID = (id)=>{
     })
     .then((res) => {
 
-        console.log(res);
         const pElements = document.querySelector(".js_delete_tag").getElementsByTagName("p");
         if(res.length <= 0){
             
@@ -127,8 +122,6 @@ export const fetchTagID = (id)=>{
 // 非同期関数Promiseオブジェクトを返す
 export const fetchTagReferenceDomain = (id) => {
     const data = id
-
-    console.log(data);
     
     return fetch(`${process.env.API_URL}/getDomainWithTagReference.php`, {
       method: "POST",

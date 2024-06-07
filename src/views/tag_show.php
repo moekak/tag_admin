@@ -91,8 +91,6 @@ if(isset($tagData["ad_code"])){
                             <p class="label">配信トリガー　<span class="red label light">*必須</span></p>
                             <div class="trigger_input relative">
                                 <input type="text" class="domain_name_input border transparent js_trigger disabledInput"  name="trigger_category" value="<?=$tagData["trigger_type"]?>"  readonly>
-                                <!-- <i class="fas fa-chevron-down absolute arrow js_arrowDown_btn pointer"></i>
-                                <i class="fas fa-chevron-up absolute arrow js_arrowUp_btn hidden pointer" ></i> -->
                                 <div class="trigger_btn absolute trigger_position trigger_msg">
                                     <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
                                     <p class="label margin_0">
@@ -117,8 +115,6 @@ if(isset($tagData["ad_code"])){
                                     <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
                                     <p class="label margin_0">rd</p>
                                 </div>
-        
-                            
                                 <div class="trigger_btn margin_t10 pointer js_trigger_btns" data-type="all_pages">
                                     <img src="<?=PATH?>public/img/eye.png" alt="" class="eye">
                                     <p class="label margin_0">all_pages</p>
@@ -153,18 +149,9 @@ if(isset($tagData["ad_code"])){
                                         <input type="text" class="domain_name_input border js_adRange_field prohibited js_data_field disabledInput"  style="width: 160px;"  name="ad_range" placeholder="1～100まで" readonly value="<?= $completeAdCode !== "" ? "1" : ""?>">
                                         <p class="alert_txt red hidden">半角数字, 1～100までの数字で入力してください</p>
                                     </div>
-                                </div>
-                                
-                                
+                                </div> 
                             </div>
                         </div>
-                        <!-- <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="delivered_trigger">
-                            <label class="form-check-label label" for="flexCheckDefault">
-                                離脱クリック
-                            </label>
-                        </div> -->
-                        
                         <p class="label margin_t30">タグ</p>
                         <div class="textarea">
                             <p class="label">&lt;head&gt;&lt;/head&gt;内に貼るタグ</p>
@@ -172,7 +159,6 @@ if(isset($tagData["ad_code"])){
                                 <div id="editor1" class="js_tag_field" data-id="0" style="height: 300px;"></div>
                             </div>
                         </div>
-
                         <input type="hidden" id="tag_headData" value="<?= htmlspecialchars($tagData["tag_head"]) ?>">
                         <div class="textarea margin_t30">
                             <p class="label">&lt;body&gt;&lt;/body&gt;内に貼るタグ</p>
@@ -222,7 +208,6 @@ if(isset($tagData["ad_code"])){
                     combinedScripts += decoded[i];
                 }
 
-                console.log(combinedScripts);
                 editor.setValue(combinedScripts);
             }
             
@@ -240,8 +225,6 @@ if(isset($tagData["ad_code"])){
                     combinedScripts2 += decoded2[i];
                 }
 
-
-                console.log(combinedScripts2);
                 editor2.setValue(combinedScripts2);
             }  
         }

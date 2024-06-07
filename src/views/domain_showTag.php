@@ -86,10 +86,22 @@ if(isset($_SESSION["copySiteAll"])){
         <input type="hidden" value="<?=$domainData["id"]?>" id="domain_id">
         <div class="bg-gray absolute hidden"></div>
         <div class="domain_top_container domain_show container_paddingRL">
-            <div class="domain_show_title">
-                <p class="white margin_0">ドメイン名</p>
-                <h2 class="bold domain_title"><?=$domainData["domain_name"]?></h2>
+            <div class="user_flex">
+                <div class="domain_show_title">
+                    <p class="white margin_0">ドメイン名</p>
+                    <h2 class="bold domain_title"><?=$domainData["domain_name"]?></h2>
+                </div>
+                <?php if(isset($_SESSION["role"])) {?>
+                    <div style="display: flex; align-items:center; gap: 8px;">
+                       <img src="<?=PATH?>public/img/icons8-user-32.png" alt="" class="user_icon">
+                        <p style="margin-bottom: 0;"><?= $_SESSION["admin_info"]?></p> 
+                        <a href="<?=PATH?>admin"><img src="<?= PATH?>public/img/icons8-logout-26.png" alt="" style="margin-left: 30px;"></a>
+                    </div>
+                    
+                <?php }?>
+
             </div>
+            
         </div>
         <div class="main_wrapper">
 

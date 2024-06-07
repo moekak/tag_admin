@@ -13,6 +13,7 @@ class DomainDeactivate implements DomainProcessBase
     public $domain_access;
     public $allowedStatuses = ["使用しない", "使用する"];
     public $pdo;
+    public $user_id;
 
     public function __construct()
     {
@@ -21,6 +22,7 @@ class DomainDeactivate implements DomainProcessBase
         $dbConnection = DatabaseConnection::getInstance();
         // PDOインスタンス（データベース接続）を取得
         $this->pdo = $dbConnection->getConnection();
+        $this->user_id = isset($_SESSION["admin_id"]) ? $_SESSION["admin_id"] : $_SESSION["user_id"];
     }
 
     public function formValidator()
@@ -42,7 +44,7 @@ class DomainDeactivate implements DomainProcessBase
                 // トランザクション開始
                 $this->pdo->beginTransaction();
                 // データベースの操作
-                $this->domain_model->deactivateDomain($_SESSION["user_id"], intval($_POST["domain_id"]));
+                $this->domain_model->deactivateDomain($this->user_id, intval($_POST["domain_id"]));
 
 
 
@@ -59,7 +61,7 @@ class DomainDeactivate implements DomainProcessBase
                 // トランザクション開始
                 $this->pdo->beginTransaction();
                 // データベースの操作
-                $this->domain_model->activateDomain($_SESSION["user_id"], intval($_POST["domain_id"]));
+                $this->domain_model->activateDomain($this->user_id, intval($_POST["domain_id"]));
 
                 // フォルダの権限をすべて無効にする
                 // $fileOperation = new InsertTagDataToFile();

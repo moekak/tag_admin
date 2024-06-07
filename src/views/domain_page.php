@@ -54,6 +54,7 @@ if(isset($_SESSION["create_script_flag"])){
 
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +76,20 @@ if(isset($_SESSION["create_script_flag"])){
     <div class="domain_wrapper relative">
         <div class="bg-gray absolute hidden"></div>
         <div class="domain_top_container container_paddingRL">
-            <h1 class="bold margin_0">タグ管理画面</h1>
+            <div class="user_flex">
+                <div>
+                    <h1 class="bold margin_0">タグ管理画面</h1>
+                </div>
+                <?php if(isset($_SESSION["role"])) {?>
+                    <div style="display: flex; align-items:center; gap: 8px;">
+                       <img src="<?=PATH?>public/img/icons8-user-32.png" alt="" class="user_icon">
+                        <p style="margin-bottom: 0;"><?= $_SESSION["admin_info"]?></p> 
+                        <a href="<?=PATH?>admin"><img src="<?= PATH?>public/img/icons8-logout-26.png" alt="" style="margin-left: 30px;"></a>
+                    </div>
+                    
+                <?php }?>
+            </div>
+           
         </div>
         <div class="domain_info_container container_paddingRL">
             <p id="js_success" class="green bold hidden "><?= $success_msg?></p>
@@ -171,16 +185,7 @@ if(isset($_SESSION["create_script_flag"])){
                         </div>
 
 
-                        <!-- 他社のようにドメインの読み込みファイルを変える場合 -->
-                        <!-- <div class="form-check" id="js_checkTag" style="display: none;">
-                        <div class="padding_t30"> </div>
-                            <input class="form-check-input js_tagCheck" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                親ドメインタグ参照
-                            </label>
-                        </div> -->
-                        <!-- end -->
-
+    
                         <div class="cateogory_area" style="display: none;">
                             <div class="padding_t30"></div>
                             <p class="label">カテゴリー　<span class="red label">*必須</span></p>

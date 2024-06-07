@@ -21,11 +21,13 @@ class TagWithoutReference implements TagTypeBase{
     protected $feedback;
     protected $allowedDomainTypes = ["original", "copy", "directory"];
     protected $allowedTagType = ["reference", "new", "withoutTag"];
+    public $user_id;
 
     public function __construct(){
         $this->domain_access        = new DomainDataAccess();
         $this->tag_access           = new TagDataAccess();
         $this->common               = new Common();
+        $this->user_id = isset($_SESSION["admin_id"]) ? $_SESSION["admin_id"] : $_SESSION["user_id"];
     }
 
     public function formValidator($error){
@@ -58,7 +60,7 @@ class TagWithoutReference implements TagTypeBase{
     public function setDataWithAdd(){
         $domain_info = [
             "domain_category_id"    => intval($_POST["domain_category"]),
-            "admin_id"              => $_SESSION["user_id"],
+            "admin_id"              => $this->user_id,
             "random_domain_id"      => $this->common->randomString(10),
             "parent_domain_id"      => $_POST["parent_domain_id"] ? intval($_POST["parent_domain_id"]): null,
             "original_parent_id"    => $_POST["original_parent_id"] ? intval($_POST["original_parent_id"]): null,
@@ -74,7 +76,7 @@ class TagWithoutReference implements TagTypeBase{
 
     public function setDataWithEdit(){
         $domain_info = [
-            "admin_id"              => $_SESSION["user_id"],
+            "admin_id"              => $this->user_id,
             "domain_name"           => DataValidation::sanitizeInput($_POST["domain_name"]),
             "domain_id"             => intval($_POST["domain_id"])
         ];
