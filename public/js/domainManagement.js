@@ -1,6 +1,6 @@
 
 
-import {fetchTagDataWithReference, toggleInputField, setDataToDOM, setDataAndID, hideUnnecessaryForms, createPtagForTagDeleteModal, fetchTagReferenceDomain, copyTextToCplipboard , closeModal, clearAllValues, fetchDomainInfoBySearch, displayAlertModalForDeleteTag, fetchDomainDataByAll, fetchDomainDataByCategory, initializeModal, fetchDomainInfo, fetchTagData, displayEditModalAndInitializing, displayInfoModal, displayDomainHandlingModalWithNoAni, closeInfoModal, displayDomainHandlingModal , closeDomainHandlingModal,displayAlertModalForDeleteDomain, fetchDomainData, hideCollapse, inputValue, clearLocalStorage, getCategoryID, insertCategoriesID, insertDataToLocalstorage, isLocalStorageDataExisted, unsetLocalStorage, changeCategoryBtn, updateButtonState, updateUI, clearInputFieldValue, clearInputValueAll, clearInputField, clearSearchInput} from "@index/index.js";
+import {enableDomainReferenceBtn, enableTagReferenceBtn, fetchTagDataWithReference, toggleInputField, setDataToDOM, setDataAndID, hideUnnecessaryForms, createPtagForTagDeleteModal, fetchTagReferenceDomain, copyTextToCplipboard , closeModal, clearAllValues, fetchDomainInfoBySearch, displayAlertModalForDeleteTag, fetchDomainDataByAll, fetchDomainDataByCategory, initializeModal, fetchDomainInfo, fetchTagData, displayEditModalAndInitializing, displayInfoModal, displayDomainHandlingModalWithNoAni, closeInfoModal, displayDomainHandlingModal , closeDomainHandlingModal,displayAlertModalForDeleteDomain, fetchDomainData, hideCollapse, inputValue, clearLocalStorage, getCategoryID, insertCategoriesID, insertDataToLocalstorage, isLocalStorageDataExisted, unsetLocalStorage, changeCategoryBtn, updateButtonState, updateUI, clearInputFieldValue, clearInputValueAll, clearInputField, clearSearchInput} from "@index/index.js";
 
 
 
@@ -139,7 +139,7 @@ if(error.value === "edit"){
 
         // ==========================================================================================
 
-        
+  
 
         input_domain_name.addEventListener("input", (e)=>{
             updateUI("domain_name", "domain_name", e.target.value, inputValue, "add")

@@ -61,6 +61,13 @@ if(isset($_SESSION["create_script_flag"])){
     unset($_SESSION["create_script_flag"]);
 }
 
+$data = "";
+if(isset($_SESSION["sent_data"])){
+    $data = $_SESSION["sent_data"];
+    unset($_SESSION["sent_data"]);
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +88,8 @@ if(isset($_SESSION["create_script_flag"])){
     <input type="hidden" value="<?= $flag?>" id="script_flag">
 
     <div class="domain_wrapper relative">
-        <div class="bg-gray absolute hidden"></div>
+    <p id="js_success" class="green bold hidden "><?= $success_msg?></p>
+        <div class="bg-gray absolute <?php echo $data == "" ? "hidden" : ""?>"></div>
         <div class="domain_top_container container_paddingRL">
             <h1 class="bold margin_0">タグ管理画面</h1>
         </div>
@@ -95,7 +103,7 @@ if(isset($_SESSION["create_script_flag"])){
      
                     </div>
                     <div class="domain_addBtn">
-                        <button class="domain_btn" id="js_domain_add">管理者追加</button>
+                        <button class="domain_btn" id="js_admin_add">管理者追加</button>
                         <span class="search_btn js_search_btn">
                             <img src="<?= PATH?>public/img/icons8-search-50.png" alt="" class="search_icon domain_btn" style="padding: 0;">
                         </span>
@@ -134,8 +142,8 @@ if(isset($_SESSION["create_script_flag"])){
                                             </th>
                                             <th class="align-middle">
                                                 <button type="button" class="btn btn-success js_index" data-id=<?=$info["id"]?>>一覧</button>
-                                                <button type="button" class="btn btn-primary" data-id=<?=$info["id"]?>>編集</button>
-                                                <button type="button" class="btn btn-danger" data-id=<?=$info["id"]?>>削除</button>
+                                                <button type="button" class="btn btn-primary js_edit_btn" data-id=<?=$info["id"]?>>編集</button>
+                                                <button type="button" class="btn btn-danger js_delete_btn" data-id=<?=$info["id"]?>>削除</button>
                                             </th>
                                         </tr>
                                     </tbody>
@@ -148,8 +156,8 @@ if(isset($_SESSION["create_script_flag"])){
         </div>
     </div>
 
-    <!-- serach input -->
-    <div class="modal_container fixed js_alert_modal hidden">
+    <!-- serach modal -->
+    <div class="modal_container fixed js_alert_modal hidden js_modal">
         <div class="modal_flex">
             <p>ドメイン検索</p>
             <img src="<?=PATH?>public/img/icons8-close-50.png" alt="" class="close-icon js_close_icon">
@@ -164,6 +172,68 @@ if(isset($_SESSION["create_script_flag"])){
             </table>
         </div>
     </div>
+
+    <!-- edit modal -->
+    <div class="modal_container_edit fixed js_edit_modal hidden js_modal">
+        <div class="modal_flex">
+            <p class="bold">管理者編集</p>
+            <img src="<?=PATH?>public/img/icons8-close-50.png" alt="" class="close-icon js_close_icon">
+        </div>
+        <form action="<?= PATH ?>admin/edit" method="post">
+            <input type="hidden" name="csrf_token" value=<?=$_SESSION['csrf_token']?>>
+            <input type="hidden" name="adminID" class="js_admin_input">
+            <div class="search_form relative">
+                <label for="" style="font-size: 13px;">ユーザー名</label>
+                <input type="text" name="username" class="edit_username_input"><br>
+            </div>
+            <button type="submit" class="btn btn-primary js_update_btn">更新</button>
+        </form>
+    </div>
+
+    <!-- ドメイン削除モーダル -->
+    <div class="domain_delete_modal_container fixed js_delete_modal hidden">
+        <h5 class="bold">本当に削除しますか？</h5>
+        <div class="padding_t20"></div>
+        <p class="js_username username_check">s</p>
+        <div class="padding_t10"></div>
+        <p class="modal-font-size"><span class="red bold ">重要</span>: この管理者を削除すると、それに関連するすべてのドメインとタグも同時に削除されます。この操作は元に戻すことができません。選択された管理者を本当に削除してもよろしいですか？</p>
+        <div class="padding_t10"></div>
+        <div class="modal_btn_container">
+        <form class="js_deleteDomain_form" action="<?=PATH?>admin/delete" method="post">
+            <input type="hidden" class="js_adminID_delete" value="" name="adminID">
+            <input type="hidden" name="csrf_token" value=<?=$_SESSION['csrf_token']?>>
+            <button class="modal_btn bg-red bold js_delete" style="color: white;">削除</button> 
+        </form>
+           
+        </div>
+        <div class="padding_t20"></div>
+        <div class="modal_btn_container">
+           <button class="modal_btn bold bg-white border js_cancel_btn">いいえ</button> 
+        </div>
+    </div>
+    <!-- 管理者追加 -->
+
+    <div class="modal_container_edit fixed js_create_modal js_modal <?php echo $data == "" ? "hidden" : ""?>">
+        <div class="modal_flex">
+            <p class="bold">管理者追加</p>
+            <img src="<?=PATH?>public/img/icons8-close-50.png" alt="" class="close-icon js_close_icon">
+        </div>
+        <form action="<?= PATH ?>admin/create" method="post">
+            <input type="hidden" name="csrf_token" value=<?=$_SESSION['csrf_token']?>>
+            <div class="search_form relative">
+                <label for="" style="font-size: 13px;">ユーザー名</label>
+                <input type="text" name="username" class="js_new_username add_username_input" placeholder="10文字以内で入力してください。" value="<?= $data?>"><br>
+                <small class="red js_username_alert <?php echo $data == "" ? "hidden" : ""?>" style="font-size: 12px;margin-bottom: 15px;"><?php echo $data == "" ? "10文字以内で入力してください。" : "既にこのユーザー名は使われています"?></small><br>
+                <label for="" style="font-size: 13px;">パスワード</label>
+                <input type="text" name="password" class="js_new_password add_username_input" placeholder="8文字以上で入力してください。"><br>
+                <small class="red js_password_alert hidden" style="margin-bottom: 15px; font-size:12px;">8文字以上で入力してください。</small>
+            </div>
+            <button type="submit" class="btn btn-primary js_add_btn disable" style="margin-top: 30px;">新規追加</button>
+        </form>
+    </div>
+
+    
+
 
 
 

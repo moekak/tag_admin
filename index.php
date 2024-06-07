@@ -68,6 +68,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $controller = new CategoryController();
             $controller->edit();
             break;
+
+        // 親管理者のみ
+        case '/tag_admin/admin/edit':
+            require __DIR__ . '/src/controllers/admin/AdminController.php';
+            $controller = new AdminController();
+            $controller->edit();
+            break;
+        case '/tag_admin/admin/delete':
+            require __DIR__ . '/src/controllers/admin/AdminController.php';
+            $controller = new AdminController();
+            $controller->delete();
+            break;
+        case '/tag_admin/admin/create':
+            require __DIR__ . '/src/controllers/admin/AdminController.php';
+            $controller = new AdminController();
+            $controller->create();
+            break;
        
     }
 } else if($_SERVER['REQUEST_METHOD'] === 'GET'){
@@ -200,20 +217,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 //             $controller = new CategoryController();
 //             $controller->edit();
 //             break;
-       
+//         // 親管理者のみ
+//         case $request === PATH .'admin/edit':
+//             require __DIR__ . '/src/controllers/admin/AdminController.php';
+//             $controller = new AdminController();
+//             $controller->edit();
+//             break;
+//         case $request === PATH .'admin/delete':
+//             require __DIR__ . '/src/controllers/admin/AdminController.php';
+//             $controller = new AdminController();
+//             $controller->delete();
+//             break;
+//         case $request === PATH .'admin/create':
+//             require __DIR__ . '/src/controllers/admin/AdminController.php';
+//             $controller = new AdminController();
+//             $controller->create();
+//             break;
+    
 //     }
 // } else if($_SERVER['REQUEST_METHOD'] === 'GET'){
 //     switch (true) {
-//           case $request === PATH:
-            //     require __DIR__ . '/src/auth/controllers/LoginController.php';
-            //     $controller = new LoginController();
-            //     $controller->get();
-            //     break;
-            // case $request === PATH . 'admin' && isset($_SESSION["role"]) == "admin":
-            //     require __DIR__ . '/src/auth/controllers/SuperAdminController.php';
-            //     $controller = new SuperAdminController();
-            //     $controller->get();
-            //             break;
+//         case $request === PATH:
+//             require __DIR__ . '/src/auth/controllers/LoginController.php';
+//             $controller = new LoginController();
+//             $controller->get();
+//             break;
+//         case $request === PATH . 'admin' && isset($_SESSION["role"]) == "admin":
+//             require __DIR__ . '/src/auth/controllers/SuperAdminController.php';
+//             $controller = new SuperAdminController();
+//             $controller->get();
+//                     break;
 //         case $request === PATH .'error':
 //             require __DIR__ . '/src/controllers/ErrorController.php';
 //             $controller = new ErrorController();
@@ -239,11 +272,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 //             $controller = new TagShowController();
 //             $controller->getRange();
 //             break;
-//         // default:
-//         //     require __DIR__ . '/src/controllers/domain/DomainShowController.php';
-//         //     $controller = new DomainShowController();
-//         //     $controller->error();
-//         //     break;
+//         default:
+//             require __DIR__ . '/src/controllers/domain/DomainShowController.php';
+//             $controller = new DomainShowController();
+//             $controller->error();
+//             break;
        
 //     }
 // }

@@ -56,6 +56,10 @@ CONST SUCCESS_DEACTIVATE_DOMAIN = "ドメインのステータスの更新に成
 CONST DOMAIN_ALREADY_EXISTED = "入力されたドメインは既に登録されています。";
 CONST SUCCESS_CATEGORY_CREATE = "カテゴリー追加に成功しました";
 CONST SUCCESS_CATEGORY_EDIT = "カテゴリー更新に成功しました";
+CONST SUCCESS_UPDATE_ADMIN = "管理者の名前更新に成功しました。";
+CONST SUCCESS_DELETE_ADMIN = "管理者の削除に成功しました。";
+CONST SUCCESS_CREATE_ADMIN = "管理者の追加に成功しました。";
+CONST ADMIN_EXISTED = "既にこのユーザー名は使われています。";
 
 CONST ERROR_CODE_LOGIN = 1;
 CONST ERROR_CODE_DATABASE = 2;

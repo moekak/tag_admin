@@ -74,4 +74,23 @@ class DomainTypesModel{
 
 
 
+    public function deleteDomainTypes($id){
+        try{
+            $statement = $this->pdo->prepare(
+                "UPDATE 
+                    domain_types 
+                SET 
+                    is_deleted = '1'
+                WHERE 
+                    admin_id = :id
+                " );
+            $statement->bindValue(':id', $id);
+            $statement->execute();
+            
+        }catch(PDOException $e){
+            $this->feedback->logError($e->getMessage());
+            SystemFeedback::redirectToSystemErrorPage(ERROR_TEXT, ERROR_CODE_LOGIN);
+            exit;
+        }
+    }
 }

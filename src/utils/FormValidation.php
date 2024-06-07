@@ -4,6 +4,7 @@ require_once(dirname(__FILE__) . "/Security.php");
 require_once(dirname(__FILE__) . "/DataValidation.php");
 require_once(dirname(__FILE__) . "/../services/domainManagemnt/DomainValidation.php");
 require_once(dirname(__FILE__) . "/../models/DomainTypesModel.php");
+require_once(dirname(__FILE__) . "/../models/AdminsModel.php");
 
 class FormValidation{
 
@@ -42,6 +43,7 @@ class FormValidation{
 
      // 不正IDかの検証
     public static function checkValidID($key, $fn){
+
         if(!DataValidation::isValidID($_POST[$key]) || !$fn){
             SystemFeedback::invalidIDError($key);
             exit;;
@@ -56,6 +58,16 @@ class FormValidation{
             $_SESSION["error_code"] = $error;
             SystemFeedback::redirectToIndexWithError(DOMAIN_ALREADY_EXISTED, PATH . "index");
             
+            return;
+        }
+    }
+    // すでにドメインが登録されてるかチェック
+    public static function isAdminExisted($value, $error){
+        $admin_validation = new AdminsModel();
+        if($admin_validation->isAdminExisted($value)){
+            $_SESSION["error_code"] = $error;
+            $_SESSION["sent_data"] = $value;
+            SystemFeedback::redirectToIndexWithError(ADMIN_EXISTED, PATH . "admin");
             return;
         }
     }

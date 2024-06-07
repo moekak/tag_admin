@@ -25,14 +25,6 @@ const WithoutTag = ()=>{
 
 export const toggleInputField = () =>{
 
-
-    // if(isDomainTypeCopyOrDirectory()){
-    //     // タグを入れないか入れるかのチェックフォームを表示する
-    //     document.getElementById("js_checkTag").style.display = "block"
-    // } else{
-    //     document.getElementById("js_checkTag").style.display = "none"
-    // }
-
     if(isDomainTypeOriginal()){
         document.querySelector(".cateogory_area").style.display = "block"
         document.querySelector(".copy_area").style.display = "none"
@@ -50,7 +42,7 @@ export const toggleInputField = () =>{
 
 
 // ドメインコピー参照先ボタンの無効化、有効化
-const enableDomainReferenceBtn = ()=>{
+export const enableDomainReferenceBtn = ()=>{
     const copy_site_btn = document.getElementById("js_copy_site")
 
     if(inputValue["domain_type"]){
@@ -66,12 +58,16 @@ const enableDomainReferenceBtn = ()=>{
 export const enableTagReferenceBtn = ()=>{
     const tag_btn = document.getElementById("js_copy_tag")
     tag_btn.disabled = isNewTag();
-    
+
+
+
     if(isNewTag()){
         tag_btn.querySelector(".label").innerHTML = "タグ参照先"
         inputValue["tag_reference"] = ""
         inputValue["tag_reference_id"] = ""
-    }else{
+    }
+    
+    else if(inputValue["domain_type"] === "original"){
         tag_btn.querySelector(".label").innerHTML = "タグ参照先"
         inputValue["tag_reference"] = ""
         inputValue["tag_reference_id"] = ""

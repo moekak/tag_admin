@@ -351,7 +351,6 @@ if(isset($_SESSION["create_script_flag"])){
         </div>
     </div>
 
-    <img src="<?=PATH?>public/img/loading.gif" alt="" class="loading hidden">
 
     <!-- タグ削除モーダル -->
     <div class="tag_delete_modal_container fixed hidden js_alert_modal">

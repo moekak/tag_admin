@@ -46,9 +46,6 @@ class DataValidation{
                 array_push($array, "tag");
             }
         }
-       
- 
-
         return $array;
         
     }

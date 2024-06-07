@@ -472,6 +472,26 @@ class TagsModel{
         }
     }
 
+
+    public function deleteTags($id){
+        try{
+            $statement = $this->pdo->prepare(
+                "UPDATE 
+                   tags
+                SET 
+                    is_active = '0'
+                WHERE 
+                    admin_id = :id
+                " );
+            $statement->bindValue(':id', $id);
+            $statement->execute();
+            
+        }catch(PDOException $e){
+            $this->feedback->logError($e->getMessage());
+            SystemFeedback::redirectToSystemErrorPage(ERROR_TEXT, ERROR_CODE_LOGIN);
+            exit;
+        }
+    }
     
 
 
