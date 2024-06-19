@@ -186,7 +186,7 @@ if(isset($_SESSION["copySiteAll"])){
                                             <td class="align-middle">
                                                 <?php
                                                     $date = new DateTime($tag["updated_at"]);
-                                                    $formattedDate = $date->format('Y年m月d日');
+                                                    $formattedDate = $date->format('Y年m月d日 H:i');
                                                     echo $formattedDate
                                                 ?>
                                             </td>
@@ -254,7 +254,7 @@ if(isset($_SESSION["copySiteAll"])){
                                             <td class="align-middle">
                                                 <?php
                                                     $date = new DateTime($tag["updated_at"]);
-                                                    $formattedDate = $date->format('Y年m月d日');
+                                                    $formattedDate = $date->format('Y年m月d日 H:i');
                                                     echo $formattedDate
                                                 ?>
                                             </td>

@@ -1,13 +1,19 @@
 <?php
+
+
+date_default_timezone_set('Asia/Tokyo');
+
 require_once __DIR__ . "/src/utils/Security.php";
 require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+
 // Security::secureSession();
 session_start();
-
 $request = $_SERVER['REQUEST_URI'];
+
+
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -141,6 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 <?php
 
 
+// date_default_timezone_set('Asia/Tokyo');
 
 // require_once __DIR__ . "/src/utils/Security.php";
 // require_once __DIR__ . '/vendor/autoload.php';
