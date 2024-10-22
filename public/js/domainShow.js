@@ -7,18 +7,14 @@ const directory_site = document.querySelector(".js_directory_site")
 const copy_site = document.querySelector(".js_copy_site")
 
 if(directory_btn !== null){
-   directory_btn.addEventListener("click", ()=>{
-
-    
+    directory_btn.addEventListener("click", ()=>{
         copy_site.classList.add("hidden")
         directory_site.classList.remove("hidden")
-
     }) 
 }
 if(copy_btn !== null){
-   copy_btn.addEventListener("click", ()=>{
+    copy_btn.addEventListener("click", ()=>{
         copy_site.classList.remove("hidden")
         directory_site.classList.add("hidden")
-
     }) 
 }

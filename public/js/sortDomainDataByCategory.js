@@ -1,17 +1,13 @@
 import { getCategoryID, insertCategoriesID, changeCategoryBtn, fetchDomainDataByAll, fetchDomainDataByCategory } from "@index/index.js"
 
 
-
-
 // // ###################################################################################
 // // 　                    ドメインデータのソート(caetgoryごとに)
 // // ###################################################################################
-// TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 {
 
     //カテゴリーごとのソート
     const categories = document.querySelectorAll(".js_categories")
-
     categories.forEach((category)=>{
         category.addEventListener("click", (e)=>{
             //検索欄の値を空にする
@@ -31,8 +27,4 @@ import { getCategoryID, insertCategoriesID, changeCategoryBtn, fetchDomainDataBy
             }
         })
     })
-
-
-
-
 }

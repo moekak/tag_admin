@@ -25,7 +25,6 @@ btn.addEventListener("click", ()=>{
     
 })
 
-
 const fetchDomainInfo = (clickCount)=>{
     const category = localStorage.getItem("category_id")
     const data = {category: category, click: clickCount}
@@ -45,16 +44,12 @@ const fetchDomainInfo = (clickCount)=>{
         return response.json();
     })
     .then((res) => {
-
-   
         if(res.length <=0){
 
             document.querySelector(".js_btn").innerHTML = "全て読み込まれました"
         }else{
             document.querySelector(".js_btn").innerHTML = "もっと表示させる"
         }
-
-        
         createIndexDivForMore(res)
 
         // // ドメイン編集のボタン押せるようにしてる

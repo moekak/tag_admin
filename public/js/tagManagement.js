@@ -1,9 +1,6 @@
 
 
-import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType, clearTagDataObj, insertAdCodeAndTriggerToObj, addAlertStyle, changeArrowImg, disableCodeInputField, displayTriggerCategories, enableAddBtn, enableCodeInputField, hideTriggerCategories, removeAlertStyle, setSelectedTrigger, isHalfWidthChars, isHalfWidthNumber, isValidNum } from "@index/index.js"
-
-
-
+import {acEditor, closeModal, checkTagTriggerType, clearTagDataObj, insertAdCodeAndTriggerToObj, addAlertStyle, disableCodeInputField, displayTriggerCategories, enableCodeInputField, hideTriggerCategories, removeAlertStyle, setSelectedTrigger, isHalfWidthChars, isHalfWidthNumber, isValidNum } from "@index/index.js"
 
 
 // タグ追加のdropの操作の処理
@@ -13,15 +10,13 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 
 
     if(btn_down){
-         btn_down.addEventListener("click", ()=>{
+        btn_down.addEventListener("click", ()=>{
             displayTriggerCategories()
             btn_down.classList.add("hidden")
             btn_up.classList.remove("hidden")
         })
     }
 
-   
-   
 
     if(btn_up){
         btn_up.addEventListener("click", ()=>{
@@ -43,10 +38,9 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
         btn.addEventListener("click", (e)=>{
             document.querySelector(".dummy_down").classList.remove("hidden")
             document.querySelector(".dummy_up").classList.add("hidden")
-           
+
             let target = e.currentTarget
             let type = target.getAttribute("data-type")
-
 
             setSelectedTrigger(type)
             insertAdCodeAndTriggerToObj("trigger", type)
@@ -73,15 +67,11 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
                 // オブジェクト変数を空にする
                 clearTagDataObj("ad_code")
                 removeAlertStyle(ad_field)
-         
             }else{
                 addAlertStyle(ad_field)
                 clearTagDataObj("ad_code")
             }
             
-            
-            
-
             // データをオブジェクト変数の中にセット
             insertAdCodeAndTriggerToObj("ad_code", ad_field.value)
             checkTagTriggerType()
@@ -159,7 +149,7 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
 }
 
    //モーダルの非表示
-   {
+{
     const close_btns = document.querySelectorAll(".js_close_btns2")
     const modals = document.querySelectorAll(".js_modals")
 
@@ -171,18 +161,10 @@ import {setDataToObjWhenUpdateTagData, acEditor, closeModal, checkTagTriggerType
             
         })  
     })
-
-
-
-
 }
 
 
-
-
-
 acEditor("tag_head", 1)
-
 acEditor("tag_body", 2)
 
 

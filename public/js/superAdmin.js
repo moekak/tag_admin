@@ -72,32 +72,29 @@ const openModal = (element1, element2) =>{
             // （検索リクエストの過度な送信を防ぐ）
             const search_word = e.target.value;
             timeout = setTimeout(() => {
-              const data = {
-                  keyword: search_word,
-              };
+                  const data = {
+                        keyword: search_word,
+                  };
 
-              fetchFn(data, "searchDataFetch.php")
-                  .then((res)=>{
-                        if(e.target.value !== ""){
-                              if (res.length <= 0) {
-                                   document.querySelector(".search_form").style.marginBottom ="0%"
-                                   const table = document.querySelector(".data_results_container");
-                                   table.innerHTML = ""
-                             } else {
-                                   document.querySelector(".search_form").style.marginBottom ="3%"
-                                   createIndexDiv(res)
-     
-                                   const btns = document.querySelectorAll(".js_tag_btn")
-     
-                        
-                                   redirectToTagOperation(btns)   
-                             }
-                        }
-                  })
-                  .catch((error)=>{
-                        console.log(error);
-                  })
-              
+                  fetchFn(data, "searchDataFetch.php")
+                        .then((res)=>{
+                              if(e.target.value !== ""){
+                                    if (res.length <= 0) {
+                                          document.querySelector(".search_form").style.marginBottom ="0%"
+                                          const table = document.querySelector(".data_results_container");
+                                          table.innerHTML = ""
+                                    } else {
+                                          document.querySelector(".search_form").style.marginBottom ="3%"
+                                          createIndexDiv(res)
+                                          const btns = document.querySelectorAll(".js_tag_btn")
+                                          redirectToTagOperation(btns)   
+                                    }
+                              }
+                        })
+                        .catch((error)=>{
+                              console.log(error);
+                        })
+
             }, 300); // 300ms遅延
       });
 }
@@ -107,9 +104,9 @@ const createIndexDiv = (resArray)=>{
 
       const table = document.querySelector(".data_results_container");
       table.innerHTML = "";
-  
+      
       const template2 = 
-          ` <thead style="position: sticky; top: 0;" id="js_table">
+      ` <thead style="position: sticky; top: 0;" id="js_table">
                   <tr>
                         <th scope="col">ドメイン</th>
                         <th scope="col" style="width: 200px;">管理者</th>
@@ -117,9 +114,9 @@ const createIndexDiv = (resArray)=>{
                         <th style="width: 100px;">link</th>
                   </tr>
             </thead>` 
-  
+
       table.insertAdjacentHTML("beforeend", template2.trim())
-  
+      
       resArray.forEach((res)=>{
             const id = res["random_domain_id"] !== "0" ? res["random_domain_id"] : res["tag_reference_randomID"]
             const template = 
@@ -136,8 +133,7 @@ const createIndexDiv = (resArray)=>{
       
             table.insertAdjacentHTML('beforeend', template.trim());
       })
-  }
-  
+}
 
 //   ドメイン検索押したときの挙動
 const search_tbn = document.querySelector(".js_search_btn")
@@ -155,7 +151,7 @@ const close_btns = document.querySelectorAll(".js_close_icon")
 const modals = document.querySelectorAll(".js_modal")
 
 close_btns.forEach((close_btn)=>{
-     close_btn.addEventListener("click", ()=>{
+      close_btn.addEventListener("click", ()=>{
             modals.forEach((modal)=>{
                   closeModal(bg, modal)
             })
@@ -196,8 +192,6 @@ const redirectToTagOperation = (btns)=>{
                   let admin_id = target.getAttribute("data-id");
                   let data = {id: admin_id}
 
-                 
-
                   fetchFn(data, "getAdminUsername.php")
                         .then((res)=>{
             
@@ -207,8 +201,7 @@ const redirectToTagOperation = (btns)=>{
                         .catch((error)=>{
                               console.log(error);
                         })
-                 
-                        openModal(bg, edit_modal)
+                  openModal(bg, edit_modal)
             })
 
       })
@@ -217,20 +210,18 @@ const redirectToTagOperation = (btns)=>{
 
 // / 処理成功後のメッセージ
 {
-    const success = document.getElementById("js_success");
+      const success = document.getElementById("js_success");
 
-    if(success !== null){
-        if(success.innerHTML !== ""){
+      if(success !== null){
+            if(success.innerHTML !== ""){
             success.classList.remove("hidden")
             setTimeout(()=>{
-                success.classList.add("hidden")
+                  success.classList.add("hidden")
             }, 1500)
-        }else{
+            }else{
             success.classList.add("hidden")
-        }
-    }
-
-    
+            }
+      }
 }
 
 
@@ -270,18 +261,14 @@ input_field.addEventListener("input", (e)=>{
                         .catch((error)=>{
                               console.log(error);
                         })
-                 
-                        openModal(bg, alert_modal)
+                  openModal(bg, alert_modal)
             })
       })
-
-
 
       const cancel_btn = document.querySelector(".js_cancel_btn")
       cancel_btn.addEventListener("click", ()=>{
             closeModal(bg, alert_modal)
       })
-
 }
 
 

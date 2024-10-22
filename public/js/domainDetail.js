@@ -4,18 +4,12 @@ import { copyTextToCplipboard, addStyleToMenuBtn, displayEditModalAndInitializin
 
 {
     const delete_btn = document.querySelector(".js_delete_tag")
-
-   
-
         if(delete_btn !== null){
             delete_btn.addEventListener("click", (e)=>{
-                
-                
                 // タグ削除のアラートモーダルを表示
                 displayAlertModalForDeleteTag()
             }) 
         }
-       
 
     const cancel_btns  = document.querySelectorAll(".js_delete_btn");
     const alert_modals = document.querySelectorAll(".js_alert_modal");
@@ -42,46 +36,35 @@ const ad_index  = document.querySelector(".js_ad_code")
 const copy_site = document.querySelector(".js_copy_site")
 const adTag_site = document.querySelector(".js_adtag_site")
 const directory_site = document.querySelector(".js_directory_site")
-
-
 const copy_btn = document.querySelector(".js_copy_btn")
 
 if(copy_btn !== null){
-   copy_btn.addEventListener("click", ()=>{
+    copy_btn.addEventListener("click", ()=>{
         ad_index.classList.add("hidden")
         copy_site.classList.remove("hidden")
         adTag_site.classList.add("hidden")
         directory_site.classList.add("hidden")
-
     }) 
 }
 
 // ###########################################################################
 //                           ディレクトリ別サイト一覧
-// ###########################################################################
-
-
-
+// ##########################################################################
 const directory_btn = document.querySelector(".js_directory_btn")
 
 if(directory_btn !== null){
-   directory_btn.addEventListener("click", ()=>{
+    directory_btn.addEventListener("click", ()=>{
         ad_index.classList.add("hidden")
         copy_site.classList.add("hidden")
         adTag_site.classList.add("hidden")
         directory_site.classList.remove("hidden")
-
     }) 
 }
-
-
 
 // ###########################################################################
 //                           広告コード一覧
 // ###########################################################################
-
 const tag_btn = document.querySelector(".js_tag_btn")
-
 
 if(tag_btn !== null){
     tag_btn.addEventListener("click", ()=>{
@@ -92,11 +75,9 @@ if(tag_btn !== null){
     })
 }
 
-
 // ###########################################################################
 //                           タグ追加
 // ###########################################################################
-
 const add_btn = document.querySelector(".js_addTag_btn")
 
 if(add_btn !== null){
@@ -124,8 +105,6 @@ addStyleToMenuBtn()
             success.classList.add("hidden")
         }
     }
-
-    
 }
 
 
@@ -161,7 +140,6 @@ addStyleToMenuBtn()
 
 {
     const info_btn = document.getElementById("js_info_btn")
-
     if(info_btn !== null && info_btn !== ""){
         info_btn.addEventListener("click", ()=>{
             document.getElementById("js_info_modal").classList.remove("hidden")

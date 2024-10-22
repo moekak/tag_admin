@@ -53,9 +53,7 @@
   .table_data::-webkit-scrollbar{
       display: none;
   }
-  .search_form{
-      /* margin-bottom: 5%; */
-  }
+
   th, tr{
       font-weight: normal;
   }

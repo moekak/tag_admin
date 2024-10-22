@@ -11,7 +11,6 @@ class TagDataProcess{
         ];
     }
 
-
     // すべてのタグのファイルパスを探して配列で返す
     public function findFolderPath($dir){
         $filesArray = [];
@@ -26,8 +25,6 @@ class TagDataProcess{
                 }
             }
         }
-      
-
         return $filesArray;
     }
 
@@ -54,9 +51,6 @@ class TagDataProcess{
         return "$directory/$code/$subDir/$position/tag.txt";
     }
 
-
- 
-
     private function getFileContent($filePath){
         if(file_exists($filePath) ){
             $content = file_get_contents($filePath);
@@ -78,7 +72,6 @@ class TagDataProcess{
                 }
             }
         }
-
         return $data;
     }
 
@@ -91,6 +84,7 @@ class TagDataProcess{
 
         return $data ;
     }
+
     // #########################################################
     //                  tagデータを取得
     // #########################################################
@@ -110,14 +104,13 @@ class TagDataProcess{
         $data    = "";
         $subDirs = ["index", "all_pages"];
 
-   
         $data .= $this->readTagFilesWithCode($uniqueTagCodes, $tag_code, $subDirs, $directory_tagRange, "tag_head");
         $data .= $this->readTagFilesWithCode($uniqueTagCodes2, $tag_code, $subDirs, $directory_tagCode, "tag_head");
         $data .= $this->readTagFilesWithoutCode($subDirs,  $directory_tag, "tag_head");
 
         return $data;
-     
     }
+
     public function getIndexTagBody($dir, $tag_code){
 
         $directory_tagRange = $dir["tagRange_directory"];
@@ -134,14 +127,11 @@ class TagDataProcess{
         $data    = "";
         $subDirs = ["index", "all_pages"];
 
-        
-      
         $data .= $this->readTagFilesWithCode($uniqueTagCodes, $tag_code, $subDirs, $directory_tagRange, "tag_body");
         $data .= $this->readTagFilesWithCode($uniqueTagCodes2, $tag_code, $subDirs, $directory_tagCode, "tag_body");
         $data .= $this->readTagFilesWithoutCode($subDirs,  $directory_tag, "tag_body");
 
         return $data;
-        
     }
 
     public function getRdTagHead($dir, $tag_code){
@@ -189,5 +179,4 @@ class TagDataProcess{
 
         return $data; 
     }
-  
 }

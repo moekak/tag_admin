@@ -1,11 +1,6 @@
 
 
-import {enableDomainReferenceBtn, enableTagReferenceBtn, fetchTagDataWithReference, toggleInputField, setDataToDOM, setDataAndID, hideUnnecessaryForms, createPtagForTagDeleteModal, fetchTagReferenceDomain, copyTextToCplipboard , closeModal, clearAllValues, fetchDomainInfoBySearch, displayAlertModalForDeleteTag, fetchDomainDataByAll, fetchDomainDataByCategory, initializeModal, fetchDomainInfo, fetchTagData, displayEditModalAndInitializing, displayInfoModal, displayDomainHandlingModalWithNoAni, closeInfoModal, displayDomainHandlingModal , closeDomainHandlingModal,displayAlertModalForDeleteDomain, fetchDomainData, hideCollapse, inputValue, clearLocalStorage, getCategoryID, insertCategoriesID, insertDataToLocalstorage, isLocalStorageDataExisted, unsetLocalStorage, changeCategoryBtn, updateButtonState, updateUI, clearInputFieldValue, clearInputValueAll, clearInputField, clearSearchInput} from "@index/index.js";
-
-
-
-
-
+import {fetchTagDataWithReference, toggleInputField, setDataToDOM, setDataAndID, hideUnnecessaryForms, createPtagForTagDeleteModal, fetchTagReferenceDomain, copyTextToCplipboard , closeModal, clearAllValues, fetchDomainInfoBySearch, displayAlertModalForDeleteTag, fetchDomainDataByAll, fetchDomainDataByCategory, initializeModal, fetchDomainInfo, fetchTagData, displayEditModalAndInitializing, displayInfoModal, displayDomainHandlingModalWithNoAni, closeInfoModal, displayDomainHandlingModal , closeDomainHandlingModal,displayAlertModalForDeleteDomain, fetchDomainData, hideCollapse, inputValue, clearLocalStorage, getCategoryID, insertCategoriesID, insertDataToLocalstorage, isLocalStorageDataExisted, unsetLocalStorage, changeCategoryBtn, updateButtonState, updateUI, clearInputFieldValue, clearInputValueAll, clearInputField, clearSearchInput} from "@index/index.js";
 
 // ###################################################################################
 // 　            カテゴリーごとのデータ取得と、選択したカテゴリーのスタイル追加処理
@@ -29,13 +24,10 @@ fetchDomainInfoBySearch()
 
 const error = document.getElementById("js_error2");
 if(error.value === "edit"){
-
     document.getElementById("js_domain_top_txt").innerHTML = "ドメイン編集"
     document.getElementById("js_create_btn").innerHTML = "更新"
     hideUnnecessaryForms()
-
 }
-
 
 // ###################################################################################
 // 　                               ドメイン追加処理 
@@ -80,6 +72,7 @@ if(error.value === "edit"){
         })
 
     }
+
     //モーダルの非表示
     {
         const close_btns = document.querySelectorAll(".js_close_btns2")
@@ -94,19 +87,12 @@ if(error.value === "edit"){
             })  
         })
 
-
         // ドメイン追加時の閉じるボタン押したときの処理
         const modal_btn = document.querySelector(".domain_modal_btn")
-
         modal_btn.addEventListener("click", ()=>{
-            
             clearAllValues()
             document.getElementById("js_error").innerHTML = ""
-
-
         })
-
-
     }
 
     // ドメイン設定情報モーダルの表示
@@ -129,7 +115,6 @@ if(error.value === "edit"){
     // ###################################################################################
     {
         // ================================= DOM要素 ================================================
-
         const input_domain_name         = document.getElementById("domain_name");
         const radio_domain_types        = document.querySelectorAll('input[name="type"]')
         const radio_domain_categories   = document.querySelectorAll('input[name="category"]')
@@ -138,8 +123,6 @@ if(error.value === "edit"){
         const create_btn                = document.getElementById("js_create_btn")
 
         // ==========================================================================================
-
-  
 
         input_domain_name.addEventListener("input", (e)=>{
             updateUI("domain_name", "domain_name", e.target.value, inputValue, "add")
@@ -164,15 +147,11 @@ if(error.value === "edit"){
     
         radio_tag_info.forEach((radio)=>{
             radio.addEventListener("change", (e)=>{
-              
                 hideCollapse(document.getElementById("tag_reference_collapse"))
                 document.getElementById("js_search_tag").value = ""
                 setTimeout(()=>{
                     document.querySelector(".tag_search_results_container").innerHTML = "";
                 }, 500)
-                    
-               
-
                 updateUI("tag_type", "tag_type", e.target.value, inputValue, "add")
             })
         })
@@ -185,13 +164,12 @@ if(error.value === "edit"){
             e.preventDefault();
             insertDataToLocalstorage(inputValue);
             const form_create = document.getElementById("js_create_form")
-      
+
             if(create_btn.innerHTML === "追加"){
                 form_create.action = `${process.env.SYSTEM_URL}create`
             }else if(create_btn.innerHTML === "更新"){
                 form_create.action = `${process.env.SYSTEM_URL}edit`
             }
-        
             form_create.submit();
         })
     }
@@ -205,7 +183,6 @@ if(error.value === "edit"){
         const search_container  = document.getElementById("collapseExample1")
 
         // ==========================================================================================
-    
         copy_site_btn.addEventListener("click", ()=>{
             hideCollapse(document.getElementById("tag_reference_collapse"))
             fetchDomainData(copy_site_btn, search_container);
@@ -217,7 +194,7 @@ if(error.value === "edit"){
     {
         // ================================= DOM要素 ===============================================
 
-        const copy_tag          = document.getElementById("js_copy_tag")
+        const copy_tag = document.getElementById("js_copy_tag")
 
         // =========================================================================================
     
@@ -254,10 +231,8 @@ if(error.value === "edit"){
             toggleInputField()
             setDataToDOM()
             updateButtonState("add")
-            
         } 
 
-        
         if(error.innerHTML !== "" && txt == "更新"){
             document.getElementById("js_create_btn").classList.remove("disabled_btn")
             displayDomainHandlingModalWithNoAni()
@@ -308,10 +283,6 @@ if(error.value === "edit"){
     })
     
 }
-   
-    
-
-
 
 // ###################################################################################
 // 　                               ドメイン編集処理 
@@ -340,11 +311,9 @@ if(error.value === "edit"){
                 document.getElementById("js_domain_id").value = btn.querySelector(".js_selectedID").value 
 
                 //追加用と同じモーダルを出す
-         
                 displayDomainHandlingModal()
                 domain_modal.classList.add("hidden")
                 
-    
                 // モダールの文言を追加から編集に変える
                 const title         = document.getElementById("js_domain_top_txt")
                 const btn_submit    = document.getElementById("js_create_btn")
@@ -356,7 +325,6 @@ if(error.value === "edit"){
                 fetchDomainInfo() 
                 
             })
-           
         })
     }
 }
@@ -371,10 +339,7 @@ if(error.value === "edit"){
         // タグ削除のアラートモーダルを表示
         displayAlertModalForDeleteDomain()
     })
-
 }
-
-
 
 // ###################################################################################
 // 　                               タグ削除処理 
@@ -383,9 +348,6 @@ if(error.value === "edit"){
     const delete_btn = document.querySelector(".js_delete_tag")
 
         delete_btn.addEventListener("click", (e)=>{
-
-           
-            
             let id = document.querySelector(".js_delete_tag").getAttribute("data-id")
 
             document.querySelector(".js_selectedID_tag").value = id
@@ -417,17 +379,12 @@ if(error.value === "edit"){
         })
     })
 
-
     const deleteBtn = document.querySelector(".js_delete")
 
     deleteBtn.addEventListener("click", ()=>{
         document.querySelector(".loading").classList.remove("hidden")
     })
 }
-
-
-
-
 
 // ###################################################################################
 // 　                               カテゴリー追加
@@ -440,7 +397,6 @@ if(error.value === "edit"){
         document.querySelector(".bg-gray").classList.remove("hidden")
     })
 
-
     // 編集ボタンのスタイル変更
     const edit_btns = document.querySelectorAll(".js_edit_category");
 
@@ -452,16 +408,14 @@ if(error.value === "edit"){
 
     edit_forms.forEach((form)=>{
         form.addEventListener("input", function(e){
- 
+
             let target = this.parentElement;
 
             if(e.target.value !== ""){
-                 target.querySelector(".js_edit_category").classList.remove("disabled_btn")
+                target.querySelector(".js_edit_category").classList.remove("disabled_btn")
             }else{
                 target.querySelector(".js_edit_category").classList.add("disabled_btn")
             }
-
-           
 
             let others = Array.from(edit_forms).filter(form=> form.parentElement !== target)
             others.forEach((other)=>{

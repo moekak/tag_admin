@@ -337,7 +337,7 @@ padding, margin
     to {
         transform: translateX(0px); 
     }
-  }
+}
 @keyframes slideOut {
     from {
         transform: translateX(0px); 
